@@ -344,15 +344,56 @@ final class ThemeModelTests: XCTestCase {
     // MARK: - Built-in inventory
 
     func testBuiltInThemeInventory() {
-        XCTAssertEqual(BuiltInThemes.all.count, 31)   // + Catppuccin Macchiato, + Gruvbox Light
+        XCTAssertEqual(BuiltInThemes.all.count, 35)   // + Notion pair, + Graphite, + Porcelain
         let light = BuiltInThemes.all.filter { !$0.isDark }
         let dark = BuiltInThemes.all.filter { $0.isDark }
-        XCTAssertEqual(dark.count, 23)   // + Catppuccin Macchiato
+        XCTAssertEqual(dark.count, 25)   // + Notion Dark, + Graphite
         // The point of the light additions: daylight work needs real options.
-        XCTAssertEqual(light.count, 8)   // + Gruvbox Light
+        XCTAssertEqual(light.count, 10)  // + Notion, + Porcelain
         XCTAssertEqual(light.map(\.name).sorted(),
                        ["Catppuccin Latte", "Everforest Light", "Frost", "GitHub Light",
-                        "Gruvbox Light", "Rosé Pine Dawn", "Solarized Light", "Windshield Light"])
+                        "Gruvbox Light", "Notion", "Porcelain", "Rosé Pine Dawn",
+                        "Solarized Light", "Windshield Light"])
+    }
+
+    /// The four modern additions are held to the Windshield contrast floors, since
+    /// unlike the ports they are ours to design: no upstream to be faithful to, so
+    /// there is no excuse for a tier that fails to clear 4.5:1.
+    func testModernThemeContrastFloors() {
+        let moderns = [BuiltInThemes.notion, BuiltInThemes.notionDark,
+                       BuiltInThemes.graphite, BuiltInThemes.porcelain]
+        for t in moderns {
+            for (role, hex) in syntaxRoles(t) {
+                XCTAssertGreaterThanOrEqual(contrast(hex, t.background), 4.5,
+                                            "\(t.name).\(role) falls below 4.5:1")
+            }
+            let gutter = contrast(t.gutterText, t.gutterBackground)
+            XCTAssertGreaterThan(gutter, 3.0, "\(t.name) gutter text is illegible")
+            XCTAssertLessThan(gutter, contrast(t.comment, t.background),
+                              "\(t.name) gutter must not out-shout the code")
+            XCTAssertGreaterThan(contrast(t.cursor, t.selection), 4.5,
+                                 "\(t.name) selection swallows the cursor")
+            XCTAssertGreaterThan(contrast(t.foreground, t.selection), 4.5,
+                                 "\(t.name) selected text is unreadable")
+            for (i, hex) in t.resolvedANSI.indexed.enumerated() where i != 0 {
+                XCTAssertGreaterThanOrEqual(contrast(hex, t.background), 4.5,
+                                            "\(t.name) ANSI \(i) = \(hex) is illegible")
+            }
+        }
+    }
+
+    /// On a light background "bright" must mean *more contrast*, not more luminance —
+    /// the same trap ``testWindshieldLightBrightsAreDarkerThanTheirNormals`` guards.
+    func testModernLightBrightsAreDarkerThanTheirNormals() {
+        for t in [BuiltInThemes.notion, BuiltInThemes.porcelain] {
+            let a = t.resolvedANSI
+            for (normal, bright, slot) in [(a.red, a.brightRed, "red"), (a.green, a.brightGreen, "green"),
+                                           (a.yellow, a.brightYellow, "yellow"), (a.blue, a.brightBlue, "blue"),
+                                           (a.magenta, a.brightMagenta, "magenta"), (a.cyan, a.brightCyan, "cyan")] {
+                XCTAssertGreaterThan(contrast(bright, t.background), contrast(normal, t.background),
+                                     "\(t.name) ANSI bright\(slot) must out-contrast \(slot)")
+            }
+        }
     }
 
     /// Themes are persisted and looked up BY NAME, so a duplicate name would

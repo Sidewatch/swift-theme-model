@@ -787,10 +787,97 @@ public enum BuiltInThemes {
         ansiBrightBlue: "#218BFF", ansiBrightMagenta: "#A475F9",
         ansiBrightCyan: "#3192AA", ansiBrightWhite: "#8C959F")
 
+    /// Notion — the warm off-white document look: white page, `#F7F6F3` sidebar,
+    /// `#37352F` ink.
+    ///
+    /// Syntax is Notion's own published text palette, darkened a step. Notion designs
+    /// its text colours to sit *at* 4.5:1 on white and most land a hair under
+    /// (`gray` 4.48, `blue` 4.47, `purple` 4.49) — fine for a word or two of prose,
+    /// not for a screen of code, so each is taken down until it clears the floor.
+    public static let notion = ThemePalette(
+        name: "Notion", appearance: "light",
+        background: "#FFFFFF", foreground: "#37352F", cursor: "#37352F", selection: "#D3E5EF",
+        comment: "#6B6A66", string: "#3D7355", keyword: "#8253A8", type: "#2E6F92", number: "#96634B",
+        function: "#B0447C", variable: "#37352F", property: "#2E6F92", accent: "#2383E2",
+        sidebarBackground: "#F7F6F3", sidebarText: "#37352F", tabBarBackground: "#F7F6F3",
+        tabText: "#787774", tabActiveText: "#37352F", border: "#E9E9E7",
+        gutterBackground: "#FFFFFF", gutterText: "#8F8E8A", gutterActiveText: "#37352F",
+        statusBackground: "#F7F6F3", statusText: "#787774",
+        ansiBlack: "#37352F", ansiRed: "#C0392F", ansiGreen: "#3D7355",
+        ansiYellow: "#8A6116", ansiBlue: "#2E6F92", ansiMagenta: "#8253A8",
+        ansiCyan: "#2C7A73", ansiWhite: "#6B6A66",
+        ansiBrightBlack: "#5F5E5A", ansiBrightRed: "#A32F27",
+        ansiBrightGreen: "#2F5C43", ansiBrightYellow: "#6E4D11",
+        ansiBrightBlue: "#245973", ansiBrightMagenta: "#6A428A",
+        ansiBrightCyan: "#22615C", ansiBrightWhite: "#37352F")
+
+    /// Notion Dark — the `#191919` page with `#202020` chrome, and Notion's dark-mode
+    /// text palette for syntax. Counterpart to ``notion``.
+    public static let notionDark = ThemePalette(
+        name: "Notion Dark", appearance: "dark",
+        background: "#191919", foreground: "#D4D4D4", cursor: "#D4D4D4", selection: "#26394A",
+        comment: "#8B8E8F", string: "#4DAB9A", keyword: "#A67FDE", type: "#529CCA", number: "#FFA344",
+        function: "#E255A1", variable: "#D4D4D4", property: "#529CCA", accent: "#4A9EE0",
+        sidebarBackground: "#202020", sidebarText: "#C4C4C4", tabBarBackground: "#202020",
+        tabText: "#8B8E8F", tabActiveText: "#EDEDED", border: "#2F2F2F",
+        gutterBackground: "#191919", gutterText: "#6E7173", gutterActiveText: "#C4C4C4",
+        statusBackground: "#202020", statusText: "#979A9B",
+        ansiBlack: "#373737", ansiRed: "#FF7369", ansiGreen: "#4DAB9A",
+        ansiYellow: "#FFDC49", ansiBlue: "#529CCA", ansiMagenta: "#9A6DD7",
+        ansiCyan: "#5BC0BE", ansiWhite: "#C4C4C4",
+        ansiBrightBlack: "#8A8D8F", ansiBrightRed: "#FF9088",
+        ansiBrightGreen: "#6BC4B3", ansiBrightYellow: "#FFE785",
+        ansiBrightBlue: "#6FB0D8", ansiBrightMagenta: "#B48AE3",
+        ansiBrightCyan: "#7BD3D1", ansiBrightWhite: "#EDEDED")
+
+    /// Graphite — near-black neutral greys with a cool, restrained accent set. The
+    /// chrome is pure `#000000` against a `#0A0A0A` page, so the panes read as one
+    /// surface with the edges implied rather than drawn.
+    public static let graphite = ThemePalette(
+        name: "Graphite", appearance: "dark",
+        background: "#0A0A0A", foreground: "#E4E4E7", cursor: "#60A5FA", selection: "#27272A",
+        comment: "#7C7C87", string: "#7DD3A0", keyword: "#A78BFA", type: "#7DD3FC", number: "#FBBF24",
+        function: "#60A5FA", variable: "#E4E4E7", property: "#5EEAD4", accent: "#60A5FA",
+        sidebarBackground: "#000000", sidebarText: "#D4D4D8", tabBarBackground: "#000000",
+        tabText: "#71717A", tabActiveText: "#FAFAFA", border: "#27272A",
+        gutterBackground: "#0A0A0A", gutterText: "#6B6B76", gutterActiveText: "#D4D4D8",
+        statusBackground: "#000000", statusText: "#A1A1AA",
+        ansiBlack: "#27272A", ansiRed: "#F87171", ansiGreen: "#7DD3A0",
+        ansiYellow: "#FBBF24", ansiBlue: "#60A5FA", ansiMagenta: "#A78BFA",
+        ansiCyan: "#5EEAD4", ansiWhite: "#D4D4D8",
+        ansiBrightBlack: "#7B7B86", ansiBrightRed: "#FCA5A5",
+        ansiBrightGreen: "#A7E8C1", ansiBrightYellow: "#FCD34D",
+        ansiBrightBlue: "#93C5FD", ansiBrightMagenta: "#C4B5FD",
+        ansiBrightCyan: "#99F6E4", ansiBrightWhite: "#FAFAFA")
+
+    /// Porcelain — the cool-neutral light counterpart to ``graphite``: white page,
+    /// `#FAFAFA` chrome, and saturated-but-dark syntax that holds up in daylight.
+    ///
+    /// The caret is a step darker than the accent (`#1D4ED8` against `#2563EB`)
+    /// because the accent alone only reaches 4.2:1 on its own selection band — a
+    /// caret that vanishes the moment you select the line it sits in.
+    public static let porcelain = ThemePalette(
+        name: "Porcelain", appearance: "light",
+        background: "#FFFFFF", foreground: "#18181B", cursor: "#1D4ED8", selection: "#DBEAFE",
+        comment: "#6E6E78", string: "#15803D", keyword: "#7C3AED", type: "#0369A1", number: "#B45309",
+        function: "#2563EB", variable: "#18181B", property: "#0F766E", accent: "#2563EB",
+        sidebarBackground: "#FAFAFA", sidebarText: "#18181B", tabBarBackground: "#FAFAFA",
+        tabText: "#6E6E78", tabActiveText: "#18181B", border: "#E4E4E7",
+        gutterBackground: "#FFFFFF", gutterText: "#8E8E96", gutterActiveText: "#18181B",
+        statusBackground: "#FAFAFA", statusText: "#6E6E78",
+        ansiBlack: "#18181B", ansiRed: "#B91C1C", ansiGreen: "#15803D",
+        ansiYellow: "#A16207", ansiBlue: "#1D4ED8", ansiMagenta: "#7C3AED",
+        ansiCyan: "#0F766E", ansiWhite: "#52525B",
+        ansiBrightBlack: "#3F3F46", ansiBrightRed: "#991B1B",
+        ansiBrightGreen: "#166534", ansiBrightYellow: "#854D0E",
+        ansiBrightBlue: "#1E40AF", ansiBrightMagenta: "#6D28D9",
+        ansiBrightCyan: "#115E59", ansiBrightWhite: "#18181B")
+
     /// Every built-in palette, in theme-picker display order (not alphabetical):
     /// the signature pair, then darks, then lights.
     public static let all: [ThemePalette] = [
         windshieldDark, windshieldLight, claude, claudeCode,
+        notion, notionDark, graphite, porcelain,
         nebula, carbon, synthwave,
         oneDark, dracula, tokyoNight, catppuccin, catppuccinMacchiato, rosePine, rosePineMoon,
         kanagawa, everforestDark, nightOwl, nord, gruvbox, ayu,
