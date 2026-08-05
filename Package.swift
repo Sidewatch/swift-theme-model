@@ -14,7 +14,8 @@ let package = Package(
         .library(name: "ThemeModel", targets: ["ThemeModel"]),
     ],
     targets: [
-        .target(name: "ThemeModel", path: "Sources"),
+        .target(name: "ThemeModel", path: "Sources",
+                swiftSettings: [.unsafeFlags(["-strict-concurrency=complete"])]),
         .testTarget(
             name: "ThemeModelTests",
             dependencies: ["ThemeModel"],
