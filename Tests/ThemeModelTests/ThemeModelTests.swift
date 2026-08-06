@@ -344,10 +344,15 @@ final class ThemeModelTests: XCTestCase {
     // MARK: - Built-in inventory
 
     func testBuiltInThemeInventory() {
-        XCTAssertEqual(BuiltInThemes.all.count, 35)   // + Notion pair, + Graphite, + Porcelain
+        // 32, down from 35. Catppuccin Macchiato, Rosé Pine Moon and Nebula were cut as
+        // near-duplicates — measured, not eyeballed: mean CIE76 ΔE across the nine defining
+        // colours was 3.7, 5.8 and 11.7 against Catppuccin Mocha, Rosé Pine and Tokyo Night
+        // respectively, where anything under ~12 is hard to tell apart in use. Every surviving
+        // pair sits at 15 or above.
+        XCTAssertEqual(BuiltInThemes.all.count, 32)
         let light = BuiltInThemes.all.filter { !$0.isDark }
         let dark = BuiltInThemes.all.filter { $0.isDark }
-        XCTAssertEqual(dark.count, 25)   // + Notion Dark, + Graphite
+        XCTAssertEqual(dark.count, 22)   // 25 − Macchiato, Rosé Pine Moon, Nebula
         // The point of the light additions: daylight work needs real options.
         XCTAssertEqual(light.count, 10)  // + Notion, + Porcelain
         XCTAssertEqual(light.map(\.name).sorted(),
@@ -360,7 +365,7 @@ final class ThemeModelTests: XCTestCase {
     /// unlike the ports they are ours to design: no upstream to be faithful to, so
     /// there is no excuse for a tier that fails to clear 4.5:1.
     func testModernThemeContrastFloors() {
-        let moderns = [BuiltInThemes.notion, BuiltInThemes.notionDark,
+        let moderns = [BuiltInThemes.notion, BuiltInThemes.sidewatch,
                        BuiltInThemes.graphite, BuiltInThemes.porcelain]
         for t in moderns {
             for (role, hex) in syntaxRoles(t) {
@@ -429,7 +434,9 @@ final class ThemeModelTests: XCTestCase {
     /// `nil` and fall back, since inventing ANSI for someone else's theme would
     /// be a fabrication.)
     func testNewThemesDeclareTheirOwnANSI() {
-        let named = ["Windshield Dark", "Windshield Light", "Rosé Pine", "Rosé Pine Moon",
+        // "Rosé Pine Moon" was cut as a near-duplicate of Rosé Pine (ΔE 5.8); its sibling
+        // variants still carry their own ANSI and still hold this line.
+        let named = ["Windshield Dark", "Windshield Light", "Rosé Pine",
                      "Rosé Pine Dawn", "Kanagawa Wave", "Everforest Dark", "Everforest Light",
                      "Night Owl", "Catppuccin Latte", "GitHub Light"]
         for name in named {

@@ -262,17 +262,6 @@ public enum BuiltInThemes {
         gutterBackground: "#FBF1C7", gutterText: "#A89984", gutterActiveText: "#504945",
         statusBackground: "#EBDBB2", statusText: "#504945")
 
-    /// Catppuccin Macchiato — the warm mid-dark variant between Mocha and Frappé (MIT).
-    public static let catppuccinMacchiato = ThemePalette(
-        name: "Catppuccin Macchiato", appearance: "dark",
-        background: "#24273A", foreground: "#CAD3F5", cursor: "#F4DBD6", selection: "#494D64",
-        comment: "#6E738D", string: "#A6DA95", keyword: "#C6A0F6", type: "#EED49F", number: "#F5A97F",
-        function: "#8AADF4", variable: "#CAD3F5", property: "#8BD5CA", accent: "#C6A0F6",
-        sidebarBackground: "#1E2030", sidebarText: "#B8C0E0", tabBarBackground: "#181926",
-        tabText: "#6E738D", tabActiveText: "#CAD3F5", border: "#363A4F",
-        gutterBackground: "#24273A", gutterText: "#5B6078", gutterActiveText: "#A5ADCB",
-        statusBackground: "#181926", statusText: "#B8C0E0")
-
     /// Ayu Dark — near-black with warm orange/gold accents.
     public static let ayu = ThemePalette(
         name: "Ayu Dark", appearance: "dark",
@@ -533,17 +522,6 @@ public enum BuiltInThemes {
     // set. Each accent stays clear of the add-green (`#3DB554`) and delete-red (`#F24F4A`),
     // so the git "modified" tint it drives can never be mistaken for an add or a delete.
 
-    /// Nebula — a deep violet space-dark with vibrant sky / cyan / lime syntax.
-    public static let nebula = ThemePalette(
-        name: "Nebula", appearance: "dark",
-        background: "#13111C", foreground: "#CFCBDE", cursor: "#C4B5FD", selection: "#2C2942",
-        comment: "#6A6685", string: "#B6E88D", keyword: "#C792EA", type: "#7DD3FC", number: "#F59E7D",
-        function: "#82AAFF", variable: "#CFCBDE", property: "#67E8F9", accent: "#A78BFA",
-        sidebarBackground: "#100E18", sidebarText: "#A8A3C0", tabBarBackground: "#0D0B14",
-        tabText: "#6A6685", tabActiveText: "#E8E4F5", border: "#26223A",
-        gutterBackground: "#13111C", gutterText: "#403B58", gutterActiveText: "#A8A3C0",
-        statusBackground: "#0D0B14", statusText: "#A8A3C0")
-
     /// Carbon — an ultra-minimal near-black (pure neutral, no colour cast) with a single
     /// electric-blue accent. The flat "Vercel / Linear" modern look.
     public static let carbon = ThemePalette(
@@ -606,24 +584,6 @@ public enum BuiltInThemes {
         ansiBrightGreen: "#31748F", ansiBrightYellow: "#F6C177",
         ansiBrightBlue: "#9CCFD8", ansiBrightMagenta: "#C4A7E7",
         ansiBrightCyan: "#EBBCBA", ansiBrightWhite: "#E0DEF4")
-
-    /// Rosé Pine Moon — the softer, slightly lifted variant of ``rosePine``.
-    public static let rosePineMoon = ThemePalette(
-        name: "Rosé Pine Moon", appearance: "dark",
-        background: "#232136", foreground: "#E0DEF4", cursor: "#E0DEF4", selection: "#44415A",
-        comment: "#6E6A86", string: "#F6C177", keyword: "#3E8FB0", type: "#9CCFD8", number: "#EA9A97",
-        function: "#EA9A97", variable: "#E0DEF4", property: "#9CCFD8", accent: "#C4A7E7",
-        sidebarBackground: "#2A273F", sidebarText: "#908CAA", tabBarBackground: "#2A273F",
-        tabText: "#6E6A86", tabActiveText: "#E0DEF4", border: "#393552",
-        gutterBackground: "#232136", gutterText: "#6E6A86", gutterActiveText: "#E0DEF4",
-        statusBackground: "#2A273F", statusText: "#908CAA",
-        ansiBlack: "#393552", ansiRed: "#EB6F92", ansiGreen: "#3E8FB0",
-        ansiYellow: "#F6C177", ansiBlue: "#9CCFD8", ansiMagenta: "#C4A7E7",
-        ansiCyan: "#EA9A97", ansiWhite: "#E0DEF4",
-        ansiBrightBlack: "#908CAA", ansiBrightRed: "#EB6F92",
-        ansiBrightGreen: "#3E8FB0", ansiBrightYellow: "#F6C177",
-        ansiBrightBlue: "#9CCFD8", ansiBrightMagenta: "#C4A7E7",
-        ansiBrightCyan: "#EA9A97", ansiBrightWhite: "#E0DEF4")
 
     /// Rosé Pine Dawn — the light variant.
     ///
@@ -811,10 +771,17 @@ public enum BuiltInThemes {
         ansiBrightBlue: "#245973", ansiBrightMagenta: "#6A428A",
         ansiBrightCyan: "#22615C", ansiBrightWhite: "#37352F")
 
-    /// Notion Dark — the `#191919` page with `#202020` chrome, and Notion's dark-mode
-    /// text palette for syntax. Counterpart to ``notion``.
-    public static let notionDark = ThemePalette(
-        name: "Notion Dark", appearance: "dark",
+    /// Sidewatch — the default, and the app's signature look: a `#191919` page with `#202020`
+    /// chrome, warm enough not to read as pure black and quiet enough that syntax colour is the
+    /// only thing competing for attention.
+    ///
+    /// The default was ``monokai`` before this, which was an accident rather than a choice — a
+    /// generic third-party palette standing in as the house style.
+    ///
+    /// Derived from Notion's dark-mode text palette (``notion`` remains its light counterpart),
+    /// but named for this app rather than for someone else's product.
+    public static let sidewatch = ThemePalette(
+        name: "Sidewatch", appearance: "dark",
         background: "#191919", foreground: "#D4D4D4", cursor: "#D4D4D4", selection: "#26394A",
         comment: "#8B8E8F", string: "#4DAB9A", keyword: "#A67FDE", type: "#529CCA", number: "#FFA344",
         function: "#E255A1", variable: "#D4D4D4", property: "#529CCA", accent: "#4A9EE0",
@@ -877,10 +844,9 @@ public enum BuiltInThemes {
     /// the signature pair, then darks, then lights.
     public static let all: [ThemePalette] = [
         windshieldDark, windshieldLight, claude, claudeCode,
-        notion, notionDark, graphite, porcelain,
-        nebula, carbon, synthwave,
-        oneDark, dracula, tokyoNight, catppuccin, catppuccinMacchiato, rosePine, rosePineMoon,
-        kanagawa, everforestDark, nightOwl, nord, gruvbox, ayu,
+        notion, sidewatch, graphite, porcelain,
+        carbon, synthwave,
+        oneDark, dracula, tokyoNight, catppuccin, rosePine, kanagawa, everforestDark, nightOwl, nord, gruvbox, ayu,
         monokai, githubDark, solarizedDark, neon,
         frost, catppuccinLatte, rosePineDawn, githubLight, everforestLight, solarizedLight, gruvboxLight,
     ]
