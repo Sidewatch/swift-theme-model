@@ -843,6 +843,36 @@ public enum BuiltInThemes {
     /// Every built-in palette, in theme-picker display order (not alphabetical):
     /// the signature pair, then darks, then lights.
 
+    /// Redline — danger-red neon on warm black. Full send.
+    public static let redline = ThemePalette(
+        name: "Redline",
+        appearance: "dark",
+        background: "#0C0608",
+        foreground: "#F2E9EA",
+        cursor: "#FF3B5C",
+        selection: "#3A0E18",
+        comment: "#6B4A52",
+        string: "#FFAE6B",
+        keyword: "#FF3B5C",
+        type: "#5FD8D0",
+        number: "#FFC24D",
+        function: "#FF8A5C",
+        variable: "#F2E9EA",
+        property: "#FF7AA8",
+        accent: "#FF3B5C",
+        sidebarBackground: "#0A0507",
+        sidebarText: "#B08A94",
+        tabBarBackground: "#0A0507",
+        tabText: "#6B4A52",
+        tabActiveText: "#FBF2F3",
+        border: "#050203",
+        gutterBackground: "#0C0608",
+        gutterText: "#4A2E36",
+        gutterActiveText: "#A87886",
+        statusBackground: "#0A0507",
+        statusText: "#B08A94"
+    )
+
     /// Blackout — OLED black with acid-lime signal. Near-total darkness for the
     /// chrome so the code (and the diff tint) is the only light in the room.
     public static let blackout = ThemePalette(
@@ -906,6 +936,7 @@ public enum BuiltInThemes {
 
     public static let all: [ThemePalette] = [
         blackout,
+        redline,
         ultraviolet,
         windshieldDark, windshieldLight, claude, claudeCode,
         notion, sidewatch, graphite, porcelain,
