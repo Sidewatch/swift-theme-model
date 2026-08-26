@@ -842,7 +842,71 @@ public enum BuiltInThemes {
 
     /// Every built-in palette, in theme-picker display order (not alphabetical):
     /// the signature pair, then darks, then lights.
+
+    /// Blackout — OLED black with acid-lime signal. Near-total darkness for the
+    /// chrome so the code (and the diff tint) is the only light in the room.
+    public static let blackout = ThemePalette(
+        name: "Blackout",
+        appearance: "dark",
+        background: "#050507",
+        foreground: "#E8E8EC",
+        cursor: "#C8FF00",
+        selection: "#22320A",
+        comment: "#4E4E5A",
+        string: "#A8E86B",
+        keyword: "#C8FF00",
+        type: "#5FE8D8",
+        number: "#FFB86B",
+        function: "#69D2FF",
+        variable: "#E8E8EC",
+        property: "#C79BFF",
+        accent: "#C8FF00",
+        sidebarBackground: "#08080C",
+        sidebarText: "#9A9AA8",
+        tabBarBackground: "#08080C",
+        tabText: "#5A5A68",
+        tabActiveText: "#F5F5F8",
+        border: "#000000",
+        gutterBackground: "#050507",
+        gutterText: "#383842",
+        gutterActiveText: "#8A8A98",
+        statusBackground: "#08080C",
+        statusText: "#9A9AA8"
+    )
+
+    /// Ultraviolet — deep violet dusk with magenta neon. The edgy one.
+    public static let ultraviolet = ThemePalette(
+        name: "Ultraviolet",
+        appearance: "dark",
+        background: "#0D0616",
+        foreground: "#E9E0F7",
+        cursor: "#FF2EC8",
+        selection: "#2C1450",
+        comment: "#5E4B80",
+        string: "#FF8AD8",
+        keyword: "#C77BFF",
+        type: "#64E8E0",
+        number: "#FFCA7A",
+        function: "#8F86FF",
+        variable: "#E9E0F7",
+        property: "#61C8FF",
+        accent: "#FF2EC8",
+        sidebarBackground: "#0A0412",
+        sidebarText: "#A390C2",
+        tabBarBackground: "#0A0412",
+        tabText: "#5E4B80",
+        tabActiveText: "#F5EEFC",
+        border: "#05020A",
+        gutterBackground: "#0D0616",
+        gutterText: "#443364",
+        gutterActiveText: "#8F7BB0",
+        statusBackground: "#0A0412",
+        statusText: "#A390C2"
+    )
+
     public static let all: [ThemePalette] = [
+        blackout,
+        ultraviolet,
         windshieldDark, windshieldLight, claude, claudeCode,
         notion, sidewatch, graphite, porcelain,
         carbon, synthwave,
