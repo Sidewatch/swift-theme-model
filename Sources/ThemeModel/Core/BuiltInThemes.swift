@@ -934,10 +934,64 @@ public enum BuiltInThemes {
         statusText: "#A390C2"
     )
 
+    /// Meridian — cool charcoal with a teal signal and pastel-electric syntax: the
+    /// modern-dashboard look (Linear, Vercel, Supabase) rather than a classic editor
+    /// scheme. Deliberately distinct from every other built-in: the near-blacks here
+    /// (Blackout, Carbon, Graphite, Windshield) signal in lime, blue or violet, the
+    /// blue-blacks (Ayu, Night Owl, Tokyo Night) are bluer and busier, and nothing
+    /// else uses teal as the accent. Chrome one step darker than the page, `border`
+    /// darker still (the recessed-seam rule), and a matching ANSI set so the
+    /// terminal wears the same hues.
+    public static let meridian = ThemePalette(
+        name: "Meridian",
+        appearance: "dark",
+        background: "#0F1117",
+        foreground: "#E6EAF2",
+        cursor: "#2DD4BF",
+        selection: "#1B2A33",
+        comment: "#5B6478",
+        string: "#86EFAC",
+        keyword: "#C084FC",
+        type: "#67E8F9",
+        number: "#FDBA74",
+        function: "#93C5FD",
+        variable: "#E6EAF2",
+        property: "#5EEAD4",
+        accent: "#2DD4BF",
+        sidebarBackground: "#0B0D12",
+        sidebarText: "#9AA3B8",
+        tabBarBackground: "#0B0D12",
+        tabText: "#5B6478",
+        tabActiveText: "#F1F4F9",
+        border: "#06070A",
+        gutterBackground: "#0F1117",
+        gutterText: "#3A4052",
+        gutterActiveText: "#8B94A8",
+        statusBackground: "#0B0D12",
+        statusText: "#9AA3B8",
+        ansiBlack: "#0F1117",
+        ansiRed: "#F87171",
+        ansiGreen: "#4ADE80",
+        ansiYellow: "#FBBF24",
+        ansiBlue: "#60A5FA",
+        ansiMagenta: "#C084FC",
+        ansiCyan: "#2DD4BF",
+        ansiWhite: "#CBD5E1",
+        ansiBrightBlack: "#475569",
+        ansiBrightRed: "#FCA5A5",
+        ansiBrightGreen: "#86EFAC",
+        ansiBrightYellow: "#FDE68A",
+        ansiBrightBlue: "#93C5FD",
+        ansiBrightMagenta: "#D8B4FE",
+        ansiBrightCyan: "#5EEAD4",
+        ansiBrightWhite: "#F8FAFC"
+    )
+
     public static let all: [ThemePalette] = [
         blackout,
         redline,
         ultraviolet,
+        meridian,
         windshieldDark, windshieldLight, claude, claudeCode,
         notion, sidewatch, graphite, porcelain,
         carbon, synthwave,

@@ -202,6 +202,17 @@ final class ThemeModelTests: XCTestCase {
         XCTAssertEqual(ANSIColors.curated(isDark: false), .light)
     }
 
+    /// Built-in names are unique — the name is the picker's identity and the persisted
+    /// selection, so two palettes sharing one would collide in both. Added with
+    /// Meridian, which also must not reuse another built-in's accent + background pair.
+    func testBuiltInNamesAndSignatureColorsAreUnique() {
+        let names = BuiltInThemes.all.map(\.name)
+        XCTAssertEqual(Set(names).count, names.count, "duplicate built-in names: \(names)")
+        let signatures = BuiltInThemes.all.map { "\($0.background.uppercased())|\($0.accent.uppercased())" }
+        XCTAssertEqual(Set(signatures).count, signatures.count, "two built-ins share a background + accent pair")
+        XCTAssertTrue(names.contains("Meridian"))
+    }
+
     /// Every built-in theme resolves to a full 16 valid hex colors — whether it
     /// declares its own set or falls back to the curated one for its appearance.
     func testBuiltInThemesResolveFullANSIPalette() {
@@ -343,16 +354,78 @@ final class ThemeModelTests: XCTestCase {
 
     // MARK: - Built-in inventory
 
+    /// The nine colours that define how a palette reads at a glance.
+    private func definingColors(_ p: ThemePalette) -> [String] {
+        [p.background, p.foreground, p.comment, p.string, p.keyword, p.type, p.number, p.function, p.accent]
+    }
+
+    /// sRGB hex → CIE L*a*b* (D65), for a perceptual distance between two colours.
+    private func lab(_ hex: String) -> (l: Double, a: Double, b: Double) {
+        let c = rgb(hex)   // 0…255 — normalise before linearising, or Lab is off by ×255
+        func lin(_ v: Double) -> Double {
+            let s = v / 255
+            return s <= 0.04045 ? s / 12.92 : pow((s + 0.055) / 1.055, 2.4)
+        }
+        let r = lin(c.r), g = lin(c.g), b = lin(c.b)
+        let x = (0.4124564 * r + 0.3575761 * g + 0.1804375 * b) / 0.95047
+        let y = (0.2126729 * r + 0.7151522 * g + 0.0721750 * b) / 1.0
+        let z = (0.0193339 * r + 0.1191920 * g + 0.9503041 * b) / 1.08883
+        func f(_ t: Double) -> Double { t > 0.008856 ? cbrt(t) : 7.787 * t + 16.0 / 116.0 }
+        return (116 * f(y) - 16, 500 * (f(x) - f(y)), 200 * (f(y) - f(z)))
+    }
+
+    /// Mean CIE76 ΔE across the nine defining colours — the measure the inventory was
+    /// pruned by (Macchiato, Rosé Pine Moon and Nebula scored 3.7, 5.8 and 11.7 against
+    /// their neighbours and were cut; under ~12 is hard to tell apart in use).
+    private func distance(_ a: ThemePalette, _ b: ThemePalette) -> Double {
+        let pairs = zip(definingColors(a), definingColors(b))
+        let total = pairs.reduce(0.0) { acc, pair in
+            let x = lab(pair.0), y = lab(pair.1)
+            return acc + sqrt(pow(x.l - y.l, 2) + pow(x.a - y.a, 2) + pow(x.b - y.b, 2))
+        }
+        return total / 9
+    }
+
+    /// Every pair of built-ins is measurably distinct: mean ΔE ≥ 12 over the nine defining
+    /// colours. This is the "does not collide" rule as a number, so a new palette that is
+    /// really an existing one with a different name fails here, not in someone's eye.
+    func testBuiltInThemesAreMeasurablyDistinct() {
+        let all = BuiltInThemes.all
+        var closest: (a: String, b: String, d: Double) = ("", "", .infinity)
+        for i in all.indices {
+            for j in all.indices where j > i {
+                let d = distance(all[i], all[j])
+                if d < closest.d { closest = (all[i].name, all[j].name, d) }
+                XCTAssertGreaterThanOrEqual(d, 12, "\(all[i].name) vs \(all[j].name) ΔE \(String(format: "%.1f", d)) — near-duplicates")
+            }
+        }
+        // The new one specifically: further than the floor from everything, by a margin.
+        if let m = all.first(where: { $0.name == "Meridian" }) {
+            var nearest: (name: String, d: Double) = ("", .infinity)
+            for other in all where other.name != "Meridian" {
+                let d = distance(m, other)
+                if d < nearest.d { nearest = (other.name, d) }
+                XCTAssertGreaterThanOrEqual(d, 15, "Meridian vs \(other.name)")
+            }
+            print("Meridian's nearest built-in: \(nearest.name) ΔE \(String(format: "%.1f", nearest.d))")
+        }
+        print("closest built-in pair: \(closest.a) vs \(closest.b) ΔE \(String(format: "%.1f", closest.d))")
+    }
+
     func testBuiltInThemeInventory() {
         // 32, down from 35. Catppuccin Macchiato, Rosé Pine Moon and Nebula were cut as
         // near-duplicates — measured, not eyeballed: mean CIE76 ΔE across the nine defining
         // colours was 3.7, 5.8 and 11.7 against Catppuccin Mocha, Rosé Pine and Tokyo Night
         // respectively, where anything under ~12 is hard to tell apart in use. Every surviving
         // pair sits at 15 or above.
-        XCTAssertEqual(BuiltInThemes.all.count, 32)
+        // 36 as of 2 Sep 2026: + Blackout, Redline, Ultraviolet (the Sidewatch originals,
+        // added without updating this count — it sat failing at 32 vs 35) + Meridian.
+        // Distinctness is no longer a comment: `testBuiltInThemesAreMeasurablyDistinct`
+        // computes the ΔE for every pair.
+        XCTAssertEqual(BuiltInThemes.all.count, 36)
         let light = BuiltInThemes.all.filter { !$0.isDark }
         let dark = BuiltInThemes.all.filter { $0.isDark }
-        XCTAssertEqual(dark.count, 22)   // 25 − Macchiato, Rosé Pine Moon, Nebula
+        XCTAssertEqual(dark.count, 26)   // 22 + Blackout, Redline, Ultraviolet, Meridian
         // The point of the light additions: daylight work needs real options.
         XCTAssertEqual(light.count, 10)  // + Notion, + Porcelain
         XCTAssertEqual(light.map(\.name).sorted(),
