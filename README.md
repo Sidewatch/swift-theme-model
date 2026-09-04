@@ -23,7 +23,7 @@ A tiny, dependency-free editor **theme model** + a robust **VS Code theme import
 ## Requirements
 
 - macOS 14+ (Foundation only; other Apple platforms at SwiftPM's default minimums)
-- Swift 6.0+ (Swift 6 language mode)
+- Swift 6.2+ (Swift 6 language mode)
 
 ## Installation
 
