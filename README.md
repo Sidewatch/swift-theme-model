@@ -31,7 +31,7 @@ A tiny, dependency-free editor **theme model** + a robust **VS Code theme import
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/Sidewatch/swift-theme-model.git", from: "1.0.0")
+    .package(url: "https://github.com/Sidewatch/swift-theme-model.git", from: "0.1.0")
 ]
 ```
 
