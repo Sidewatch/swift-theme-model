@@ -8,6 +8,7 @@ A tiny, dependency-free editor **theme model** + a robust **VS Code theme import
 
 ## Module map
 
+- `Support/` — VSCodeTokenRules (scope → foreground, last rule wins), VSCodeUIColors (the colors map)
 - `Core/` — the engine: BuiltInThemes, VSCodeThemeImporter
 - `Models/` — value types — the shape of a thing, nothing else: ANSIColors, ThemePalette
 

@@ -29,92 +29,57 @@ public enum VSCodeThemeImporter {
     public static func palette(from data: Data, fallbackName: String) -> ThemePalette? {
         let sanitized = Data(sanitizeJSONC(String(decoding: data, as: UTF8.self)).utf8)
         guard let json = try? JSONSerialization.jsonObject(with: sanitized) as? [String: Any] else { return nil }
-        let colors = json["colors"] as? [String: Any] ?? [:]
-        let tokens = json["tokenColors"] as? [[String: Any]] ?? []
-
-        func ui(_ key: String, _ fallback: String) -> String { hex6(colors[key] as? String) ?? fallback }
-
-        // Terminal ANSI colors: passed through as optionals (no fallback) — a
-        // theme that omits them resolves to the curated set for its appearance
-        // via `ThemePalette.resolvedANSI`, rather than being pinned here.
-        func ansi(_ key: String) -> String? { hex6(colors["terminal.ansi" + key] as? String) }
-
-        // Pre-extract each token rule's scopes + foreground once (rules without a
-        // usable foreground are ignored, matching the old behavior).
-        let rules: [(scopes: [String], fg: String)] = tokens.compactMap { t in
-            let scopes: [String]
-            if let s = t["scope"] as? String {
-                scopes = s.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespaces) }
-            } else if let arr = t["scope"] as? [String] {
-                scopes = arr
-            } else { return nil }
-            guard let settings = t["settings"] as? [String: Any],
-                  let fg = hex6(settings["foreground"] as? String) else { return nil }
-            return (scopes, fg)
-        }
-
-        func scope(_ needles: [String], _ fallback: String) -> String {
-            // Needles are ordered specific → generic; honor that ordering. Within a
-            // needle, an exact scope match beats a prefix match, and the LAST
-            // matching rule wins (approximating VS Code's later-rule-wins).
-            for needle in needles {
-                if let fg = rules.last(where: { $0.scopes.contains(needle) })?.fg { return fg }
-                if let fg = rules.last(where: { $0.scopes.contains { $0.hasPrefix(needle + ".") } })?.fg { return fg }
-            }
-            return fallback
-        }
-
-        let bg = ui("editor.background", "#1E1E1E")
-        let fg = ui("editor.foreground", "#D4D4D4")
-        let keyword = scope(["keyword", "storage"], "#C586C0")
-
-        // Many VS Code theme JSONs omit `type` (it lives in the extension manifest,
-        // not the color-theme file), so fall back to the background's luminance.
-        // Known types: light/dark plus the high-contrast pair (hcLight is LIGHT);
-        // anything unrecognized also falls back to luminance.
-        let appearance: String = {
-            switch (json["type"] as? String)?.lowercased() {
-            case "light", "hclight", "hc-light": return "light"
-            case "dark", "hc", "hcdark", "hc-dark", "hc-black": return "dark"
-            default: return isLight(bg) ? "light" : "dark"
-            }
-        }()
-
+        let ui = VSCodeUIColors(json["colors"] as? [String: Any] ?? [:])
+        let tokens = VSCodeTokenRules(tokenColors: json["tokenColors"] as? [[String: Any]] ?? [])
+        let bg = ui.hex("editor.background", "#1E1E1E")
+        let fg = ui.hex("editor.foreground", "#D4D4D4")
+        let keyword = tokens.color(for: ["keyword", "storage"], fallback: "#C586C0")
         return ThemePalette(
             name: (json["name"] as? String) ?? fallbackName,
-            appearance: appearance,
+            appearance: appearance(declared: json["type"] as? String, background: bg),
             background: bg,
             foreground: fg,
-            cursor: ui("editorCursor.foreground", fg),
-            selection: ui("editor.selectionBackground", "#264F78"),
-            comment: scope(["comment"], "#6A9955"),
-            string: scope(["string"], "#CE9178"),
+            cursor: ui.hex("editorCursor.foreground", fg),
+            selection: ui.hex("editor.selectionBackground", "#264F78"),
+            comment: tokens.color(for: ["comment"], fallback: "#6A9955"),
+            string: tokens.color(for: ["string"], fallback: "#CE9178"),
             keyword: keyword,
-            type: scope(["entity.name.type", "support.type", "storage.type", "entity.name.class"], "#4EC9B0"),
-            number: scope(["constant.numeric", "constant"], "#B5CEA8"),
-            function: scope(["entity.name.function", "support.function"], "#DCDCAA"),
-            variable: scope(["variable"], fg),
-            property: scope(["variable.other.property", "support.variable", "meta.object-literal.key"], scope(["variable"], fg)),
+            type: tokens.color(for: ["entity.name.type", "support.type", "storage.type", "entity.name.class"], fallback: "#4EC9B0"),
+            number: tokens.color(for: ["constant.numeric", "constant"], fallback: "#B5CEA8"),
+            function: tokens.color(for: ["entity.name.function", "support.function"], fallback: "#DCDCAA"),
+            variable: tokens.color(for: ["variable"], fallback: fg),
+            property: tokens.color(for: ["variable.other.property", "support.variable", "meta.object-literal.key"], fallback: tokens.color(for: ["variable"], fallback: fg)),
             accent: keyword,
-            sidebarBackground: ui("sideBar.background", bg),
-            sidebarText: ui("sideBar.foreground", fg),
-            tabBarBackground: ui("editorGroupHeader.tabsBackground", bg),
-            tabText: ui("tab.inactiveForeground", fg),
-            tabActiveText: ui("tab.activeForeground", fg),
-            border: ui("editorGroup.border", ui("panel.border", bg)),
+            sidebarBackground: ui.hex("sideBar.background", bg),
+            sidebarText: ui.hex("sideBar.foreground", fg),
+            tabBarBackground: ui.hex("editorGroupHeader.tabsBackground", bg),
+            tabText: ui.hex("tab.inactiveForeground", fg),
+            tabActiveText: ui.hex("tab.activeForeground", fg),
+            border: ui.hex("editorGroup.border", ui.hex("panel.border", bg)),
             gutterBackground: bg,
-            gutterText: ui("editorLineNumber.foreground", "#858585"),
-            gutterActiveText: ui("editorLineNumber.activeForeground", fg),
-            statusBackground: ui("statusBar.background", bg),
-            statusText: ui("statusBar.foreground", fg),
-            ansiBlack: ansi("Black"), ansiRed: ansi("Red"),
-            ansiGreen: ansi("Green"), ansiYellow: ansi("Yellow"),
-            ansiBlue: ansi("Blue"), ansiMagenta: ansi("Magenta"),
-            ansiCyan: ansi("Cyan"), ansiWhite: ansi("White"),
-            ansiBrightBlack: ansi("BrightBlack"), ansiBrightRed: ansi("BrightRed"),
-            ansiBrightGreen: ansi("BrightGreen"), ansiBrightYellow: ansi("BrightYellow"),
-            ansiBrightBlue: ansi("BrightBlue"), ansiBrightMagenta: ansi("BrightMagenta"),
-            ansiBrightCyan: ansi("BrightCyan"), ansiBrightWhite: ansi("BrightWhite"))
+            gutterText: ui.hex("editorLineNumber.foreground", "#858585"),
+            gutterActiveText: ui.hex("editorLineNumber.activeForeground", fg),
+            statusBackground: ui.hex("statusBar.background", bg),
+            statusText: ui.hex("statusBar.foreground", fg),
+            ansiBlack: ui.ansi("Black"), ansiRed: ui.ansi("Red"),
+            ansiGreen: ui.ansi("Green"), ansiYellow: ui.ansi("Yellow"),
+            ansiBlue: ui.ansi("Blue"), ansiMagenta: ui.ansi("Magenta"),
+            ansiCyan: ui.ansi("Cyan"), ansiWhite: ui.ansi("White"),
+            ansiBrightBlack: ui.ansi("BrightBlack"), ansiBrightRed: ui.ansi("BrightRed"),
+            ansiBrightGreen: ui.ansi("BrightGreen"), ansiBrightYellow: ui.ansi("BrightYellow"),
+            ansiBrightBlue: ui.ansi("BrightBlue"), ansiBrightMagenta: ui.ansi("BrightMagenta"),
+            ansiBrightCyan: ui.ansi("BrightCyan"), ansiBrightWhite: ui.ansi("BrightWhite"))
+    }
+
+    /// "light" or "dark". Many theme JSONs omit `type` (it lives in the extension manifest), so
+    /// the background's luminance decides; hcLight is LIGHT; anything unrecognised also falls
+    /// back to luminance.
+    static func appearance(declared type: String?, background: String) -> String {
+        switch type?.lowercased() {
+        case "light", "hclight", "hc-light": return "light"
+        case "dark", "hc", "hcdark", "hc-dark", "hc-black": return "dark"
+        default: return isLight(background) ? "light" : "dark"
+        }
     }
 
     /// Whether a `#RRGGBB` color reads as "light" (perceived luminance), used to
