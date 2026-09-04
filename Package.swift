@@ -3,19 +3,13 @@ import PackageDescription
 
 let package = Package(
     name: "ThemeModel",
-    platforms: [
-        .iOS(.v13),
-        .macOS(.v10_15),
-        .tvOS(.v13),
-        .watchOS(.v6),
-        .visionOS(.v1)
-    ],
+    platforms: [.macOS(.v14)],
     products: [
         .library(name: "ThemeModel", targets: ["ThemeModel"]),
     ],
     targets: [
         .target(name: "ThemeModel", path: "Sources",
-                swiftSettings: [.unsafeFlags(["-strict-concurrency=complete"])]),
+                swiftSettings: [.swiftLanguageMode(.v6)]),
         .testTarget(
             name: "ThemeModelTests",
             dependencies: ["ThemeModel"],
