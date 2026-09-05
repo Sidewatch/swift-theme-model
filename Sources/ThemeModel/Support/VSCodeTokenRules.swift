@@ -1,3 +1,12 @@
+//
+//  VSCodeTokenRules.swift
+//  ThemeModel
+//
+//  A VS Code theme's `tokenColors`, pre-extracted once: each rule's scopes and its foreground.
+//
+//  Created by David Sherlock on 9/5/26.
+//
+
 import Foundation
 
 /// A VS Code theme's `tokenColors`, pre-extracted once: each rule's scopes and its foreground.

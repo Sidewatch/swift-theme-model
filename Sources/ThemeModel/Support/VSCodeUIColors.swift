@@ -1,3 +1,12 @@
+//
+//  VSCodeUIColors.swift
+//  ThemeModel
+//
+//  A VS Code theme's `colors` map with the two lookups the importer needs.
+//
+//  Created by David Sherlock on 9/5/26.
+//
+
 import Foundation
 
 /// A VS Code theme's `colors` map with the two lookups the importer needs.
