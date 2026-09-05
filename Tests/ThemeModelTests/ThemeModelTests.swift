@@ -2,12 +2,17 @@
 //  ThemeModelTests.swift
 //  Tests for SwiftThemeModel — validated against real VS Code theme files.
 //
+//  Tests for the bundled theme fixtures: every dark and light theme decodes, every colour is
+//  six-digit hex, and `isDark` matches the fixture list.
+//
 //  Created by David Sherlock on 7/9/26.
 //
 
 import XCTest
 @testable import ThemeModel
 
+/// Tests for the bundled theme fixtures: every dark and light theme decodes, every colour is
+/// six-digit hex, and `isDark` matches the fixture list.
 final class ThemeModelTests: XCTestCase {
 
     // Real theme fixtures (VS Code built-ins + community themes). `monokai-jsonc`
