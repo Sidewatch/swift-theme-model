@@ -427,15 +427,23 @@ final class ThemeModelTests: XCTestCase {
         // added without updating this count — it sat failing at 32 vs 35) + Meridian.
         // Distinctness is no longer a comment: `testBuiltInThemesAreMeasurablyDistinct`
         // computes the ΔE for every pair.
-        XCTAssertEqual(BuiltInThemes.all.count, 36)
+        // 46 as of 11 Sep 2026: + Beacon (a Sidewatch original) and nine ported from Omarchy
+        // (MIT). Omarchy ships 22 themes; eight were already covered here under our own names
+        // (Catppuccin, Catppuccin Latte, Everforest, Gruvbox, Kanagawa, Nord, Rosé Pine, Tokyo
+        // Night) and ours were kept. Four more were dropped as space we already occupy: White
+        // and Lupine against five existing light themes, Lumon against Tokyo Night, Vantablack
+        // against Blackout. Ristretto was dropped for a different reason — the name belongs to
+        // a commercial Monokai Pro variant. `testBuiltInThemesAreMeasurablyDistinct` is what
+        // actually proves the survivors are distinct; these counts only pin the inventory.
+        XCTAssertEqual(BuiltInThemes.all.count, 46)
         let light = BuiltInThemes.all.filter { !$0.isDark }
         let dark = BuiltInThemes.all.filter { $0.isDark }
-        XCTAssertEqual(dark.count, 26)   // 22 + Blackout, Redline, Ultraviolet, Meridian
+        XCTAssertEqual(dark.count, 35)   // 26 + Beacon + eight dark Omarchy ports
         // The point of the light additions: daylight work needs real options.
-        XCTAssertEqual(light.count, 10)  // + Notion, + Porcelain
+        XCTAssertEqual(light.count, 11)  // + Notion, + Porcelain, + Flexoki Light
         XCTAssertEqual(light.map(\.name).sorted(),
-                       ["Catppuccin Latte", "Everforest Light", "Frost", "GitHub Light",
-                        "Gruvbox Light", "Notion", "Porcelain", "Rosé Pine Dawn",
+                       ["Catppuccin Latte", "Everforest Light", "Flexoki Light", "Frost",
+                        "GitHub Light", "Gruvbox Light", "Notion", "Porcelain", "Rosé Pine Dawn",
                         "Solarized Light", "Windshield Light"])
     }
 

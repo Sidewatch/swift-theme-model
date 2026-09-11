@@ -987,7 +987,171 @@ public enum BuiltInThemes {
         ansiBrightWhite: "#F8FAFC"
     )
 
+    /// Osaka Jade — ported from Omarchy (MIT), syntax and chrome derived from its ANSI set.
+    public static let osakaJade = ThemePalette(
+        name: "Osaka Jade", appearance: "dark",
+        background: "#111C18", foreground: "#C1C497", cursor: "#C1C497", selection: "#284239",
+        comment: "#C1C497", string: "#C1C497", keyword: "#C1C497", type: "#C1C497", number: "#C1C497",
+        function: "#C1C497", variable: "#C1C497", property: "#C1C497", accent: "#509475",
+        sidebarBackground: "#0D1512", sidebarText: "#9A9F7B", tabBarBackground: "#0A100E",
+        tabText: "#6D735A", tabActiveText: "#CDCFAB", border: "#070C0A",
+        gutterBackground: "#111C18", gutterText: "#545C48", gutterActiveText: "#909573",
+        statusBackground: "#0A100E", statusText: "#959A77",
+        ansiBlack: "#C1C497", ansiRed: "#C1C497", ansiGreen: "#C1C497", ansiYellow: "#C1C497",
+        ansiBlue: "#C1C497", ansiMagenta: "#C1C497", ansiCyan: "#C1C497", ansiWhite: "#C1C497",
+        ansiBrightBlack: "#C1C497", ansiBrightRed: "#C1C497", ansiBrightGreen: "#C1C497", ansiBrightYellow: "#C1C497",
+        ansiBrightBlue: "#C1C497", ansiBrightMagenta: "#C1C497", ansiBrightCyan: "#C1C497", ansiBrightWhite: "#C1C497")
+
+    /// Miasma — ported from Omarchy (MIT), syntax and chrome derived from its ANSI set.
+    public static let miasma = ThemePalette(
+        name: "Miasma", appearance: "dark",
+        background: "#222222", foreground: "#C2C2B0", cursor: "#C2C2B0", selection: "#414141",
+        comment: "#C2C2B0", string: "#C2C2B0", keyword: "#C2C2B0", type: "#C2C2B0", number: "#C2C2B0",
+        function: "#C2C2B0", variable: "#C2C2B0", property: "#C2C2B0", accent: "#78824B",
+        sidebarBackground: "#1C1C1C", sidebarText: "#9F9F91", tabBarBackground: "#181818",
+        tabText: "#75756C", tabActiveText: "#CFCFC1", border: "#151515",
+        gutterBackground: "#222222", gutterText: "#5F5F58", gutterActiveText: "#959588",
+        statusBackground: "#181818", statusText: "#9A9A8C",
+        ansiBlack: "#C2C2B0", ansiRed: "#C2C2B0", ansiGreen: "#C2C2B0", ansiYellow: "#C2C2B0",
+        ansiBlue: "#C2C2B0", ansiMagenta: "#C2C2B0", ansiCyan: "#C2C2B0", ansiWhite: "#C2C2B0",
+        ansiBrightBlack: "#C2C2B0", ansiBrightRed: "#C2C2B0", ansiBrightGreen: "#C2C2B0", ansiBrightYellow: "#C2C2B0",
+        ansiBrightBlue: "#C2C2B0", ansiBrightMagenta: "#C2C2B0", ansiBrightCyan: "#C2C2B0", ansiBrightWhite: "#C2C2B0")
+
+    /// Retro 82 — ported from Omarchy (MIT), syntax and chrome derived from its ANSI set.
+    public static let retro82 = ThemePalette(
+        name: "Retro 82", appearance: "dark",
+        background: "#05182E", foreground: "#F6DCAC", cursor: "#F6DCAC", selection: "#0B3565",
+        comment: "#F6DCAC", string: "#F6DCAC", keyword: "#F6DCAC", type: "#F6DCAC", number: "#F6DCAC",
+        function: "#F6DCAC", variable: "#F6DCAC", property: "#F6DCAC", accent: "#FAA968",
+        sidebarBackground: "#041324", sidebarText: "#C1B190", tabBarBackground: "#030F1D",
+        tabText: "#827E70", tabActiveText: "#F9E8C8", border: "#030C17",
+        gutterBackground: "#05182E", gutterText: "#61625E", gutterActiveText: "#B3A589",
+        statusBackground: "#030F1D", statusText: "#BAAB8C",
+        ansiBlack: "#F6DCAC", ansiRed: "#F6DCAC", ansiGreen: "#F6DCAC", ansiYellow: "#F6DCAC",
+        ansiBlue: "#F6DCAC", ansiMagenta: "#F6DCAC", ansiCyan: "#F6DCAC", ansiWhite: "#F6DCAC",
+        ansiBrightBlack: "#F6DCAC", ansiBrightRed: "#F6DCAC", ansiBrightGreen: "#F6DCAC", ansiBrightYellow: "#F6DCAC",
+        ansiBrightBlue: "#F6DCAC", ansiBrightMagenta: "#F6DCAC", ansiBrightCyan: "#F6DCAC", ansiBrightWhite: "#F6DCAC")
+
+    /// Hackerman — ported from Omarchy (MIT), syntax and chrome derived from its ANSI set.
+    public static let hackerman = ThemePalette(
+        name: "Hackerman", appearance: "dark",
+        background: "#0B0C16", foreground: "#DDF7FF", cursor: "#DDF7FF", selection: "#1F223F",
+        comment: "#DDF7FF", string: "#DDF7FF", keyword: "#DDF7FF", type: "#DDF7FF", number: "#DDF7FF",
+        function: "#DDF7FF", variable: "#DDF7FF", property: "#DDF7FF", accent: "#82FB9C",
+        sidebarBackground: "#07080F", sidebarText: "#AFC3CC", tabBarBackground: "#050509",
+        tabText: "#78868F", tabActiveText: "#FCFEFF", border: "#020305",
+        gutterBackground: "#0B0C16", gutterText: "#5B656F", gutterActiveText: "#A2B5BE",
+        statusBackground: "#050509", statusText: "#A8BCC5",
+        ansiBlack: "#DDF7FF", ansiRed: "#DDF7FF", ansiGreen: "#DDF7FF", ansiYellow: "#DDF7FF",
+        ansiBlue: "#DDF7FF", ansiMagenta: "#DDF7FF", ansiCyan: "#DDF7FF", ansiWhite: "#DDF7FF",
+        ansiBrightBlack: "#DDF7FF", ansiBrightRed: "#DDF7FF", ansiBrightGreen: "#DDF7FF", ansiBrightYellow: "#DDF7FF",
+        ansiBrightBlue: "#DDF7FF", ansiBrightMagenta: "#DDF7FF", ansiBrightCyan: "#DDF7FF", ansiBrightWhite: "#DDF7FF")
+
+    /// Matte Black — ported from Omarchy (MIT), syntax and chrome derived from its ANSI set.
+    public static let matteBlack = ThemePalette(
+        name: "Matte Black", appearance: "dark",
+        background: "#121212", foreground: "#BEBEBE", cursor: "#BEBEBE", selection: "#313131",
+        comment: "#BEBEBE", string: "#BEBEBE", keyword: "#BEBEBE", type: "#BEBEBE", number: "#BEBEBE",
+        function: "#BEBEBE", variable: "#BEBEBE", property: "#BEBEBE", accent: "#E68E0D",
+        sidebarBackground: "#0C0C0C", sidebarText: "#989898", tabBarBackground: "#080808",
+        tabText: "#6B6B6B", tabActiveText: "#CDCDCD", border: "#050505",
+        gutterBackground: "#121212", gutterText: "#535353", gutterActiveText: "#8E8E8E",
+        statusBackground: "#080808", statusText: "#939393",
+        ansiBlack: "#BEBEBE", ansiRed: "#BEBEBE", ansiGreen: "#BEBEBE", ansiYellow: "#BEBEBE",
+        ansiBlue: "#BEBEBE", ansiMagenta: "#BEBEBE", ansiCyan: "#BEBEBE", ansiWhite: "#BEBEBE",
+        ansiBrightBlack: "#BEBEBE", ansiBrightRed: "#BEBEBE", ansiBrightGreen: "#BEBEBE", ansiBrightYellow: "#BEBEBE",
+        ansiBrightBlue: "#BEBEBE", ansiBrightMagenta: "#BEBEBE", ansiBrightCyan: "#BEBEBE", ansiBrightWhite: "#BEBEBE")
+
+    /// Flexoki Light — ported from Omarchy (MIT), syntax and chrome derived from its ANSI set.
+    public static let flexokiLight = ThemePalette(
+        name: "Flexoki Light", appearance: "light",
+        background: "#FFFCF0", foreground: "#100F0F", cursor: "#100F0F", selection: "#FFF2BD",
+        comment: "#7C7A74", string: "#100F0F", keyword: "#100F0F", type: "#100F0F", number: "#100F0F",
+        function: "#100F0F", variable: "#100F0F", property: "#100F0F", accent: "#205EA6",
+        sidebarBackground: "#FFFEFB", sidebarText: "#454340", tabBarBackground: "#FFFFFF",
+        tabText: "#83817B", tabActiveText: "#000000", border: "#FFFFFF",
+        gutterBackground: "#FFFCF0", gutterText: "#A4A29A", gutterActiveText: "#53514E",
+        statusBackground: "#FFFFFF", statusText: "#4C4A47",
+        ansiBlack: "#100F0F", ansiRed: "#100F0F", ansiGreen: "#100F0F", ansiYellow: "#100F0F",
+        ansiBlue: "#100F0F", ansiMagenta: "#100F0F", ansiCyan: "#100F0F", ansiWhite: "#100F0F",
+        ansiBrightBlack: "#100F0F", ansiBrightRed: "#100F0F", ansiBrightGreen: "#100F0F", ansiBrightYellow: "#100F0F",
+        ansiBrightBlue: "#100F0F", ansiBrightMagenta: "#100F0F", ansiBrightCyan: "#100F0F", ansiBrightWhite: "#100F0F")
+
+    /// Solitude — ported from Omarchy (MIT), syntax and chrome derived from its ANSI set.
+    public static let solitude = ThemePalette(
+        name: "Solitude", appearance: "dark",
+        background: "#101315", foreground: "#CACCCC", cursor: "#CACCCC", selection: "#2A3238",
+        comment: "#CACCCC", string: "#CACCCC", keyword: "#CACCCC", type: "#CACCCC", number: "#CACCCC",
+        function: "#CACCCC", variable: "#CACCCC", property: "#CACCCC", accent: "#798186",
+        sidebarBackground: "#0B0D0F", sidebarText: "#A1A3A4", tabBarBackground: "#08090A",
+        tabText: "#717374", tabActiveText: "#DADBDB", border: "#050607",
+        gutterBackground: "#101315", gutterText: "#57595B", gutterActiveText: "#969899",
+        statusBackground: "#08090A", statusText: "#9B9E9E",
+        ansiBlack: "#CACCCC", ansiRed: "#CACCCC", ansiGreen: "#CACCCC", ansiYellow: "#CACCCC",
+        ansiBlue: "#CACCCC", ansiMagenta: "#CACCCC", ansiCyan: "#CACCCC", ansiWhite: "#CACCCC",
+        ansiBrightBlack: "#CACCCC", ansiBrightRed: "#CACCCC", ansiBrightGreen: "#CACCCC", ansiBrightYellow: "#CACCCC",
+        ansiBrightBlue: "#CACCCC", ansiBrightMagenta: "#CACCCC", ansiBrightCyan: "#CACCCC", ansiBrightWhite: "#CACCCC")
+
+    /// Last Horizon — ported from Omarchy (MIT), syntax and chrome derived from its ANSI set.
+    public static let lastHorizon = ThemePalette(
+        name: "Last Horizon", appearance: "dark",
+        background: "#0C0B0C", foreground: "#FAFCFB", cursor: "#FAFCFB", selection: "#2C282C",
+        comment: "#FAFCFB", string: "#FAFCFB", keyword: "#FAFCFB", type: "#FAFCFB", number: "#FAFCFB",
+        function: "#FAFCFB", variable: "#FAFCFB", property: "#FAFCFB", accent: "#B59790",
+        sidebarBackground: "#060606", sidebarText: "#C6C7C6", tabBarBackground: "#020202",
+        tabText: "#888888", tabActiveText: "#FFFFFF", border: "#000000",
+        gutterBackground: "#0C0B0C", gutterText: "#666767", gutterActiveText: "#B7B9B8",
+        statusBackground: "#020202", statusText: "#BEC0BF",
+        ansiBlack: "#FAFCFB", ansiRed: "#FAFCFB", ansiGreen: "#FAFCFB", ansiYellow: "#FAFCFB",
+        ansiBlue: "#FAFCFB", ansiMagenta: "#FAFCFB", ansiCyan: "#FAFCFB", ansiWhite: "#FAFCFB",
+        ansiBrightBlack: "#FAFCFB", ansiBrightRed: "#FAFCFB", ansiBrightGreen: "#FAFCFB", ansiBrightYellow: "#FAFCFB",
+        ansiBrightBlue: "#FAFCFB", ansiBrightMagenta: "#FAFCFB", ansiBrightCyan: "#FAFCFB", ansiBrightWhite: "#FAFCFB")
+
+    /// Ethereal — ported from Omarchy (MIT), syntax and chrome derived from its ANSI set.
+    public static let ethereal = ThemePalette(
+        name: "Ethereal", appearance: "dark",
+        background: "#060B1E", foreground: "#FFCEAD", cursor: "#FFCEAD", selection: "#FFCEAD",
+        comment: "#6D7DB6", string: "#92A593", keyword: "#C89DC1", type: "#A3BFD1", number: "#E9BB4F",
+        function: "#7D82D9", variable: "#FFCEAD", property: "#DFEAF0", accent: "#7D82D9",
+        sidebarBackground: "#040815", sidebarText: "#C8A38E", tabBarBackground: "#03050E",
+        tabText: "#877068", tabActiveText: "#FFE0CC", border: "#020309",
+        gutterBackground: "#060B1E", gutterText: "#655554", gutterActiveText: "#B99785",
+        statusBackground: "#03050E", statusText: "#C19D89",
+        ansiBlack: "#3C486D", ansiRed: "#ED5B5A", ansiGreen: "#92A593", ansiYellow: "#E9BB4F",
+        ansiBlue: "#7D82D9", ansiMagenta: "#C89DC1", ansiCyan: "#A3BFD1", ansiWhite: "#F99957",
+        ansiBrightBlack: "#6D7DB6", ansiBrightRed: "#FAAAA9", ansiBrightGreen: "#C4CFC4", ansiBrightYellow: "#F7DC9C",
+        ansiBrightBlue: "#C2C4F0", ansiBrightMagenta: "#EAD7E7", ansiBrightCyan: "#DFEAF0", ansiBrightWhite: "#FFCEAD")
+
+    /// Beacon — a Sidewatch original. Cool slate ground, one warm gold accent.
+    ///
+    /// Built for the gap: across the other palettes the accent hue is blue seventeen times
+    /// and gold zero times. Gold is also the right colour for this app's job — it is what a
+    /// warning light is, it survives on a dark ground without glowing, and because nothing
+    /// else in the palette is warm, the accent never competes with syntax. The ground is a
+    /// cool neutral rather than black so the gold reads warm by contrast, and the caret's
+    /// gutter number is the accent, so your position on the page is the one gold thing moving.
+    public static let beacon = ThemePalette(
+        name: "Beacon", appearance: "dark",
+        background: "#15181D", foreground: "#D3D7DE", cursor: "#DCBF4B", selection: "#2A3038",
+        comment: "#646C77", string: "#8FBF87", keyword: "#C7A2E8", type: "#6FC2C7", number: "#E0925E",
+        function: "#7FA9E8", variable: "#D3D7DE", property: "#9FD1D6", accent: "#DCBF4B",
+        sidebarBackground: "#12151A", sidebarText: "#A8AEB8", tabBarBackground: "#101317",
+        tabText: "#7C838E", tabActiveText: "#E4E7EC", border: "#0D1014",
+        gutterBackground: "#15181D", gutterText: "#474E58", gutterActiveText: "#DCBF4B",
+        statusBackground: "#101317", statusText: "#8C939E",
+        ansiBlack: "#1B1F25", ansiRed: "#E06C6C", ansiGreen: "#8FBF87", ansiYellow: "#DCBF4B",
+        ansiBlue: "#7FA9E8", ansiMagenta: "#C7A2E8", ansiCyan: "#6FC2C7", ansiWhite: "#C6CBD3",
+        ansiBrightBlack: "#5A616B", ansiBrightRed: "#F08A8A", ansiBrightGreen: "#A8D4A0", ansiBrightYellow: "#EBD277",
+        ansiBrightBlue: "#9CBFF0", ansiBrightMagenta: "#D8BCF0", ansiBrightCyan: "#8FD4D8", ansiBrightWhite: "#EDF0F4")
+
     public static let all: [ThemePalette] = [
+        // Sidewatch original.
+        beacon,
+        // Ported from Omarchy (MIT, github.com/basecamp/omarchy): base colours and the
+        // full 16-colour ANSI set come from each theme's colors.toml verbatim; syntax and
+        // chrome are derived from that ANSI set, because Omarchy defines neither.
+        osakaJade, miasma, retro82, hackerman, matteBlack,
+        flexokiLight, solitude, lastHorizon, ethereal,
         blackout,
         redline,
         ultraviolet,
