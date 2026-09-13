@@ -435,16 +435,19 @@ final class ThemeModelTests: XCTestCase {
         // against Blackout. Ristretto was dropped for a different reason — the name belongs to
         // a commercial Monokai Pro variant. `testBuiltInThemesAreMeasurablyDistinct` is what
         // actually proves the survivors are distinct; these counts only pin the inventory.
-        XCTAssertEqual(BuiltInThemes.all.count, 46)
+        //
+        // 48 as of 13 Sep 2026: + VS Code Dark+ and VS Code Light+ (MIT, microsoft/vscode).
+        // The set had every theme ported FROM a VS Code JSON and not the one VS Code ships.
+        XCTAssertEqual(BuiltInThemes.all.count, 48)
         let light = BuiltInThemes.all.filter { !$0.isDark }
         let dark = BuiltInThemes.all.filter { $0.isDark }
-        XCTAssertEqual(dark.count, 35)   // 26 + Beacon + eight dark Omarchy ports
+        XCTAssertEqual(dark.count, 36)   // 26 + Beacon + eight dark Omarchy ports + VS Code Dark+
         // The point of the light additions: daylight work needs real options.
-        XCTAssertEqual(light.count, 11)  // + Notion, + Porcelain, + Flexoki Light
+        XCTAssertEqual(light.count, 12)  // + Notion, + Porcelain, + Flexoki Light, + VS Code Light+
         XCTAssertEqual(light.map(\.name).sorted(),
                        ["Catppuccin Latte", "Everforest Light", "Flexoki Light", "Frost",
                         "GitHub Light", "Gruvbox Light", "Notion", "Porcelain", "Rosé Pine Dawn",
-                        "Solarized Light", "Windshield Light"])
+                        "Solarized Light", "VS Code Light+", "Windshield Light"])
     }
 
     /// The four modern additions are held to the Windshield contrast floors, since
