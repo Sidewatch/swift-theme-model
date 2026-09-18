@@ -41,3 +41,4 @@ are the instrument for it.
 
 - 17 Sep 2026 — full audit (app + all 20 libraries), Claude with David.
 - 18 Sep 2026 — logic review (every source and test file, line by line), Claude with David.
+- 19 Sep 2026 — + Orchid, Sakura (pastel darks), Peony, Lilac (pastel lights), Volt (2026 dark): 53 palettes, 39 + 14. Every pair still ≥ 12.7 ΔE; inventory test updated.

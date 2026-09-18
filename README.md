@@ -11,7 +11,7 @@ A tiny, dependency-free editor **theme model** + a robust **VS Code theme import
 - 🎯 **Scope resolution that matches VS Code** — needles are tried specific → generic, exact scope beats prefix match, and the last matching rule wins within a tier
 - 🌗 **Smart appearance detection** — honors the theme's `type` (including the high-contrast variants; `hc-light` is light), and falls back to background luminance when `type` is absent (it often lives in the extension manifest, not the theme file)
 - 🔢 **Hex normalization** — expands `#RGB`/`#RGBA` shorthand, trims `#RRGGBBAA` → `#RRGGBB`, rejects non-hex values
-- 📦 **23 built-in palettes** — `BuiltInThemes.all`, 17 dark + 6 light:
+- 📦 **53 built-in palettes** — `BuiltInThemes.all`, 39 dark + 14 light (Sidewatch originals first: Beacon, Orchid, Sakura, Peony, Lilac, Volt):
   - **Signature** — `windshieldDark`, `windshieldLight` (see below)
   - **Dark** — One Dark, Dracula, Tokyo Night, Catppuccin Mocha, Rosé Pine, Rosé Pine Moon, Kanagawa Wave, Everforest Dark, Night Owl, Nord, Gruvbox Dark, Ayu Dark, Monokai, GitHub Dark, Solarized Dark, Neon
   - **Light** — Catppuccin Latte, Rosé Pine Dawn, GitHub Light, Everforest Light, Solarized Light

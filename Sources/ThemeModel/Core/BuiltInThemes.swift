@@ -1223,9 +1223,192 @@ public enum BuiltInThemes {
         statusText: "#000000"
     )
 
+    // MARK: - Sidewatch originals, 19 Sep 2026 — pastel pairs and a 2026 dark
+
+    /// Orchid — a pastel dark. Deep plum ground (not black: the softness comes from a
+    /// coloured dark), lavender-white text, rose accent, and cool pastel syntax — lavender
+    /// keywords, mint strings, sky types, peach numbers. Border below the background so the
+    /// seams recede.
+    public static let orchid = ThemePalette(
+        name: "Orchid",
+        appearance: "dark",
+        background: "#241D2B",
+        foreground: "#EFE6F3",
+        cursor: "#F2A7C3",
+        selection: "#3A2E45",
+        comment: "#7E6F8A",
+        string: "#B6E3C6",
+        keyword: "#D8B4FE",
+        type: "#9AD9E8",
+        number: "#FFCF9F",
+        function: "#F5B8D0",
+        variable: "#EFE6F3",
+        property: "#C8B6FF",
+        accent: "#F2A7C3",
+        sidebarBackground: "#1E1824",
+        sidebarText: "#B9A9C6",
+        tabBarBackground: "#1E1824",
+        tabText: "#7E6F8A",
+        tabActiveText: "#FBF5FF",
+        border: "#150F1A",
+        gutterBackground: "#241D2B",
+        gutterText: "#4E4358",
+        gutterActiveText: "#A899B3",
+        statusBackground: "#1E1824",
+        statusText: "#B9A9C6",
+        ansiBlack: "#241D2B", ansiRed: "#F49CB6", ansiGreen: "#A8E0BB", ansiYellow: "#F9D69B",
+        ansiBlue: "#A6C8F0", ansiMagenta: "#D8B4FE", ansiCyan: "#9AD9E8", ansiWhite: "#E6DCEC",
+        ansiBrightBlack: "#5C5066", ansiBrightRed: "#FFB7CB", ansiBrightGreen: "#C2F0D2", ansiBrightYellow: "#FFE6B8",
+        ansiBrightBlue: "#C0D9FA", ansiBrightMagenta: "#E9CFFF", ansiBrightCyan: "#BDEAF4", ansiBrightWhite: "#FBF5FF"
+    )
+
+    /// Sakura — the warm pastel dark. Cocoa-rose ground, blossom-pink accent, and warm
+    /// pastels — sakura keywords, sage strings, peach types, butter numbers, a soft violet
+    /// for functions. Orchid's sibling on the warm side of the wheel.
+    public static let sakura = ThemePalette(
+        name: "Sakura",
+        appearance: "dark",
+        background: "#2A1F24",
+        foreground: "#F3E8EA",
+        cursor: "#FFAFC5",
+        selection: "#43303A",
+        comment: "#8A7480",
+        string: "#B7E2B1",
+        keyword: "#F7B6C9",
+        type: "#FFD5A6",
+        number: "#FFE29A",
+        function: "#C9B8F5",
+        variable: "#F3E8EA",
+        property: "#FFC2A8",
+        accent: "#FFAFC5",
+        sidebarBackground: "#221920",
+        sidebarText: "#C4AEB7",
+        tabBarBackground: "#221920",
+        tabText: "#8A7480",
+        tabActiveText: "#FFF6F8",
+        border: "#170F13",
+        gutterBackground: "#2A1F24",
+        gutterText: "#574651",
+        gutterActiveText: "#B39CA6",
+        statusBackground: "#221920",
+        statusText: "#C4AEB7",
+        ansiBlack: "#2A1F24", ansiRed: "#FF9DB5", ansiGreen: "#B7E2B1", ansiYellow: "#FFE29A",
+        ansiBlue: "#B6CDF5", ansiMagenta: "#E2B8F0", ansiCyan: "#A8E3DD", ansiWhite: "#EBDDE1",
+        ansiBrightBlack: "#6A5761", ansiBrightRed: "#FFB9CB", ansiBrightGreen: "#CDEECA", ansiBrightYellow: "#FFEDB8",
+        ansiBrightBlue: "#CDDDFA", ansiBrightMagenta: "#EED0F7", ansiBrightCyan: "#C2EEE9", ansiBrightWhite: "#FFF6F8"
+    )
+
+    /// Peony — a pastel light. Blush-white ground, plum-grey text, rose accent. The pastel is
+    /// in the surfaces; the token colours are the same hues taken dark enough to read on
+    /// white (rose, lavender, teal, apricot), and every ANSI slot clears 4.5:1 on the page.
+    public static let peony = ThemePalette(
+        name: "Peony",
+        appearance: "light",
+        background: "#FDF6F8",
+        foreground: "#4A3B47",
+        cursor: "#C2467A",
+        selection: "#F6DDE6",
+        comment: "#9A8794",
+        string: "#3E8E75",
+        keyword: "#8A5BC7",
+        type: "#2F7FA0",
+        number: "#C97A2F",
+        function: "#C2467A",
+        variable: "#4A3B47",
+        property: "#6B5AB8",
+        accent: "#D9578A",
+        sidebarBackground: "#F8EEF2",
+        sidebarText: "#6E5C6A",
+        tabBarBackground: "#F3E6EC",
+        tabText: "#9A8794",
+        tabActiveText: "#2E2230",
+        border: "#EAD8E0",
+        gutterBackground: "#FDF6F8",
+        gutterText: "#B9A9B4",
+        gutterActiveText: "#6E5C6A",
+        statusBackground: "#F3E6EC",
+        statusText: "#6E5C6A",
+        ansiBlack: "#2E2230", ansiRed: "#C43D5A", ansiGreen: "#2E7D5B", ansiYellow: "#A8731A",
+        ansiBlue: "#3A6FB0", ansiMagenta: "#8A5BC7", ansiCyan: "#2F7FA0", ansiWhite: "#8C7A88",
+        ansiBrightBlack: "#5B4A57", ansiBrightRed: "#A32D48", ansiBrightGreen: "#22684B", ansiBrightYellow: "#8F5F0F",
+        ansiBrightBlue: "#2B5A95", ansiBrightMagenta: "#6F44A8", ansiBrightCyan: "#226A88", ansiBrightWhite: "#4A3B47"
+    )
+
+    /// Lilac — the cool pastel light. Lavender-white ground, slate-violet text, violet accent,
+    /// tokens in deep violet, periwinkle, teal and orchid. Peony's sibling on the cool side.
+    public static let lilac = ThemePalette(
+        name: "Lilac",
+        appearance: "light",
+        background: "#F7F5FC",
+        foreground: "#3F3A55",
+        cursor: "#6B4FD1",
+        selection: "#E6E0F7",
+        comment: "#948DAA",
+        string: "#2F8F83",
+        keyword: "#6B4FD1",
+        type: "#3B6FC4",
+        number: "#C26A3A",
+        function: "#B4478F",
+        variable: "#3F3A55",
+        property: "#5F6FD1",
+        accent: "#7C5CE6",
+        sidebarBackground: "#F1EEF9",
+        sidebarText: "#6A6288",
+        tabBarBackground: "#ECE8F6",
+        tabText: "#948DAA",
+        tabActiveText: "#2A2540",
+        border: "#DDD7EE",
+        gutterBackground: "#F7F5FC",
+        gutterText: "#B0A9C4",
+        gutterActiveText: "#6A6288",
+        statusBackground: "#ECE8F6",
+        statusText: "#6A6288",
+        ansiBlack: "#3F3A55", ansiRed: "#C2405E", ansiGreen: "#2F7D5F", ansiYellow: "#A0731D",
+        ansiBlue: "#3B6FC4", ansiMagenta: "#6B4FD1", ansiCyan: "#2F8F83", ansiWhite: "#8B86A0",
+        ansiBrightBlack: "#5F5977", ansiBrightRed: "#A33350", ansiBrightGreen: "#24684F", ansiBrightYellow: "#86600F",
+        ansiBrightBlue: "#2E5AA8", ansiBrightMagenta: "#5740B3", ansiBrightCyan: "#26786D", ansiBrightWhite: "#3F3A55"
+    )
+
+    /// Volt — the 2026 dark. Graphite-black ground with a cold cast, one electric ice-cyan
+    /// signal for the accent, cursor and types, safety-orange keywords, amber strings and a
+    /// lilac-grey for functions: high contrast, few hues, nothing retro about it. Blackout is
+    /// black with acid lime; this is its cold, two-tone cousin.
+    public static let volt = ThemePalette(
+        name: "Volt",
+        appearance: "dark",
+        background: "#0A0C10",
+        foreground: "#EDEDED",
+        cursor: "#7DF9FF",
+        selection: "#14202A",
+        comment: "#4E5560",
+        string: "#FFD166",
+        keyword: "#FF6A1A",
+        type: "#7DF9FF",
+        number: "#FFB65C",
+        function: "#B8B8FF",
+        variable: "#EDEDED",
+        property: "#9AE6FF",
+        accent: "#7DF9FF",
+        sidebarBackground: "#07080C",
+        sidebarText: "#8A929C",
+        tabBarBackground: "#07080C",
+        tabText: "#4E5560",
+        tabActiveText: "#FFFFFF",
+        border: "#04050A",
+        gutterBackground: "#0A0C10",
+        gutterText: "#353B45",
+        gutterActiveText: "#9AA3AD",
+        statusBackground: "#07080C",
+        statusText: "#8A929C",
+        ansiBlack: "#0A0C10", ansiRed: "#FF5C5C", ansiGreen: "#5CFF9D", ansiYellow: "#FFD166",
+        ansiBlue: "#5CA8FF", ansiMagenta: "#D08CFF", ansiCyan: "#7DF9FF", ansiWhite: "#D6DADF",
+        ansiBrightBlack: "#4E5560", ansiBrightRed: "#FF8A8A", ansiBrightGreen: "#8CFFBE", ansiBrightYellow: "#FFE29A",
+        ansiBrightBlue: "#8CC4FF", ansiBrightMagenta: "#E2B3FF", ansiBrightCyan: "#B3FBFF", ansiBrightWhite: "#FFFFFF"
+    )
+
     public static let all: [ThemePalette] = [
-        // Sidewatch original.
-        beacon,
+        // Sidewatch originals.
+        beacon, orchid, sakura, peony, lilac, volt,
         // Ported from Omarchy (MIT, github.com/basecamp/omarchy): base colours and the
         // full 16-colour ANSI set come from each theme's colors.toml verbatim; syntax and
         // chrome are derived from that ANSI set, because Omarchy defines neither.

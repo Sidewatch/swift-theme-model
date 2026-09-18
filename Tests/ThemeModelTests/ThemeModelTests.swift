@@ -438,16 +438,19 @@ final class ThemeModelTests: XCTestCase {
         //
         // 48 as of 13 Sep 2026: + VS Code Dark+ and VS Code Light+ (MIT, microsoft/vscode).
         // The set had every theme ported FROM a VS Code JSON and not the one VS Code ships.
-        XCTAssertEqual(BuiltInThemes.all.count, 48)
+        // 53 as of 19 Sep 2026: + Orchid and Sakura (pastel darks), Peony and Lilac (pastel
+        // lights) and Volt (a 2026 dark) — Sidewatch originals, at David's ask for softer and
+        // for edgier options. Same ΔE rule as everything before them.
+        XCTAssertEqual(BuiltInThemes.all.count, 53)
         let light = BuiltInThemes.all.filter { !$0.isDark }
         let dark = BuiltInThemes.all.filter { $0.isDark }
-        XCTAssertEqual(dark.count, 36)   // 26 + Beacon + eight dark Omarchy ports + VS Code Dark+
+        XCTAssertEqual(dark.count, 39)   // 26 + Beacon + eight dark Omarchy ports + VS Code Dark+ + Orchid, Sakura, Volt
         // The point of the light additions: daylight work needs real options.
-        XCTAssertEqual(light.count, 12)  // + Notion, + Porcelain, + Flexoki Light, + VS Code Light+
+        XCTAssertEqual(light.count, 14)  // + Notion, + Porcelain, + Flexoki Light, + VS Code Light+, + Peony, + Lilac
         XCTAssertEqual(light.map(\.name).sorted(),
                        ["Catppuccin Latte", "Everforest Light", "Flexoki Light", "Frost",
-                        "GitHub Light", "Gruvbox Light", "Notion", "Porcelain", "Rosé Pine Dawn",
-                        "Solarized Light", "VS Code Light+", "Windshield Light"])
+                        "GitHub Light", "Gruvbox Light", "Lilac", "Notion", "Peony", "Porcelain",
+                        "Rosé Pine Dawn", "Solarized Light", "VS Code Light+", "Windshield Light"])
     }
 
     /// The four modern additions are held to the Windshield contrast floors, since
