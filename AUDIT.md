@@ -20,10 +20,24 @@ dead-code and risk-pattern scans, docs drift); line-by-line logic review was tar
 - Build: clean. Tests: green.
 - Nothing to fix in this package.
 
+## Logic review — 18 Sep 2026 (every source and test file, line by line)
+
+Nothing to fix. Checked: `VSCodeThemeImporter` (the `type` table incl. `hcLight`, the luminance
+fallback, `hex6`'s shorthand and alpha handling and its rejection of `#+2345`, `sanitizeJSONC`'s
+string-aware comment and trailing-comma passes, the needle-then-last-rule scope lookup), a
+BOM-prefixed theme file (measured: `JSONSerialization` accepts the U+FEFF the importer's `String`
+round trip preserves), `ThemePalette`'s decode-safety for palettes written before the ANSI fields
+existed, `resolvedANSI`'s per-slot fill. `BuiltInThemes` is data, audited by pattern rather than by
+eye: all 1,584 hex literals are exactly `#RRGGBB`, 36 dark + 12 light = 48, and the invariant tests
+(unique names and signatures, pairwise ΔE ≥ 12, contrast floors, the Windshield greyscale thesis)
+are the instrument for it.
+
 ## Known non-issues (do not "fix" these again)
 
-- None recorded.
+- `VSCodeTokenRules` splits a `scope` string on commas only; a descendant selector (`meta.function
+  entity.name.function`) is one scope that matches nothing, which is the intended approximation.
 
 ## History
 
 - 17 Sep 2026 — full audit (app + all 20 libraries), Claude with David.
+- 18 Sep 2026 — logic review (every source and test file, line by line), Claude with David.
