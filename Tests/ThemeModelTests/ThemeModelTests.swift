@@ -35,6 +35,24 @@ final class ThemeModelTests: XCTestCase {
 
     // MARK: - Every real theme imports
 
+    /// `selectionText` is optional: a palette without it decodes (nil → the app uses the
+    /// foreground), one with it keeps the value, and it round-trips through the encoder.
+    func testSelectionTextIsOptionalAndRoundTrips() throws {
+        let base: [String: Any] = ["name": "T", "appearance": "dark", "background": "#000000", "foreground": "#ffffff", "cursor": "#ffffff",
+                                   "selection": "#333333", "comment": "#888888", "string": "#00ff00", "keyword": "#ff00ff", "type": "#00ffff",
+                                   "number": "#ffff00", "function": "#0000ff", "variable": "#ffffff", "property": "#cccccc", "accent": "#ff8800",
+                                   "sidebarBackground": "#111111", "sidebarText": "#eeeeee", "tabBarBackground": "#111111", "tabText": "#aaaaaa",
+                                   "tabActiveText": "#ffffff", "border": "#222222", "gutterBackground": "#000000", "gutterText": "#666666",
+                                   "gutterActiveText": "#ffffff", "statusBackground": "#111111", "statusText": "#aaaaaa"]
+        let without = try JSONDecoder().decode(ThemePalette.self, from: JSONSerialization.data(withJSONObject: base))
+        XCTAssertNil(without.selectionText)
+        var withKey = base; withKey["selectionText"] = "#101010"
+        let decoded = try JSONDecoder().decode(ThemePalette.self, from: JSONSerialization.data(withJSONObject: withKey))
+        XCTAssertEqual(decoded.selectionText, "#101010")
+        let again = try JSONDecoder().decode(ThemePalette.self, from: JSONEncoder().encode(decoded))
+        XCTAssertEqual(again.selectionText, "#101010")
+    }
+
     func testAllRealThemesImport() throws {
         for name in allThemes {
             let palette = VSCodeThemeImporter.palette(from: try load(name), fallbackName: name)

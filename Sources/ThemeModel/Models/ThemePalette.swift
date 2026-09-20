@@ -31,6 +31,10 @@ public struct ThemePalette: Codable, Equatable, Sendable {
     public var cursor: String
     /// The selected-text background color.
     public var selection: String
+    /// The colour of TEXT inside a selection, in the editor and the terminal; nil means the
+    /// theme's `foreground`. Optional so palettes written before it existed still decode
+    /// (20 Sep 2026: "two colors as highlight color and text color during selection").
+    public var selectionText: String?
 
     // Syntax
 
@@ -167,9 +171,11 @@ public struct ThemePalette: Codable, Equatable, Sendable {
         ansiBrightBlack: String? = nil, ansiBrightRed: String? = nil,
         ansiBrightGreen: String? = nil, ansiBrightYellow: String? = nil,
         ansiBrightBlue: String? = nil, ansiBrightMagenta: String? = nil,
-        ansiBrightCyan: String? = nil, ansiBrightWhite: String? = nil
+        ansiBrightCyan: String? = nil, ansiBrightWhite: String? = nil,
+        selectionText: String? = nil
     ) {
         self.name = name; self.appearance = appearance
+        self.selectionText = selectionText
         self.background = background; self.foreground = foreground
         self.cursor = cursor; self.selection = selection
         self.comment = comment; self.string = string; self.keyword = keyword
