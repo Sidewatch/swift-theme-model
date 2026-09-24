@@ -435,6 +435,20 @@ final class ThemeModelTests: XCTestCase {
         print("closest built-in pair: \(closest.a) vs \(closest.b) ΔE \(String(format: "%.1f", closest.d))")
     }
 
+    /// Every built-in paints code in more than one colour. Four Omarchy ports (Miasma, Retro 82,
+    /// Hackerman, Matte Black) shipped with all eight syntax roles equal to the foreground —
+    /// their ANSI sets are one colour and "syntax derived from the ANSI set" made every token
+    /// the foreground — so a Swift file under them read as plain text and the app's
+    /// colour-trusting paths (comment folds, the minimap fill) had nothing to go on. The rule:
+    /// at least four distinct syntax colours, and the comment colour never the foreground.
+    func testEveryBuiltInPaintsSyntaxInMoreThanOneColour() {
+        for t in BuiltInThemes.all {
+            let roles = [t.comment, t.string, t.keyword, t.type, t.number, t.function, t.variable, t.property].map { $0.uppercased() }
+            XCTAssertGreaterThanOrEqual(Set(roles).count, 4, "\(t.name): \(Set(roles).count) distinct syntax colour(s)")
+            XCTAssertNotEqual(t.comment.uppercased(), t.foreground.uppercased(), "\(t.name): comments are the foreground colour")
+        }
+    }
+
     func testBuiltInThemeInventory() {
         // 32, down from 35. Catppuccin Macchiato, Rosé Pine Moon and Nebula were cut as
         // near-duplicates — measured, not eyeballed: mean CIE76 ΔE across the nine defining
