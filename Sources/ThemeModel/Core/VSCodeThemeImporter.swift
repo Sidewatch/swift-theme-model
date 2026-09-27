@@ -1,11 +1,12 @@
 //
 //  VSCodeThemeImporter.swift
-//  SwiftThemeModel
+//  ThemeModel
 //
 //  Maps a VS Code color theme onto a `ThemePalette`. Tolerant of JSONC (comments
 //  and trailing commas) since many real-world theme files are JSONC.
 //
 //  Created by David Sherlock on 7/9/26.
+//  Copyright © 2026 ArrayPress Limited. MIT licence.
 //
 
 import Foundation

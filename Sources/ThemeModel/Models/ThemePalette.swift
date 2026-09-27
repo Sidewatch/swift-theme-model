@@ -1,11 +1,12 @@
 //
 //  ThemePalette.swift
-//  SwiftThemeModel
+//  ThemeModel
 //
 //  A flat, hex-based editor color theme. Small, human-editable, Codable — the
 //  on-disk / serialization format for an editor's colors.
 //
 //  Created by David Sherlock on 7/9/26.
+//  Copyright © 2026 ArrayPress Limited. MIT licence.
 //
 
 import Foundation

@@ -5,6 +5,7 @@
 //  A VS Code theme's `colors` map with the two lookups the importer needs.
 //
 //  Created by David Sherlock on 9/5/26.
+//  Copyright © 2026 ArrayPress Limited. MIT licence.
 //
 
 import Foundation

@@ -1,11 +1,14 @@
 //
 //  ThemeModelTests.swift
+//  ThemeModelTests
+//
 //  Tests for SwiftThemeModel — validated against real VS Code theme files.
 //
 //  Tests for the bundled theme fixtures: every dark and light theme decodes, every colour is
 //  six-digit hex, and `isDark` matches the fixture list.
 //
 //  Created by David Sherlock on 7/9/26.
+//  Copyright © 2026 ArrayPress Limited. MIT licence.
 //
 
 import XCTest

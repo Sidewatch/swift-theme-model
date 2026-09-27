@@ -1,11 +1,12 @@
 //
 //  ANSIColors.swift
-//  SwiftThemeModel
+//  ThemeModel
 //
 //  The 16 ANSI terminal colors, plus curated dark/light defaults for themes that
 //  don't specify their own.
 //
 //  Created by David Sherlock on 7/16/26.
+//  Copyright © 2026 ArrayPress Limited. MIT licence.
 //
 
 import Foundation
