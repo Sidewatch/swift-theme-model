@@ -33,8 +33,7 @@ public struct ThemePalette: Codable, Equatable, Sendable {
     /// The selected-text background color.
     public var selection: String
     /// The colour of TEXT inside a selection, in the editor and the terminal; nil means the
-    /// theme's `foreground`. Optional so palettes written before it existed still decode
-    /// (20 Sep 2026: "two colors as highlight color and text color during selection").
+    /// theme's `foreground`. Optional so palettes written before it existed still decode.
     public var selectionText: String?
 
     // Syntax
@@ -127,11 +126,8 @@ public struct ThemePalette: Codable, Equatable, Sendable {
 
     /// The theme's complete 16-color ANSI terminal palette: each slot this theme
     /// specifies, with every gap filled from the curated set matching its
-    /// ``isDark`` appearance (``ANSIColors/dark`` / ``ANSIColors/light``).
-    ///
-    /// A theme that specifies none — every built-in — resolves to the curated
-    /// set outright, which is the point: a light theme gets a light-appropriate
-    /// palette without anyone hand-authoring 16 colors per theme.
+    /// ``isDark`` appearance (``ANSIColors/dark`` / ``ANSIColors/light``), so no theme
+    /// has to hand-author 16 colors.
     public var resolvedANSI: ANSIColors {
         let base = ANSIColors.curated(isDark: isDark)
         return ANSIColors(

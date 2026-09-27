@@ -13,6 +13,7 @@ import Foundation
 /// A VS Code theme's `colors` map with the two lookups the importer needs.
 struct VSCodeUIColors {
     private let colors: [String: Any]
+    /// Wraps the theme JSON's `colors` object.
     init(_ colors: [String: Any]) { self.colors = colors }
 
     /// `#RRGGBB` for `key`, else `fallback`.

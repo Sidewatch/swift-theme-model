@@ -15,6 +15,8 @@ import Foundation
 struct VSCodeTokenRules {
     private let rules: [(scopes: [String], fg: String)]
 
+    /// Extracts the rules from the theme JSON's `tokenColors` array; `scope` may be a
+    /// comma-separated string or an array.
     init(tokenColors: [[String: Any]]) {
         rules = tokenColors.compactMap { t in
             let scopes: [String]

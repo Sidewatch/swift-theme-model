@@ -453,29 +453,10 @@ final class ThemeModelTests: XCTestCase {
     }
 
     func testBuiltInThemeInventory() {
-        // 32, down from 35. Catppuccin Macchiato, Rosé Pine Moon and Nebula were cut as
-        // near-duplicates — measured, not eyeballed: mean CIE76 ΔE across the nine defining
-        // colours was 3.7, 5.8 and 11.7 against Catppuccin Mocha, Rosé Pine and Tokyo Night
-        // respectively, where anything under ~12 is hard to tell apart in use. Every surviving
-        // pair sits at 15 or above.
-        // 36 as of 2 Sep 2026: + Blackout, Redline, Ultraviolet (the Sidewatch originals,
-        // added without updating this count — it sat failing at 32 vs 35) + Meridian.
-        // Distinctness is no longer a comment: `testBuiltInThemesAreMeasurablyDistinct`
-        // computes the ΔE for every pair.
-        // 46 as of 11 Sep 2026: + Beacon (a Sidewatch original) and nine ported from Omarchy
-        // (MIT). Omarchy ships 22 themes; eight were already covered here under our own names
-        // (Catppuccin, Catppuccin Latte, Everforest, Gruvbox, Kanagawa, Nord, Rosé Pine, Tokyo
-        // Night) and ours were kept. Four more were dropped as space we already occupy: White
-        // and Lupine against five existing light themes, Lumon against Tokyo Night, Vantablack
-        // against Blackout. Ristretto was dropped for a different reason — the name belongs to
-        // a commercial Monokai Pro variant. `testBuiltInThemesAreMeasurablyDistinct` is what
-        // actually proves the survivors are distinct; these counts only pin the inventory.
-        //
-        // 48 as of 13 Sep 2026: + VS Code Dark+ and VS Code Light+ (MIT, microsoft/vscode).
-        // The set had every theme ported FROM a VS Code JSON and not the one VS Code ships.
-        // 53 as of 19 Sep 2026: + Orchid and Sakura (pastel darks), Peony and Lilac (pastel
-        // lights) and Volt (a 2026 dark) — Sidewatch originals, at David's ask for softer and
-        // for edgier options. Same ΔE rule as everything before them.
+        // Pins the inventory; `testBuiltInThemesAreMeasurablyDistinct` proves the themes are
+        // distinct (near-duplicates under ~12 mean CIE76 ΔE are hard to tell apart in use and are
+        // not kept). Omarchy themes already covered here under their own names keep ours;
+        // Ristretto is left out because the name belongs to a commercial Monokai Pro variant.
         XCTAssertEqual(BuiltInThemes.all.count, 53)
         let light = BuiltInThemes.all.filter { !$0.isDark }
         let dark = BuiltInThemes.all.filter { $0.isDark }

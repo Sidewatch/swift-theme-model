@@ -16,8 +16,7 @@ import Foundation
 /// populate a theme picker.
 public enum BuiltInThemes {
 
-    /// Monokai — the classic warm dark theme. The default palette; matches the
-    /// original hardcoded Sidewatch look.
+    /// Monokai — the classic warm dark theme.
     public static let monokai = ThemePalette(
         name: "Monokai",
         appearance: "dark",
@@ -276,57 +275,15 @@ public enum BuiltInThemes {
 
     // MARK: - Signature — Windshield
     //
-    // The only themes here designed FOR this app rather than ported into it.
+    // The review-first pair, designed for this app around its diff colours.
 
-    /// Windshield Dark — the signature review-first theme. **Greyscale syntax,
-    /// full-colour signal.**
-    ///
-    /// ## The thesis
-    ///
-    /// Every other theme in this file was designed for *writing* code, so each
-    /// one spends its colour budget on the language: keywords pink, strings
-    /// green, types cyan. Sidewatch is a cockpit for *reviewing* what an agent
-    /// already wrote. Here the language is the constant and **the change is the
-    /// variable** — so Windshield spends its entire colour budget on the change
-    /// and pays for it by rendering the code itself in greyscale.
-    ///
-    /// The code is a ladder of silvers separated by ~6.4 L\* per tier, ordered by
-    /// what a reviewer scans first: keyword brightest, then function, type,
-    /// identifiers, literals, comment dimmest. Hue is removed as a channel, so
-    /// luminance has to carry the whole load alone — which is why every tier is
-    /// held at or above 4.5:1 on the background (comments included, at 4.55:1;
-    /// most themes let comments fall to 2.5–3.5:1 and lean on hue to rescue
-    /// them). Derived from the app icon: a near-black tile, a silver windshield,
-    /// one black lens.
-    ///
-    /// ## The split a future contributor must not "fix"
-    ///
-    /// **Syntax is greyscale. Signal is not.** Signal means: the diff tint, the
-    /// git status colours, and the terminal's ANSI palette — the agent says
-    /// "error" in red and "passed" in green, and reading that output is the
-    /// point of the app. Those stay fully saturated. Against greyscale code they
-    /// are the only chroma on screen, which is the entire design: the change
-    /// doesn't merely stand out, it is the only thing there is to see.
-    ///
-    /// So: do **not** saturate the syntax roles, and do **not** desaturate the
-    /// ANSI/accent roles. Either edit collapses the theme into an ordinary one.
-    /// Measured, the loudest syntax role carries chroma 2.9 against the diff
-    /// red's 72.8 — a 24× ratio that *is* the design, not an accident.
-    ///
-    /// ## Why the accent is indigo
-    ///
-    /// ``ThemePalette/accent`` is not decoration in this app: it is the git
-    /// *modified* colour (inline diff tint, gutter bar, minimap, tree and tab
-    /// titles), while *added* and *deleted* are hardcoded green `#3DB554` and
-    /// red `#F24F4A`. Those two hues sit at 131.5° and 1.8°, so the hue that is
-    /// maximally distant from **both** — the one colour that cannot be mistaken
-    /// for either "added" or "deleted" — is 247°, indigo, 115° from each. That
-    /// is the accent, and it is the one exception to the greyscale rule because
-    /// by the split above it is signal, not syntax.
-    ///
-    /// The ANSI red and green are pinned to those same diff constants (ΔE 0.00),
-    /// so a failing test in the terminal is literally the same red as a deleted
-    /// line in the editor — one vocabulary across both panes.
+    /// Windshield Dark — the signature review-first theme. **Greyscale syntax, full-colour
+    /// signal**: the code is a ladder of silvers (~6.4 L\* per tier, keyword brightest, comment
+    /// dimmest, every tier ≥ 4.5:1) so the diff tint, git colours and ANSI output are the only
+    /// chroma on screen. Do **not** saturate the syntax roles or desaturate the ANSI/accent
+    /// roles; either collapses it into an ordinary theme. The accent (the git *modified* colour)
+    /// is indigo, 247°, the hue furthest from both add-green `#3DB554` and delete-red `#F24F4A`;
+    /// ANSI red and green are pinned to those diff constants.
     public static let windshieldDark = ThemePalette(
         name: "Windshield Dark",
         appearance: "dark",
@@ -368,27 +325,12 @@ public enum BuiltInThemes {
         ansiBrightCyan: "#6FD3E0", ansiBrightWhite: "#F1F5FA"
     )
 
-    /// Windshield Light — the daylight half of the signature pair; the icon
-    /// inverted to its silver-on-white side.
-    ///
-    /// Same thesis as ``windshieldDark``: greyscale syntax, full-colour signal.
-    /// The ladder inverts (keyword darkest at 17.7:1 → comment lightest at
-    /// 4.5:1) and the accent deepens to indigo `#4338CA` so it still clears
-    /// 4.5:1 as text on white while staying ~115° from the add-green and
-    /// delete-red.
-    ///
-    /// ## The one place this is not a mirror of the dark theme
-    ///
-    /// Its ANSI palette is rebuilt on a rule the usual light palettes get wrong:
-    /// **on a light background "bright" means more contrast, not more
-    /// luminance.** Lightening a bright variant — the conventional move, and what
-    /// VS Code's own light palette does — walks it toward the background and
-    /// destroys it: VS Code's bright green `#14CE14` scores 2.13:1 on white and
-    /// its bright white `#A5A5A5` scores 2.46:1, i.e. an agent's "tests passed"
-    /// is barely legible. Here every bright variant is *darker* and more
-    /// saturated than its normal, so all 16 slots clear 4.5:1 (worst 4.52) while
-    /// each normal/bright pair stays ≥5.9 ΔE apart. Bright black remains the
-    /// dimmest slot, so programs dimming text still read as dimmed.
+    /// Windshield Light — the daylight half of the signature pair, same thesis as
+    /// ``windshieldDark``: the ladder inverts (keyword darkest) and the accent deepens to
+    /// `#4338CA` to clear 4.5:1 on white. On a light background "bright" ANSI means more
+    /// contrast, not more luminance: every bright variant is *darker* than its normal, so all 16
+    /// slots clear 4.5:1 (lightening them, as VS Code does, drops bright green to 2.13:1).
+    /// Bright black stays the dimmest slot, so dimmed text still reads as dimmed.
     public static let windshieldLight = ThemePalette(
         name: "Windshield Light",
         appearance: "light",
@@ -426,16 +368,10 @@ public enum BuiltInThemes {
     )
 
     /// Claude — a warm-charcoal theme built around Anthropic's brand clay
-    /// (`#D97757`, the colour of the Claude Code mascot), used as the accent and
-    /// the caret. Unlike the greyscale Windshield pair this is a full-colour
-    /// theme; its one design rule is that no syntax hue strays near the diff
-    /// signal — strings/keywords/numbers live in the warm clay→amber arc, types
-    /// take a single cool dusty-blue as the counterweight, and NOTHING is green
-    /// or fire-red, so the add-green (`#3DB554`) and delete-red (`#F24F4A`) still
-    /// own those hues on screen. Contrast verified: every syntax role and every
-    /// ANSI slot clears 4.5:1 on the background (tightest real text is the
-    /// comment at 4.71). ANSI red/green are pinned to the app's diff constants so
-    /// a failing test reads as the same red as a deleted line.
+    /// (`#D97757`) as the accent and caret. Its rule: no syntax hue strays near the diff signal —
+    /// warm clay→amber for strings/keywords/numbers, one dusty blue for types, NOTHING green or
+    /// fire-red, so add-green and delete-red own those hues. Every syntax role and ANSI slot
+    /// clears 4.5:1; ANSI red/green are pinned to the app's diff constants.
     public static let claude = ThemePalette(
         name: "Claude",
         appearance: "dark",
@@ -692,19 +628,10 @@ public enum BuiltInThemes {
         ansiBrightBlue: "#82AAFF", ansiBrightMagenta: "#C792EA",
         ansiBrightCyan: "#7FDBCA", ansiBrightWhite: "#FFFFFF")
 
-    /// Catppuccin Latte — the light variant of the pastel Catppuccin family, and
-    /// the counterpart to ``catppuccin`` (Mocha).
-    ///
-    /// Palette from `catppuccin/palette`; roles and ANSI from the Catppuccin VS
-    /// Code extension. ANSI brights 9–14 are bespoke brightened values that do
-    /// not appear in the named palette.
-    ///
-    /// One deliberate deviation: `cursor` is `text`, not the `rosewater` the
-    /// Catppuccin extension specifies. Rosewater is a pale salmon that works as
-    /// a caret on the dark variants but scores only 1.71:1 against Latte's own
-    /// `surface0` selection — i.e. the caret disappears exactly when you select
-    /// the text you're trying to edit. `text` is the same palette's own colour
-    /// and restores it to 5.17:1.
+    /// Catppuccin Latte — the light counterpart to ``catppuccin`` (Mocha). Palette from
+    /// `catppuccin/palette`, roles and ANSI from the Catppuccin VS Code extension (brights 9–14
+    /// are its bespoke values). One deliberate deviation: `cursor` is `text`, not `rosewater`,
+    /// which scores 1.71:1 on Latte's `surface0` selection and vanishes while selecting.
     public static let catppuccinLatte = ThemePalette(
         name: "Catppuccin Latte", appearance: "light",
         background: "#EFF1F5", foreground: "#4C4F69", cursor: "#4C4F69", selection: "#CCD0DA",
@@ -725,12 +652,9 @@ public enum BuiltInThemes {
     /// GitHub Light — GitHub's light web/editor scheme, and the counterpart to
     /// ``githubDark``.
     ///
-    /// Values from a real build of `primer/github-vscode-theme` (its `themes/*.json`
-    /// are generated, not committed). `selection` is the author's intended
-    /// `alpha(accent.fg, 0.2)` flattened over white: upstream declares
-    /// `editor.selectionBackground` twice in one object literal, so the key is
-    /// dropped from every non-high-contrast build and the theme silently
-    /// inherits VS Code's default.
+    /// Values from a real build of `primer/github-vscode-theme`. `selection` is the intended
+    /// `alpha(accent.fg, 0.2)` flattened over white: upstream declares the key twice, so its
+    /// non-high-contrast builds drop it and inherit VS Code's default.
     public static let githubLight = ThemePalette(
         name: "GitHub Light", appearance: "light",
         background: "#FFFFFF", foreground: "#1F2328", cursor: "#0969DA", selection: "#CEE1F8",
@@ -774,13 +698,8 @@ public enum BuiltInThemes {
 
     /// Sidewatch — the default, and the app's signature look: a `#191919` page with `#202020`
     /// chrome, warm enough not to read as pure black and quiet enough that syntax colour is the
-    /// only thing competing for attention.
-    ///
-    /// The default was ``monokai`` before this, which was an accident rather than a choice — a
-    /// generic third-party palette standing in as the house style.
-    ///
-    /// Derived from Notion's dark-mode text palette (``notion`` remains its light counterpart),
-    /// but named for this app rather than for someone else's product.
+    /// only thing competing for attention. Derived from Notion's dark-mode text palette
+    /// (``notion`` is its light counterpart).
     public static let sidewatch = ThemePalette(
         name: "Sidewatch", appearance: "dark",
         background: "#191919", foreground: "#D4D4D4", cursor: "#D4D4D4", selection: "#26394A",
@@ -989,9 +908,9 @@ public enum BuiltInThemes {
     )
 
     /// Osaka Jade — ported from Omarchy (MIT), chrome derived from its ANSI set. Its ANSI set is ONE
-    /// colour, so the syntax roles are a ramp in the theme's own key (24 Sep 2026): the accent for
-    /// keywords, the foreground for names, steps between them and toward the page for the rest —
-    /// before, all eight were the foreground and code read as plain text.
+    /// colour, so the syntax roles are a ramp in the theme's own key: the accent for keywords,
+    /// the foreground for names, steps between them and toward the page for the rest — with all
+    /// eight on the foreground, code would read as plain text.
     public static let osakaJade = ThemePalette(
         name: "Osaka Jade", appearance: "dark",
         background: "#111C18", foreground: "#C1C497", cursor: "#C1C497", selection: "#284239",
@@ -1007,9 +926,9 @@ public enum BuiltInThemes {
         ansiBrightBlue: "#C1C497", ansiBrightMagenta: "#C1C497", ansiBrightCyan: "#C1C497", ansiBrightWhite: "#C1C497")
 
     /// Miasma — ported from Omarchy (MIT), chrome derived from its ANSI set. Its ANSI set is ONE
-    /// colour, so the syntax roles are a ramp in the theme's own key (24 Sep 2026): the accent for
-    /// keywords, the foreground for names, steps between them and toward the page for the rest —
-    /// before, all eight were the foreground and code read as plain text.
+    /// colour, so the syntax roles are a ramp in the theme's own key: the accent for keywords,
+    /// the foreground for names, steps between them and toward the page for the rest — with all
+    /// eight on the foreground, code would read as plain text.
     public static let miasma = ThemePalette(
         name: "Miasma", appearance: "dark",
         background: "#222222", foreground: "#C2C2B0", cursor: "#C2C2B0", selection: "#414141",
@@ -1025,9 +944,9 @@ public enum BuiltInThemes {
         ansiBrightBlue: "#C2C2B0", ansiBrightMagenta: "#C2C2B0", ansiBrightCyan: "#C2C2B0", ansiBrightWhite: "#C2C2B0")
 
     /// Retro 82 — ported from Omarchy (MIT), chrome derived from its ANSI set. Its ANSI set is ONE
-    /// colour, so the syntax roles are a ramp in the theme's own key (24 Sep 2026): the accent for
-    /// keywords, the foreground for names, steps between them and toward the page for the rest —
-    /// before, all eight were the foreground and code read as plain text.
+    /// colour, so the syntax roles are a ramp in the theme's own key: the accent for keywords,
+    /// the foreground for names, steps between them and toward the page for the rest — with all
+    /// eight on the foreground, code would read as plain text.
     public static let retro82 = ThemePalette(
         name: "Retro 82", appearance: "dark",
         background: "#05182E", foreground: "#F6DCAC", cursor: "#F6DCAC", selection: "#0B3565",
@@ -1043,9 +962,9 @@ public enum BuiltInThemes {
         ansiBrightBlue: "#F6DCAC", ansiBrightMagenta: "#F6DCAC", ansiBrightCyan: "#F6DCAC", ansiBrightWhite: "#F6DCAC")
 
     /// Hackerman — ported from Omarchy (MIT), chrome derived from its ANSI set. Its ANSI set is ONE
-    /// colour, so the syntax roles are a ramp in the theme's own key (24 Sep 2026): the accent for
-    /// keywords, the foreground for names, steps between them and toward the page for the rest —
-    /// before, all eight were the foreground and code read as plain text.
+    /// colour, so the syntax roles are a ramp in the theme's own key: the accent for keywords,
+    /// the foreground for names, steps between them and toward the page for the rest — with all
+    /// eight on the foreground, code would read as plain text.
     public static let hackerman = ThemePalette(
         name: "Hackerman", appearance: "dark",
         background: "#0B0C16", foreground: "#DDF7FF", cursor: "#DDF7FF", selection: "#1F223F",
@@ -1061,9 +980,9 @@ public enum BuiltInThemes {
         ansiBrightBlue: "#DDF7FF", ansiBrightMagenta: "#DDF7FF", ansiBrightCyan: "#DDF7FF", ansiBrightWhite: "#DDF7FF")
 
     /// Matte Black — ported from Omarchy (MIT), chrome derived from its ANSI set. Its ANSI set is ONE
-    /// colour, so the syntax roles are a ramp in the theme's own key (24 Sep 2026): the accent for
-    /// keywords, the foreground for names, steps between them and toward the page for the rest —
-    /// before, all eight were the foreground and code read as plain text.
+    /// colour, so the syntax roles are a ramp in the theme's own key: the accent for keywords,
+    /// the foreground for names, steps between them and toward the page for the rest — with all
+    /// eight on the foreground, code would read as plain text.
     public static let matteBlack = ThemePalette(
         name: "Matte Black", appearance: "dark",
         background: "#121212", foreground: "#BEBEBE", cursor: "#BEBEBE", selection: "#313131",
@@ -1094,9 +1013,9 @@ public enum BuiltInThemes {
         ansiBrightBlue: "#100F0F", ansiBrightMagenta: "#100F0F", ansiBrightCyan: "#100F0F", ansiBrightWhite: "#100F0F")
 
     /// Solitude — ported from Omarchy (MIT), chrome derived from its ANSI set. Its ANSI set is ONE
-    /// colour, so the syntax roles are a ramp in the theme's own key (24 Sep 2026): the accent for
-    /// keywords, the foreground for names, steps between them and toward the page for the rest —
-    /// before, all eight were the foreground and code read as plain text.
+    /// colour, so the syntax roles are a ramp in the theme's own key: the accent for keywords,
+    /// the foreground for names, steps between them and toward the page for the rest — with all
+    /// eight on the foreground, code would read as plain text.
     public static let solitude = ThemePalette(
         name: "Solitude", appearance: "dark",
         background: "#101315", foreground: "#CACCCC", cursor: "#CACCCC", selection: "#2A3238",
@@ -1112,9 +1031,9 @@ public enum BuiltInThemes {
         ansiBrightBlue: "#CACCCC", ansiBrightMagenta: "#CACCCC", ansiBrightCyan: "#CACCCC", ansiBrightWhite: "#CACCCC")
 
     /// Last Horizon — ported from Omarchy (MIT), chrome derived from its ANSI set. Its ANSI set is ONE
-    /// colour, so the syntax roles are a ramp in the theme's own key (24 Sep 2026): the accent for
-    /// keywords, the foreground for names, steps between them and toward the page for the rest —
-    /// before, all eight were the foreground and code read as plain text.
+    /// colour, so the syntax roles are a ramp in the theme's own key: the accent for keywords,
+    /// the foreground for names, steps between them and toward the page for the rest — with all
+    /// eight on the foreground, code would read as plain text.
     public static let lastHorizon = ThemePalette(
         name: "Last Horizon", appearance: "dark",
         background: "#0C0B0C", foreground: "#FAFCFB", cursor: "#FAFCFB", selection: "#2C282C",
@@ -1171,12 +1090,9 @@ public enum BuiltInThemes {
     /// ``VSCodeThemeImporter`` over `dark_plus.json` merged onto the `dark_vs.json` it
     /// includes, so the palette is exactly what importing that file by hand would produce.
     ///
-    /// Two roles are NOT in those files. VS Code leaves `editor.selectionBackground` and any
-    /// editor border unset and falls back to its own built-in defaults, so `selection` and
-    /// `border` carry those defaults rather than a guess: `#264F78` is VS Code's dark
-    /// selection, and `#303031` is its `widget.border` (also `tab.inactiveBackground`, which
-    /// is the tone VS Code separates chrome with). Leaving `border` as the importer left it —
-    /// equal to the background — would have drawn Sidewatch's cards and dividers invisibly.
+    /// `selection` and `border` are VS Code's built-in defaults (`#264F78`, and `widget.border`
+    /// `#303031`) since those files leave them unset; the importer's border would equal the
+    /// background and draw cards and dividers invisibly.
     public static let vscodeDarkPlus = ThemePalette(
         name: "VS Code Dark+",
         appearance: "dark",
@@ -1209,13 +1125,9 @@ public enum BuiltInThemes {
     /// VS Code Light+ — the light half of the same set, from `light_plus.json` merged onto
     /// `light_vs.json`, by the same route as ``vscodeDarkPlus``.
     ///
-    /// `selection` is `#ADD6FF`, VS Code's built-in light default: the importer's fallback is
-    /// the DARK default (`#264F78`), which on white is a navy block that hides the text it is
-    /// selecting. `border` is `widget.border` for the same reason as above.
-    ///
-    /// Neither theme sets any `terminal.ansi*` colour — VS Code's defaults leave the terminal
-    /// to its own — so the ANSI roles stay nil and the app's fallbacks apply. That is faithful,
-    /// not an omission.
+    /// `selection` is `#ADD6FF`, VS Code's built-in light default (the importer's dark fallback
+    /// hides text on white); `border` is `widget.border` as above. Neither theme sets any
+    /// `terminal.ansi*` colour, so the ANSI roles stay nil — faithful, not an omission.
     public static let vscodeLightPlus = ThemePalette(
         name: "VS Code Light+",
         appearance: "light",
@@ -1245,7 +1157,7 @@ public enum BuiltInThemes {
         statusText: "#000000"
     )
 
-    // MARK: - Sidewatch originals, 19 Sep 2026 — pastel pairs and a 2026 dark
+    // MARK: - Sidewatch originals — pastel pairs and a modern dark
 
     /// Orchid — a pastel dark. Deep plum ground (not black: the softness comes from a
     /// coloured dark), lavender-white text, rose accent, and cool pastel syntax — lavender
@@ -1391,7 +1303,7 @@ public enum BuiltInThemes {
         ansiBrightBlue: "#2E5AA8", ansiBrightMagenta: "#5740B3", ansiBrightCyan: "#26786D", ansiBrightWhite: "#3F3A55"
     )
 
-    /// Volt — the 2026 dark. Graphite-black ground with a cold cast, one electric ice-cyan
+    /// Volt — a modern dark. Graphite-black ground with a cold cast, one electric ice-cyan
     /// signal for the accent, cursor and types, safety-orange keywords, amber strings and a
     /// lilac-grey for functions: high contrast, few hues, nothing retro about it. Blackout is
     /// black with acid lime; this is its cold, two-tone cousin.
@@ -1428,6 +1340,7 @@ public enum BuiltInThemes {
         ansiBrightBlue: "#8CC4FF", ansiBrightMagenta: "#E2B3FF", ansiBrightCyan: "#B3FBFF", ansiBrightWhite: "#FFFFFF"
     )
 
+    /// Every built-in theme, for populating a picker.
     public static let all: [ThemePalette] = [
         // Sidewatch originals.
         beacon, orchid, sakura, peony, lilac, volt,

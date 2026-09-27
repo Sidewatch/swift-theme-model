@@ -14,14 +14,9 @@ import Foundation
 /// Imports a VS Code color theme (its `colors` UI keys + `tokenColors` TextMate
 /// scopes) into a ``ThemePalette``.
 ///
-/// Best-effort: missing keys fall back sensibly, `#RGB`/`#RGBA` shorthand is
-/// expanded, and 8-digit `#RRGGBBAA` values are trimmed to `#RRGGBB`. Input may be
-/// **JSONC** (with `//` / `/* */` comments and trailing commas) — many published
-/// themes are — and is sanitized before parsing.
-///
-/// The 16 `terminal.ansi*` keys are imported when present and left `nil`
-/// otherwise, so a theme without them resolves to a curated set matching its
-/// appearance (see ``ThemePalette/resolvedANSI``).
+/// Best-effort: missing keys fall back sensibly, `#RGB`/`#RGBA` is expanded and
+/// `#RRGGBBAA` trimmed to `#RRGGBB`. Input may be **JSONC** (comments, trailing commas).
+/// Missing `terminal.ansi*` keys stay `nil` (see ``ThemePalette/resolvedANSI``).
 public enum VSCodeThemeImporter {
 
     /// Parses a VS Code theme from raw file `data`.

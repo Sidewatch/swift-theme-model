@@ -17,11 +17,6 @@ import Foundation
 /// A ``ThemePalette`` stores these as optional fields — most themes specify none
 /// — so use ``ThemePalette/resolvedANSI`` to get a complete set with any gaps
 /// filled from ``dark`` / ``light``.
-///
-/// ```swift
-/// let ansi = palette.resolvedANSI
-/// terminalView.installColors(ansi.indexed.map(MyColor.init(hex:)))
-/// ```
 public struct ANSIColors: Equatable, Sendable {
 
     /// ANSI 0 — black.
