@@ -72,9 +72,11 @@ public struct ANSIColors: Equatable, Sendable {
     /// The 16 colors in ANSI index order (0…15) — the order terminal emulators
     /// expect when installing a palette.
     public var indexed: [String] {
-        [black, red, green, yellow, blue, magenta, cyan, white,
-         brightBlack, brightRed, brightGreen, brightYellow,
-         brightBlue, brightMagenta, brightCyan, brightWhite]
+        [
+            black, red, green, yellow, blue, magenta, cyan, white,
+            brightBlack, brightRed, brightGreen, brightYellow,
+            brightBlue, brightMagenta, brightCyan, brightWhite,
+        ]
     }
 
     /// A curated set tuned for dark backgrounds (VS Code's default dark terminal

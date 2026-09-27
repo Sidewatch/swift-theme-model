@@ -24,9 +24,12 @@ struct VSCodeTokenRules {
                 scopes = s.components(separatedBy: ",").map { $0.trimmingCharacters(in: .whitespaces) }
             } else if let arr = t["scope"] as? [String] {
                 scopes = arr
-            } else { return nil }
+            } else {
+                return nil
+            }
             guard let settings = t["settings"] as? [String: Any],
-                  let fg = VSCodeThemeImporter.hex6(settings["foreground"] as? String) else { return nil }
+                let fg = VSCodeThemeImporter.hex6(settings["foreground"] as? String)
+            else { return nil }
             return (scopes, fg)
         }
     }

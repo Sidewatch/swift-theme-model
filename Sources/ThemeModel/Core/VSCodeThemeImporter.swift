@@ -44,7 +44,9 @@ public enum VSCodeThemeImporter {
             number: tokens.color(for: ["constant.numeric", "constant"], fallback: "#B5CEA8"),
             function: tokens.color(for: ["entity.name.function", "support.function"], fallback: "#DCDCAA"),
             variable: tokens.color(for: ["variable"], fallback: fg),
-            property: tokens.color(for: ["variable.other.property", "support.variable", "meta.object-literal.key"], fallback: tokens.color(for: ["variable"], fallback: fg)),
+            property: tokens.color(
+                for: ["variable.other.property", "support.variable", "meta.object-literal.key"],
+                fallback: tokens.color(for: ["variable"], fallback: fg)),
             accent: keyword,
             sidebarBackground: ui.hex("sideBar.background", bg),
             sidebarText: ui.hex("sideBar.foreground", fg),
@@ -91,12 +93,13 @@ public enum VSCodeThemeImporter {
     /// shorthand and dropping any 2-digit alpha. Returns `nil` if not a hex color.
     static func hex6(_ s: String?) -> String? {
         guard var s = s, s.hasPrefix("#"),
-              !s.dropFirst().isEmpty,
-              s.dropFirst().allSatisfy({ $0.isASCII && $0.isHexDigit }) else { return nil }
-        if s.count == 4 || s.count == 5 {   // expand #RGB / #RGBA shorthand
+            !s.dropFirst().isEmpty,
+            s.dropFirst().allSatisfy({ $0.isASCII && $0.isHexDigit })
+        else { return nil }
+        if s.count == 4 || s.count == 5 {  // expand #RGB / #RGBA shorthand
             s = "#" + s.dropFirst().map { "\($0)\($0)" }.joined()
         }
-        if s.count >= 7 { s = String(s.prefix(7)) }   // #RRGGBB, drop any alpha
+        if s.count >= 7 { s = String(s.prefix(7)) }  // #RRGGBB, drop any alpha
         return s.count == 7 ? s : nil
     }
 
@@ -114,11 +117,11 @@ public enum VSCodeThemeImporter {
                 i += 1; continue
             }
             if c == "\"" { inStr = true; out.append(c); i += 1; continue }
-            if c == "/", i + 1 < a.count, a[i + 1] == "/" {                 // line comment
+            if c == "/", i + 1 < a.count, a[i + 1] == "/" {  // line comment
                 while i < a.count, a[i] != "\n" { i += 1 }
                 continue
             }
-            if c == "/", i + 1 < a.count, a[i + 1] == "*" {                 // block comment
+            if c == "/", i + 1 < a.count, a[i + 1] == "*" {  // block comment
                 i += 2
                 while i + 1 < a.count, !(a[i] == "*" && a[i + 1] == "/") { i += 1 }
                 i = min(i + 2, a.count)

@@ -41,12 +41,14 @@ final class ThemeModelTests: XCTestCase {
     /// `selectionText` is optional: a palette without it decodes (nil → the app uses the
     /// foreground), one with it keeps the value, and it round-trips through the encoder.
     func testSelectionTextIsOptionalAndRoundTrips() throws {
-        let base: [String: Any] = ["name": "T", "appearance": "dark", "background": "#000000", "foreground": "#ffffff", "cursor": "#ffffff",
-                                   "selection": "#333333", "comment": "#888888", "string": "#00ff00", "keyword": "#ff00ff", "type": "#00ffff",
-                                   "number": "#ffff00", "function": "#0000ff", "variable": "#ffffff", "property": "#cccccc", "accent": "#ff8800",
-                                   "sidebarBackground": "#111111", "sidebarText": "#eeeeee", "tabBarBackground": "#111111", "tabText": "#aaaaaa",
-                                   "tabActiveText": "#ffffff", "border": "#222222", "gutterBackground": "#000000", "gutterText": "#666666",
-                                   "gutterActiveText": "#ffffff", "statusBackground": "#111111", "statusText": "#aaaaaa"]
+        let base: [String: Any] = [
+            "name": "T", "appearance": "dark", "background": "#000000", "foreground": "#ffffff", "cursor": "#ffffff",
+            "selection": "#333333", "comment": "#888888", "string": "#00ff00", "keyword": "#ff00ff", "type": "#00ffff",
+            "number": "#ffff00", "function": "#0000ff", "variable": "#ffffff", "property": "#cccccc", "accent": "#ff8800",
+            "sidebarBackground": "#111111", "sidebarText": "#eeeeee", "tabBarBackground": "#111111", "tabText": "#aaaaaa",
+            "tabActiveText": "#ffffff", "border": "#222222", "gutterBackground": "#000000", "gutterText": "#666666",
+            "gutterActiveText": "#ffffff", "statusBackground": "#111111", "statusText": "#aaaaaa",
+        ]
         let without = try JSONDecoder().decode(ThemePalette.self, from: JSONSerialization.data(withJSONObject: base))
         XCTAssertNil(without.selectionText)
         var withKey = base; withKey["selectionText"] = "#101010"
@@ -69,10 +71,10 @@ final class ThemeModelTests: XCTestCase {
         // The source Monokai is JSONC (has `//` comments) and omits top-level `name`.
         // The old importer (bare JSONSerialization) would return nil here.
         let palette = try XCTUnwrap(VSCodeThemeImporter.palette(from: try load("monokai-jsonc"), fallbackName: "Fallback"))
-        XCTAssertTrue(palette.isDark)                                   // has type: "dark"
-        XCTAssertEqual(palette.name, "Fallback")                        // no name in file → fallback used
+        XCTAssertTrue(palette.isDark)  // has type: "dark"
+        XCTAssertEqual(palette.name, "Fallback")  // no name in file → fallback used
         XCTAssertTrue(isHex(palette.background), "got \(palette.background)")
-        XCTAssertEqual(palette.background.uppercased(), "#272822")      // real Monokai editor.background
+        XCTAssertEqual(palette.background.uppercased(), "#272822")  // real Monokai editor.background
     }
 
     func testAppearanceDetection() throws {
@@ -106,11 +108,11 @@ final class ThemeModelTests: XCTestCase {
     // MARK: - hex6 normalization
 
     func testHex6Normalization() {
-        XCTAssertEqual(VSCodeThemeImporter.hex6("#abc"), "#aabbcc")       // #RGB shorthand
-        XCTAssertEqual(VSCodeThemeImporter.hex6("#abcd"), "#aabbcc")      // #RGBA shorthand → drop alpha
-        XCTAssertEqual(VSCodeThemeImporter.hex6("#123456"), "#123456")    // pass-through
+        XCTAssertEqual(VSCodeThemeImporter.hex6("#abc"), "#aabbcc")  // #RGB shorthand
+        XCTAssertEqual(VSCodeThemeImporter.hex6("#abcd"), "#aabbcc")  // #RGBA shorthand → drop alpha
+        XCTAssertEqual(VSCodeThemeImporter.hex6("#123456"), "#123456")  // pass-through
         XCTAssertEqual(VSCodeThemeImporter.hex6("#12345678"), "#123456")  // #RRGGBBAA → trim alpha
-        XCTAssertNil(VSCodeThemeImporter.hex6("red"))                     // not hex
+        XCTAssertNil(VSCodeThemeImporter.hex6("red"))  // not hex
         XCTAssertNil(VSCodeThemeImporter.hex6(nil))
     }
 
@@ -121,8 +123,8 @@ final class ThemeModelTests: XCTestCase {
         XCTAssertNil(VSCodeThemeImporter.hex6("#no-way"))
         XCTAssertNil(VSCodeThemeImporter.hex6("#zzz"))
         XCTAssertNil(VSCodeThemeImporter.hex6("#"))
-        XCTAssertNil(VSCodeThemeImporter.hex6("#+2345"))                  // Int(radix:) would accept a sign
-        XCTAssertEqual(VSCodeThemeImporter.hex6("#AbCdEf"), "#AbCdEf")    // mixed case still valid
+        XCTAssertNil(VSCodeThemeImporter.hex6("#+2345"))  // Int(radix:) would accept a sign
+        XCTAssertEqual(VSCodeThemeImporter.hex6("#AbCdEf"), "#AbCdEf")  // mixed case still valid
     }
 
     /// Regression: a non-hex "color" in the theme must engage the fallback chain,
@@ -130,7 +132,7 @@ final class ThemeModelTests: XCTestCase {
     func testImportFallsBackOnNonHexColor() throws {
         let json = ##"{"colors": {"editor.background": "#no-way"}}"##
         let p = try XCTUnwrap(VSCodeThemeImporter.palette(from: Data(json.utf8), fallbackName: "t"))
-        XCTAssertEqual(p.background, "#1E1E1E")                           // fallback, not "#no-way"
+        XCTAssertEqual(p.background, "#1E1E1E")  // fallback, not "#no-way"
     }
 
     // MARK: - Appearance from `type`
@@ -157,11 +159,11 @@ final class ThemeModelTests: XCTestCase {
     /// "constant.numeric" rule; needle order must win over file order.
     func testScopeNeedlePriorityBeatsFileOrder() throws {
         let json = """
-        {"tokenColors": [
-            {"scope": "constant.language", "settings": {"foreground": "#FF0000"}},
-            {"scope": "constant.numeric",  "settings": {"foreground": "#00FF00"}}
-        ]}
-        """
+            {"tokenColors": [
+                {"scope": "constant.language", "settings": {"foreground": "#FF0000"}},
+                {"scope": "constant.numeric",  "settings": {"foreground": "#00FF00"}}
+            ]}
+            """
         let p = try XCTUnwrap(VSCodeThemeImporter.palette(from: Data(json.utf8), fallbackName: "t"))
         XCTAssertEqual(p.number, "#00FF00")
     }
@@ -169,11 +171,11 @@ final class ThemeModelTests: XCTestCase {
     /// Within one needle tier, the LAST matching rule wins (VS Code's later-rule-wins).
     func testScopeLaterRuleWinsWithinTier() throws {
         let json = """
-        {"tokenColors": [
-            {"scope": "comment", "settings": {"foreground": "#111111"}},
-            {"scope": "comment", "settings": {"foreground": "#222222"}}
-        ]}
-        """
+            {"tokenColors": [
+                {"scope": "comment", "settings": {"foreground": "#111111"}},
+                {"scope": "comment", "settings": {"foreground": "#222222"}}
+            ]}
+            """
         let p = try XCTUnwrap(VSCodeThemeImporter.palette(from: Data(json.utf8), fallbackName: "t"))
         XCTAssertEqual(p.comment, "#222222")
     }
@@ -182,14 +184,14 @@ final class ThemeModelTests: XCTestCase {
 
     func testSanitizeStripsCommentsAndTrailingCommas() {
         let jsonc = """
-        {
-            // line comment
-            "type": "dark",   /* block comment */
-            "colors": {
-                "editor.background": "#101010",
-            },
-        }
-        """
+            {
+                // line comment
+                "type": "dark",   /* block comment */
+                "colors": {
+                    "editor.background": "#101010",
+                },
+            }
+            """
         let clean = VSCodeThemeImporter.sanitizeJSONC(jsonc)
         let obj = try? JSONSerialization.jsonObject(with: Data(clean.utf8)) as? [String: Any]
         XCTAssertNotNil(obj)
@@ -211,15 +213,17 @@ final class ThemeModelTests: XCTestCase {
     /// nothing (the terminal would render through a palette for the wrong
     /// background).
     func testANSIFallsBackToCuratedSetByAppearance() throws {
-        let dark = try XCTUnwrap(VSCodeThemeImporter.palette(
-            from: Data(##"{"type": "dark", "colors": {"editor.background": "#101010"}}"##.utf8),
-            fallbackName: "d"))
+        let dark = try XCTUnwrap(
+            VSCodeThemeImporter.palette(
+                from: Data(##"{"type": "dark", "colors": {"editor.background": "#101010"}}"##.utf8),
+                fallbackName: "d"))
         XCTAssertNil(dark.ansiRed, "no terminal.* key → the stored field stays nil")
         XCTAssertEqual(dark.resolvedANSI, .dark)
 
-        let light = try XCTUnwrap(VSCodeThemeImporter.palette(
-            from: Data(##"{"type": "light", "colors": {"editor.background": "#FFFFFF"}}"##.utf8),
-            fallbackName: "l"))
+        let light = try XCTUnwrap(
+            VSCodeThemeImporter.palette(
+                from: Data(##"{"type": "light", "colors": {"editor.background": "#FFFFFF"}}"##.utf8),
+                fallbackName: "l"))
         XCTAssertEqual(light.resolvedANSI, .light)
 
         // The two curated sets must actually differ, or the light fallback is pointless.
@@ -252,11 +256,13 @@ final class ThemeModelTests: XCTestCase {
             // for its appearance; one that declares its own must not be
             // overwritten by it.
             if theme.ansiRed == nil {
-                XCTAssertEqual(ansi, ANSIColors.curated(isDark: theme.isDark),
-                               "\(theme.name) declares no ANSI, so it must resolve to the curated set")
+                XCTAssertEqual(
+                    ansi, ANSIColors.curated(isDark: theme.isDark),
+                    "\(theme.name) declares no ANSI, so it must resolve to the curated set")
             } else {
-                XCTAssertEqual(ansi.red, theme.ansiRed,
-                               "\(theme.name) declares ANSI, so its own values must win")
+                XCTAssertEqual(
+                    ansi.red, theme.ansiRed,
+                    "\(theme.name) declares ANSI, so its own values must win")
             }
         }
     }
@@ -278,16 +284,16 @@ final class ThemeModelTests: XCTestCase {
     /// normalization applied and unspecified slots still filled from the curated set.
     func testANSIImportedFromTerminalKeys() throws {
         let json = ##"""
-        {"type": "dark", "colors": {
-            "editor.background": "#101010",
-            "terminal.ansiRed": "#ABC",
-            "terminal.ansiGreen": "#00FF0080",
-            "terminal.ansiBrightWhite": "#FAFAFA"
-        }}
-        """##
+            {"type": "dark", "colors": {
+                "editor.background": "#101010",
+                "terminal.ansiRed": "#ABC",
+                "terminal.ansiGreen": "#00FF0080",
+                "terminal.ansiBrightWhite": "#FAFAFA"
+            }}
+            """##
         let p = try XCTUnwrap(VSCodeThemeImporter.palette(from: Data(json.utf8), fallbackName: "t"))
-        XCTAssertEqual(p.ansiRed, "#AABBCC")                  // #RGB shorthand expanded
-        XCTAssertEqual(p.ansiGreen, "#00FF00")                // #RRGGBBAA alpha trimmed
+        XCTAssertEqual(p.ansiRed, "#AABBCC")  // #RGB shorthand expanded
+        XCTAssertEqual(p.ansiGreen, "#00FF00")  // #RRGGBBAA alpha trimmed
         XCTAssertEqual(p.ansiBrightWhite, "#FAFAFA")
 
         let ansi = p.resolvedANSI
@@ -372,10 +378,12 @@ final class ThemeModelTests: XCTestCase {
     }
 
     private func syntaxRoles(_ p: ThemePalette) -> [(String, String)] {
-        [("comment", p.comment), ("string", p.string), ("keyword", p.keyword),
-         ("type", p.type), ("number", p.number), ("function", p.function),
-         ("variable", p.variable), ("property", p.property),
-         ("foreground", p.foreground)]
+        [
+            ("comment", p.comment), ("string", p.string), ("keyword", p.keyword),
+            ("type", p.type), ("number", p.number), ("function", p.function),
+            ("variable", p.variable), ("property", p.property),
+            ("foreground", p.foreground),
+        ]
     }
 
     // MARK: - Built-in inventory
@@ -387,7 +395,7 @@ final class ThemeModelTests: XCTestCase {
 
     /// sRGB hex → CIE L*a*b* (D65), for a perceptual distance between two colours.
     private func lab(_ hex: String) -> (l: Double, a: Double, b: Double) {
-        let c = rgb(hex)   // 0…255 — normalise before linearising, or Lab is off by ×255
+        let c = rgb(hex)  // 0…255 — normalise before linearising, or Lab is off by ×255
         func lin(_ v: Double) -> Double {
             let s = v / 255
             return s <= 0.04045 ? s / 12.92 : pow((s + 0.055) / 1.055, 2.4)
@@ -460,37 +468,47 @@ final class ThemeModelTests: XCTestCase {
         XCTAssertEqual(BuiltInThemes.all.count, 53)
         let light = BuiltInThemes.all.filter { !$0.isDark }
         let dark = BuiltInThemes.all.filter { $0.isDark }
-        XCTAssertEqual(dark.count, 39)   // 26 + Beacon + eight dark Omarchy ports + VS Code Dark+ + Orchid, Sakura, Volt
+        XCTAssertEqual(dark.count, 39)  // 26 + Beacon + eight dark Omarchy ports + VS Code Dark+ + Orchid, Sakura, Volt
         // The point of the light additions: daylight work needs real options.
         XCTAssertEqual(light.count, 14)  // + Notion, + Porcelain, + Flexoki Light, + VS Code Light+, + Peony, + Lilac
-        XCTAssertEqual(light.map(\.name).sorted(),
-                       ["Catppuccin Latte", "Everforest Light", "Flexoki Light", "Frost",
-                        "GitHub Light", "Gruvbox Light", "Lilac", "Notion", "Peony", "Porcelain",
-                        "Rosé Pine Dawn", "Solarized Light", "VS Code Light+", "Windshield Light"])
+        XCTAssertEqual(
+            light.map(\.name).sorted(),
+            [
+                "Catppuccin Latte", "Everforest Light", "Flexoki Light", "Frost",
+                "GitHub Light", "Gruvbox Light", "Lilac", "Notion", "Peony", "Porcelain",
+                "Rosé Pine Dawn", "Solarized Light", "VS Code Light+", "Windshield Light",
+            ])
     }
 
     /// The four modern additions are held to the Windshield contrast floors, since
     /// unlike the ports they are ours to design: no upstream to be faithful to, so
     /// there is no excuse for a tier that fails to clear 4.5:1.
     func testModernThemeContrastFloors() {
-        let moderns = [BuiltInThemes.notion, BuiltInThemes.sidewatch,
-                       BuiltInThemes.graphite, BuiltInThemes.porcelain]
+        let moderns = [
+            BuiltInThemes.notion, BuiltInThemes.sidewatch,
+            BuiltInThemes.graphite, BuiltInThemes.porcelain,
+        ]
         for t in moderns {
             for (role, hex) in syntaxRoles(t) {
-                XCTAssertGreaterThanOrEqual(contrast(hex, t.background), 4.5,
-                                            "\(t.name).\(role) falls below 4.5:1")
+                XCTAssertGreaterThanOrEqual(
+                    contrast(hex, t.background), 4.5,
+                    "\(t.name).\(role) falls below 4.5:1")
             }
             let gutter = contrast(t.gutterText, t.gutterBackground)
             XCTAssertGreaterThan(gutter, 3.0, "\(t.name) gutter text is illegible")
-            XCTAssertLessThan(gutter, contrast(t.comment, t.background),
-                              "\(t.name) gutter must not out-shout the code")
-            XCTAssertGreaterThan(contrast(t.cursor, t.selection), 4.5,
-                                 "\(t.name) selection swallows the cursor")
-            XCTAssertGreaterThan(contrast(t.foreground, t.selection), 4.5,
-                                 "\(t.name) selected text is unreadable")
+            XCTAssertLessThan(
+                gutter, contrast(t.comment, t.background),
+                "\(t.name) gutter must not out-shout the code")
+            XCTAssertGreaterThan(
+                contrast(t.cursor, t.selection), 4.5,
+                "\(t.name) selection swallows the cursor")
+            XCTAssertGreaterThan(
+                contrast(t.foreground, t.selection), 4.5,
+                "\(t.name) selected text is unreadable")
             for (i, hex) in t.resolvedANSI.indexed.enumerated() where i != 0 {
-                XCTAssertGreaterThanOrEqual(contrast(hex, t.background), 4.5,
-                                            "\(t.name) ANSI \(i) = \(hex) is illegible")
+                XCTAssertGreaterThanOrEqual(
+                    contrast(hex, t.background), 4.5,
+                    "\(t.name) ANSI \(i) = \(hex) is illegible")
             }
         }
     }
@@ -500,11 +518,14 @@ final class ThemeModelTests: XCTestCase {
     func testModernLightBrightsAreDarkerThanTheirNormals() {
         for t in [BuiltInThemes.notion, BuiltInThemes.porcelain] {
             let a = t.resolvedANSI
-            for (normal, bright, slot) in [(a.red, a.brightRed, "red"), (a.green, a.brightGreen, "green"),
-                                           (a.yellow, a.brightYellow, "yellow"), (a.blue, a.brightBlue, "blue"),
-                                           (a.magenta, a.brightMagenta, "magenta"), (a.cyan, a.brightCyan, "cyan")] {
-                XCTAssertGreaterThan(contrast(bright, t.background), contrast(normal, t.background),
-                                     "\(t.name) ANSI bright\(slot) must out-contrast \(slot)")
+            for (normal, bright, slot) in [
+                (a.red, a.brightRed, "red"), (a.green, a.brightGreen, "green"),
+                (a.yellow, a.brightYellow, "yellow"), (a.blue, a.brightBlue, "blue"),
+                (a.magenta, a.brightMagenta, "magenta"), (a.cyan, a.brightCyan, "cyan"),
+            ] {
+                XCTAssertGreaterThan(
+                    contrast(bright, t.background), contrast(normal, t.background),
+                    "\(t.name) ANSI bright\(slot) must out-contrast \(slot)")
             }
         }
     }
@@ -544,15 +565,18 @@ final class ThemeModelTests: XCTestCase {
     func testNewThemesDeclareTheirOwnANSI() {
         // "Rosé Pine Moon" was cut as a near-duplicate of Rosé Pine (ΔE 5.8); its sibling
         // variants still carry their own ANSI and still hold this line.
-        let named = ["Windshield Dark", "Windshield Light", "Rosé Pine",
-                     "Rosé Pine Dawn", "Kanagawa Wave", "Everforest Dark", "Everforest Light",
-                     "Night Owl", "Catppuccin Latte", "GitHub Light"]
+        let named = [
+            "Windshield Dark", "Windshield Light", "Rosé Pine",
+            "Rosé Pine Dawn", "Kanagawa Wave", "Everforest Dark", "Everforest Light",
+            "Night Owl", "Catppuccin Latte", "GitHub Light",
+        ]
         for name in named {
             let t = try! XCTUnwrap(BuiltInThemes.all.first { $0.name == name })
             XCTAssertNotNil(t.ansiRed, "\(name) must declare its own ANSI")
             XCTAssertNotNil(t.ansiBrightWhite, "\(name) must declare a complete ANSI set")
-            XCTAssertNotEqual(t.resolvedANSI, ANSIColors.curated(isDark: t.isDark),
-                              "\(name) declares ANSI, so it must not equal the curated fallback")
+            XCTAssertNotEqual(
+                t.resolvedANSI, ANSIColors.curated(isDark: t.isDark),
+                "\(name) declares ANSI, so it must not equal the curated fallback")
         }
     }
 
@@ -572,10 +596,12 @@ final class ThemeModelTests: XCTestCase {
                 XCTAssertLessThanOrEqual(
                     spread(hex), 12,
                     "\(t.name).\(role) = \(hex) is not greyscale — the theme's premise is that "
-                    + "syntax carries no hue; colour belongs to the diff/git/terminal signal only")
+                        + "syntax carries no hue; colour belongs to the diff/git/terminal signal only")
             }
-            for (role, hex) in [("background", t.background), ("selection", t.selection),
-                                ("gutterText", t.gutterText), ("cursor", t.cursor)] {
+            for (role, hex) in [
+                ("background", t.background), ("selection", t.selection),
+                ("gutterText", t.gutterText), ("cursor", t.cursor),
+            ] {
                 XCTAssertLessThanOrEqual(spread(hex), 12, "\(t.name).\(role) must stay greyscale")
             }
         }
@@ -585,15 +611,19 @@ final class ThemeModelTests: XCTestCase {
     /// colour, and ANSI red/green are how an agent says "error" / "passed".
     func testWindshieldSignalKeepsItsColour() {
         for t in windshields {
-            XCTAssertGreaterThan(spread(t.accent), 60,
-                                 "\(t.name).accent is the git-modified signal — it must stay saturated")
+            XCTAssertGreaterThan(
+                spread(t.accent), 60,
+                "\(t.name).accent is the git-modified signal — it must stay saturated")
             let ansi = t.resolvedANSI
-            for (slot, hex) in [("red", ansi.red), ("green", ansi.green), ("blue", ansi.blue),
-                                ("magenta", ansi.magenta), ("cyan", ansi.cyan),
-                                ("brightRed", ansi.brightRed), ("brightGreen", ansi.brightGreen)] {
-                XCTAssertGreaterThan(spread(hex), 60,
-                                     "\(t.name) ANSI \(slot) = \(hex) must stay saturated — the "
-                                     + "terminal's colour carries meaning the editor's doesn't")
+            for (slot, hex) in [
+                ("red", ansi.red), ("green", ansi.green), ("blue", ansi.blue),
+                ("magenta", ansi.magenta), ("cyan", ansi.cyan),
+                ("brightRed", ansi.brightRed), ("brightGreen", ansi.brightGreen),
+            ] {
+                XCTAssertGreaterThan(
+                    spread(hex), 60,
+                    "\(t.name) ANSI \(slot) = \(hex) must stay saturated — the "
+                        + "terminal's colour carries meaning the editor's doesn't")
             }
         }
     }
@@ -608,9 +638,13 @@ final class ThemeModelTests: XCTestCase {
             let mx = max(r, g, b), mn = min(r, g, b), d = mx - mn
             guard d > 0 else { return 0 }
             let h: Double
-            if mx == r { h = ((g - b) / d).truncatingRemainder(dividingBy: 6) }
-            else if mx == g { h = (b - r) / d + 2 }
-            else { h = (r - g) / d + 4 }
+            if mx == r {
+                h = ((g - b) / d).truncatingRemainder(dividingBy: 6)
+            } else if mx == g {
+                h = (b - r) / d + 2
+            } else {
+                h = (r - g) / d + 4
+            }
             return (h * 60 + 360).truncatingRemainder(dividingBy: 360)
         }
         func dist(_ a: Double, _ b: Double) -> Double {
@@ -637,13 +671,16 @@ final class ThemeModelTests: XCTestCase {
             // The gutter must recede below the comment tier but stay legible.
             let gutter = contrast(t.gutterText, t.gutterBackground)
             XCTAssertGreaterThan(gutter, 3.0, "\(t.name) gutter text is illegible")
-            XCTAssertLessThan(gutter, contrast(t.comment, t.background),
-                              "\(t.name) gutter must not out-shout the code")
+            XCTAssertLessThan(
+                gutter, contrast(t.comment, t.background),
+                "\(t.name) gutter must not out-shout the code")
             // Selection must not swallow the caret.
-            XCTAssertGreaterThan(contrast(t.cursor, t.selection), 4.5,
-                                 "\(t.name) selection swallows the cursor")
-            XCTAssertGreaterThan(contrast(t.foreground, t.selection), 4.5,
-                                 "\(t.name) selected text is unreadable")
+            XCTAssertGreaterThan(
+                contrast(t.cursor, t.selection), 4.5,
+                "\(t.name) selection swallows the cursor")
+            XCTAssertGreaterThan(
+                contrast(t.foreground, t.selection), 4.5,
+                "\(t.name) selected text is unreadable")
         }
     }
 
@@ -666,10 +703,11 @@ final class ThemeModelTests: XCTestCase {
     /// same green as an added one.
     func testWindshieldANSIMatchesTheAppsDiffConstants() {
         let ansi = BuiltInThemes.windshieldDark.resolvedANSI
-        XCTAssertEqual(ansi.green.uppercased(), "#3DB554")   // GitStatusMap added
-        XCTAssertEqual(ansi.red.uppercased(), "#F24F4A")     // GitStatusMap deleted
-        XCTAssertEqual(ansi.magenta.uppercased(),
-                       BuiltInThemes.windshieldDark.accent.uppercased())
+        XCTAssertEqual(ansi.green.uppercased(), "#3DB554")  // GitStatusMap added
+        XCTAssertEqual(ansi.red.uppercased(), "#F24F4A")  // GitStatusMap deleted
+        XCTAssertEqual(
+            ansi.magenta.uppercased(),
+            BuiltInThemes.windshieldDark.accent.uppercased())
     }
 
     /// On a light background "bright" must mean *more contrast*, not more
@@ -677,9 +715,11 @@ final class ThemeModelTests: XCTestCase {
     func testWindshieldLightBrightsAreDarkerThanTheirNormals() {
         let t = BuiltInThemes.windshieldLight
         let a = t.resolvedANSI
-        for (normal, bright, slot) in [(a.red, a.brightRed, "red"), (a.green, a.brightGreen, "green"),
-                                       (a.yellow, a.brightYellow, "yellow"), (a.blue, a.brightBlue, "blue"),
-                                       (a.magenta, a.brightMagenta, "magenta"), (a.cyan, a.brightCyan, "cyan")] {
+        for (normal, bright, slot) in [
+            (a.red, a.brightRed, "red"), (a.green, a.brightGreen, "green"),
+            (a.yellow, a.brightYellow, "yellow"), (a.blue, a.brightBlue, "blue"),
+            (a.magenta, a.brightMagenta, "magenta"), (a.cyan, a.brightCyan, "cyan"),
+        ] {
             XCTAssertGreaterThan(
                 contrast(bright, t.background), contrast(normal, t.background),
                 "light ANSI bright\(slot) must out-contrast \(slot), not out-lighten it")
