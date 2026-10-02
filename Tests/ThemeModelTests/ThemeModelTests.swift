@@ -58,6 +58,34 @@ final class ThemeModelTests: XCTestCase {
         XCTAssertEqual(again.selectionText, "#101010")
     }
 
+    /// `identifier` is optional and decodes without the key; ``resolvedIdentifier`` takes an explicit one
+    /// first, then a `variable` that differs from the foreground, then the foreground tinted toward
+    /// `property`.
+    func testIdentifierResolvesExplicitThenVariableThenTint() throws {
+        var p = BuiltInThemes.all.first { $0.name == "Sidewatch" }!
+        XCTAssertNil(p.identifier)
+        p.foreground = "#D4D4D4"; p.variable = "#D4D4D4"; p.property = "#529CCA"
+        XCTAssertEqual(p.resolvedIdentifier, "#A9C1D1")  // a third of the way to the property colour
+        p.variable = "#9CDCFE"
+        XCTAssertEqual(p.resolvedIdentifier, "#9CDCFE")
+        p.identifier = "#123456"
+        XCTAssertEqual(p.resolvedIdentifier, "#123456")
+        let again = try JSONDecoder().decode(ThemePalette.self, from: JSONEncoder().encode(p))
+        XCTAssertEqual(again.identifier, "#123456")
+    }
+
+    /// Every built-in paints plain names in something other than its plain text, so turning name colour on
+    /// changes every theme, and none paints names in a role colour that means something else.
+    func testEveryBuiltInResolvesADistinctIdentifierColour() {
+        for p in BuiltInThemes.all {
+            let id = p.resolvedIdentifier.uppercased()
+            XCTAssertNotEqual(id, p.foreground.uppercased(), p.name)
+            for (role, hex) in [("keyword", p.keyword), ("string", p.string), ("comment", p.comment), ("function", p.function)] {
+                XCTAssertNotEqual(id, hex.uppercased(), "\(p.name): names would wear the \(role) colour")
+            }
+        }
+    }
+
     func testAllRealThemesImport() throws {
         for name in allThemes {
             let palette = VSCodeThemeImporter.palette(from: try load(name), fallbackName: name)

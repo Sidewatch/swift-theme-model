@@ -54,6 +54,9 @@ public struct ThemePalette: Codable, Equatable, Sendable {
     public var variable: String
     /// Member/property accesses and object keys.
     public var property: String
+    /// Plain names — the identifiers no other role claims. Optional so palettes written before it existed
+    /// still decode; read it through ``resolvedIdentifier``, which derives one when it is absent.
+    public var identifier: String?
 
     // Accents / chrome
 
@@ -169,10 +172,12 @@ public struct ThemePalette: Codable, Equatable, Sendable {
         ansiBrightGreen: String? = nil, ansiBrightYellow: String? = nil,
         ansiBrightBlue: String? = nil, ansiBrightMagenta: String? = nil,
         ansiBrightCyan: String? = nil, ansiBrightWhite: String? = nil,
-        selectionText: String? = nil
+        selectionText: String? = nil,
+        identifier: String? = nil
     ) {
         self.name = name; self.appearance = appearance
         self.selectionText = selectionText
+        self.identifier = identifier
         self.background = background; self.foreground = foreground
         self.cursor = cursor; self.selection = selection
         self.comment = comment; self.string = string; self.keyword = keyword
