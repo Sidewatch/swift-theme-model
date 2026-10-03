@@ -105,6 +105,25 @@ final class ThemeModelTests: XCTestCase {
         XCTAssertEqual(palette.background.uppercased(), "#272822")  // real Monokai editor.background
     }
 
+    /// The forms theme authors actually write (from the test-files corpus, fictional themes):
+    /// comma-joined and array scopes, `#RRGGBBAA` (alpha dropped), `#RGB` (expanded), and a light
+    /// theme with no `type`, decided from its background.
+    func testAuthorWrittenColourForms() throws {
+        let night = try XCTUnwrap(VSCodeThemeImporter.palette(from: try load("harbour-night"), fallbackName: "x"))
+        XCTAssertEqual(night.name, "Harbour Night")
+        XCTAssertTrue(night.isDark)
+        XCTAssertEqual(night.background.uppercased(), "#14181F")
+        XCTAssertEqual(night.selection.uppercased(), "#2B3A55", "8-digit colour: alpha dropped")
+        XCTAssertEqual(night.ansiBrightWhite?.uppercased(), "#FFFFFF", "3-digit colour expanded")
+        XCTAssertEqual(night.comment.uppercased(), "#5C6B80")
+        XCTAssertEqual(night.keyword.uppercased(), "#C792EA", "a scope array")
+        XCTAssertEqual(night.type.uppercased(), "#5FC9C4", "a comma-joined scope string")
+        let paper = try XCTUnwrap(VSCodeThemeImporter.palette(from: try load("paper-lantern"), fallbackName: "x"))
+        XCTAssertFalse(paper.isDark, "no `type`: light from the background's luminance")
+        XCTAssertEqual(paper.keyword.uppercased(), "#9B2C6E")
+        XCTAssertEqual(paper.function.uppercased(), "#1F5FA8")
+    }
+
     func testAppearanceDetection() throws {
         for name in lightThemes {
             let p = try XCTUnwrap(VSCodeThemeImporter.palette(from: try load(name), fallbackName: name))
