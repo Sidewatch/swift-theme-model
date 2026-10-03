@@ -488,6 +488,40 @@ final class ThemeModelTests: XCTestCase {
         }
     }
 
+    /// The five neutral Omarchy ports carry their source's syntax hues (not a ramp in one key), and
+    /// every role reads on the page: 4.5:1 for code, 3:1 for comments. Retro 82 and Hackerman are
+    /// CRT looks and keep their one-key ramps on purpose.
+    func testNeutralOmarchyPortsPaintSyntaxInTheirSourceHues() {
+        let themes = [
+            BuiltInThemes.matteBlack, BuiltInThemes.osakaJade, BuiltInThemes.miasma, BuiltInThemes.solitude, BuiltInThemes.lastHorizon,
+        ]
+        for t in themes {
+            let roles = [t.string, t.keyword, t.type, t.number, t.function, t.variable, t.property]
+            // Hue families (30-degree bins) among the roles that carry a colour at all.
+            var bins = Set<Int>()
+            for hex in roles {
+                let c = rgb(hex)
+                let maxC = max(c.r, c.g, c.b), minC = min(c.r, c.g, c.b), delta = maxC - minC
+                guard maxC > 0, delta / maxC > 0.15 else { continue }
+                var hue: Double
+                if maxC == c.r {
+                    hue = (c.g - c.b) / delta
+                } else if maxC == c.g {
+                    hue = (c.b - c.r) / delta + 2
+                } else {
+                    hue = (c.r - c.g) / delta + 4
+                }
+                hue = (hue * 60).truncatingRemainder(dividingBy: 360)
+                bins.insert(Int((hue < 0 ? hue + 360 : hue) / 30))
+            }
+            XCTAssertGreaterThanOrEqual(bins.count, 2, "\(t.name): syntax spans \(bins.count) hue family")
+            for hex in roles {
+                XCTAssertGreaterThanOrEqual(contrast(hex, t.background), 4.5, "\(t.name): \(hex) on \(t.background)")
+            }
+            XCTAssertGreaterThanOrEqual(contrast(t.comment, t.background), 3.0, "\(t.name): comment \(t.comment)")
+        }
+    }
+
     func testBuiltInThemeInventory() {
         // Pins the inventory; `testBuiltInThemesAreMeasurablyDistinct` proves the themes are
         // distinct (near-duplicates under ~12 mean CIE76 ΔE are hard to tell apart in use and are

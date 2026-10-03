@@ -907,15 +907,15 @@ public enum BuiltInThemes {
         ansiBrightWhite: "#F8FAFC"
     )
 
-    /// Osaka Jade — ported from Omarchy (MIT), chrome derived from its ANSI set. Its ANSI set is ONE
-    /// colour, so the syntax roles are a ramp in the theme's own key: the accent for keywords,
-    /// the foreground for names, steps between them and toward the page for the rest — with all
-    /// eight on the foreground, code would read as plain text.
+    /// Osaka Jade — ported from Omarchy (MIT), chrome derived from its ANSI set. Syntax from the theme's
+    /// own palette (Omarchy's colors.toml) in the roles bamboo.nvim, its paired editor theme, gives them:
+    /// green strings, magenta keywords, jade functions, yellow types, orange numbers. Hues kept, lifted
+    /// to 4.5:1 on the page (comments 3:1).
     public static let osakaJade = ThemePalette(
         name: "Osaka Jade", appearance: "dark",
         background: "#111C18", foreground: "#C1C497", cursor: "#C1C497", selection: "#284239",
-        comment: "#606851", string: "#909573", keyword: "#509475", type: "#9FB68D", number: "#7D9574",
-        function: "#83AA84", variable: "#C1C497", property: "#ACB088", accent: "#509475",
+        comment: "#556B5D", string: "#549E6A", keyword: "#D2689C", type: "#E5C736", number: "#A9784E",
+        function: "#509475", variable: "#C1C497", property: "#2DD5B7", accent: "#509475",
         sidebarBackground: "#0D1512", sidebarText: "#9A9F7B", tabBarBackground: "#0A100E",
         tabText: "#6D735A", tabActiveText: "#CDCFAB", border: "#070C0A",
         gutterBackground: "#111C18", gutterText: "#545C48", gutterActiveText: "#909573",
@@ -925,15 +925,14 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#C1C497", ansiBrightRed: "#C1C497", ansiBrightGreen: "#C1C497", ansiBrightYellow: "#C1C497",
         ansiBrightBlue: "#C1C497", ansiBrightMagenta: "#C1C497", ansiBrightCyan: "#C1C497", ansiBrightWhite: "#C1C497")
 
-    /// Miasma — ported from Omarchy (MIT), chrome derived from its ANSI set. Its ANSI set is ONE
-    /// colour, so the syntax roles are a ramp in the theme's own key: the accent for keywords,
-    /// the foreground for names, steps between them and toward the page for the rest — with all
-    /// eight on the foreground, code would read as plain text.
+    /// Miasma — ported from Omarchy (MIT), chrome derived from its ANSI set. Syntax from miasma.vim, the
+    /// theme's origin: olive functions and types, moss keywords, bark strings, straw names. Hues kept,
+    /// lifted to 4.5:1 on the page (comments 3:1).
     public static let miasma = ThemePalette(
         name: "Miasma", appearance: "dark",
         background: "#222222", foreground: "#C2C2B0", cursor: "#C2C2B0", selection: "#414141",
-        comment: "#6A6A62", string: "#959588", keyword: "#78824B", type: "#ACAF92", number: "#8C8F76",
-        function: "#999F78", variable: "#C2C2B0", property: "#AFAF9F", accent: "#78824B",
+        comment: "#6C6C6C", string: "#9E8566", keyword: "#679367", type: "#849052", number: "#848F52",
+        function: "#849052", variable: "#D7C483", property: "#D7C483", accent: "#78824B",
         sidebarBackground: "#1C1C1C", sidebarText: "#9F9F91", tabBarBackground: "#181818",
         tabText: "#75756C", tabActiveText: "#CFCFC1", border: "#151515",
         gutterBackground: "#222222", gutterText: "#5F5F58", gutterActiveText: "#959588",
@@ -979,15 +978,14 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#DDF7FF", ansiBrightRed: "#DDF7FF", ansiBrightGreen: "#DDF7FF", ansiBrightYellow: "#DDF7FF",
         ansiBrightBlue: "#DDF7FF", ansiBrightMagenta: "#DDF7FF", ansiBrightCyan: "#DDF7FF", ansiBrightWhite: "#DDF7FF")
 
-    /// Matte Black — ported from Omarchy (MIT), chrome derived from its ANSI set. Its ANSI set is ONE
-    /// colour, so the syntax roles are a ramp in the theme's own key: the accent for keywords,
-    /// the foreground for names, steps between them and toward the page for the rest — with all
-    /// eight on the foreground, code would read as plain text.
+    /// Matte Black — ported from Omarchy (MIT), chrome derived from its ANSI set. Syntax from
+    /// matteblack.nvim, by the theme's author: green keywords, crimson functions, amber names, gold types
+    /// and numbers, near-white strings. Hues kept, lifted to 4.5:1 on the page.
     public static let matteBlack = ThemePalette(
         name: "Matte Black", appearance: "dark",
         background: "#121212", foreground: "#BEBEBE", cursor: "#BEBEBE", selection: "#313131",
-        comment: "#5F5F5F", string: "#8E8E8E", keyword: "#E68E0D", type: "#CAB089", number: "#A88E67",
-        function: "#D4A45D", variable: "#BEBEBE", property: "#A9A9A9", accent: "#E68E0D",
+        comment: "#8A8A8D", string: "#EAEAEA", keyword: "#059669", type: "#FBBF24", number: "#EFBF04",
+        function: "#E14343", variable: "#D97706", property: "#F59E0B", accent: "#E68E0D",
         sidebarBackground: "#0C0C0C", sidebarText: "#989898", tabBarBackground: "#080808",
         tabText: "#6B6B6B", tabActiveText: "#CDCDCD", border: "#050505",
         gutterBackground: "#121212", gutterText: "#535353", gutterActiveText: "#8E8E8E",
@@ -1012,15 +1010,14 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#100F0F", ansiBrightRed: "#100F0F", ansiBrightGreen: "#100F0F", ansiBrightYellow: "#100F0F",
         ansiBrightBlue: "#100F0F", ansiBrightMagenta: "#100F0F", ansiBrightCyan: "#100F0F", ansiBrightWhite: "#100F0F")
 
-    /// Solitude — ported from Omarchy (MIT), chrome derived from its ANSI set. Its ANSI set is ONE
-    /// colour, so the syntax roles are a ramp in the theme's own key: the accent for keywords,
-    /// the foreground for names, steps between them and toward the page for the rest — with all
-    /// eight on the foreground, code would read as plain text.
+    /// Solitude — ported from Omarchy (MIT), chrome derived from its ANSI set. Syntax from ashen.nvim, its
+    /// paired editor theme: greys for names, types and functions, ember-red keywords and strings, teal
+    /// numbers. Hues kept, lifted to 4.5:1 on the page.
     public static let solitude = ThemePalette(
         name: "Solitude", appearance: "dark",
         background: "#101315", foreground: "#CACCCC", cursor: "#CACCCC", selection: "#2A3238",
-        comment: "#646667", string: "#969899", keyword: "#798186", type: "#B2B6B7", number: "#8D9193",
-        function: "#9DA3A6", variable: "#CACCCC", property: "#B4B6B6", accent: "#798186",
+        comment: "#737373", string: "#DF6464", keyword: "#C35E5E", type: "#D5D5D5", number: "#4A8B8B",
+        function: "#E5E5E5", variable: "#B4B4B4", property: "#D5D5D5", accent: "#798186",
         sidebarBackground: "#0B0D0F", sidebarText: "#A1A3A4", tabBarBackground: "#08090A",
         tabText: "#717374", tabActiveText: "#DADBDB", border: "#050607",
         gutterBackground: "#101315", gutterText: "#57595B", gutterActiveText: "#969899",
@@ -1030,15 +1027,15 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#CACCCC", ansiBrightRed: "#CACCCC", ansiBrightGreen: "#CACCCC", ansiBrightYellow: "#CACCCC",
         ansiBrightBlue: "#CACCCC", ansiBrightMagenta: "#CACCCC", ansiBrightCyan: "#CACCCC", ansiBrightWhite: "#CACCCC")
 
-    /// Last Horizon — ported from Omarchy (MIT), chrome derived from its ANSI set. Its ANSI set is ONE
-    /// colour, so the syntax roles are a ramp in the theme's own key: the accent for keywords,
-    /// the foreground for names, steps between them and toward the page for the rest — with all
-    /// eight on the foreground, code would read as plain text.
+    /// Last Horizon — ported from Omarchy (MIT), chrome derived from its ANSI set. Syntax from the theme's
+    /// own palette (Omarchy's colors.toml) in the roles the other ANSI-derived ports use: sea-glass
+    /// strings, pale-blue keywords, lavender types, rose functions and numbers, mauve properties. Hues
+    /// kept, lifted to 4.5:1 on the page (comments 3:1).
     public static let lastHorizon = ThemePalette(
         name: "Last Horizon", appearance: "dark",
         background: "#0C0B0C", foreground: "#FAFCFB", cursor: "#FAFCFB", selection: "#2C282C",
-        comment: "#777778", string: "#B7B9B8", keyword: "#B59790", type: "#E5DEDB", number: "#B6AFAC",
-        function: "#D4C4C0", variable: "#FAFCFB", property: "#DDDFDE", accent: "#B59790",
+        comment: "#675B5F", string: "#87A9B0", keyword: "#C4D8E2", type: "#A5A0B6", number: "#C38B7B",
+        function: "#B59790", variable: "#FAFCFB", property: "#84748D", accent: "#B59790",
         sidebarBackground: "#060606", sidebarText: "#C6C7C6", tabBarBackground: "#020202",
         tabText: "#888888", tabActiveText: "#FFFFFF", border: "#000000",
         gutterBackground: "#0C0B0C", gutterText: "#666767", gutterActiveText: "#B7B9B8",
