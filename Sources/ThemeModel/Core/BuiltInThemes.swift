@@ -920,10 +920,10 @@ public enum BuiltInThemes {
         tabText: "#6D735A", tabActiveText: "#CDCFAB", border: "#070C0A",
         gutterBackground: "#111C18", gutterText: "#545C48", gutterActiveText: "#909573",
         statusBackground: "#0A100E", statusText: "#959A77",
-        ansiBlack: "#C1C497", ansiRed: "#C1C497", ansiGreen: "#C1C497", ansiYellow: "#C1C497",
-        ansiBlue: "#C1C497", ansiMagenta: "#C1C497", ansiCyan: "#C1C497", ansiWhite: "#C1C497",
-        ansiBrightBlack: "#C1C497", ansiBrightRed: "#C1C497", ansiBrightGreen: "#C1C497", ansiBrightYellow: "#C1C497",
-        ansiBrightBlue: "#C1C497", ansiBrightMagenta: "#C1C497", ansiBrightCyan: "#C1C497", ansiBrightWhite: "#C1C497")
+        ansiBlack: "#111C18", ansiRed: "#FF5345", ansiGreen: "#549E6A", ansiYellow: "#459451",
+        ansiBlue: "#509475", ansiMagenta: "#D2689C", ansiCyan: "#2DD5B7", ansiWhite: "#C1C497",
+        ansiBrightBlack: "#53685B", ansiBrightRed: "#DB9F9C", ansiBrightGreen: "#63B07A", ansiBrightYellow: "#E5C736",
+        ansiBrightBlue: "#ACD4CF", ansiBrightMagenta: "#75BBB3", ansiBrightCyan: "#8CD3CB", ansiBrightWhite: "#F7E8B2")
 
     /// Miasma — ported from Omarchy (MIT), chrome derived from its ANSI set. Syntax from miasma.vim, the
     /// theme's origin: olive functions and types, moss keywords, bark strings, straw names. Hues kept,
@@ -937,15 +937,14 @@ public enum BuiltInThemes {
         tabText: "#75756C", tabActiveText: "#CFCFC1", border: "#151515",
         gutterBackground: "#222222", gutterText: "#5F5F58", gutterActiveText: "#959588",
         statusBackground: "#181818", statusText: "#9A9A8C",
-        ansiBlack: "#C2C2B0", ansiRed: "#C2C2B0", ansiGreen: "#C2C2B0", ansiYellow: "#C2C2B0",
-        ansiBlue: "#C2C2B0", ansiMagenta: "#C2C2B0", ansiCyan: "#C2C2B0", ansiWhite: "#C2C2B0",
-        ansiBrightBlack: "#C2C2B0", ansiBrightRed: "#C2C2B0", ansiBrightGreen: "#C2C2B0", ansiBrightYellow: "#C2C2B0",
-        ansiBrightBlue: "#C2C2B0", ansiBrightMagenta: "#C2C2B0", ansiBrightCyan: "#C2C2B0", ansiBrightWhite: "#C2C2B0")
+        ansiBlack: "#222222", ansiRed: "#685742", ansiGreen: "#5F875F", ansiYellow: "#B36D43",
+        ansiBlue: "#78824B", ansiMagenta: "#BB7744", ansiCyan: "#C9A554", ansiWhite: "#C2C2B0",
+        ansiBrightBlack: "#666666", ansiBrightRed: "#685742", ansiBrightGreen: "#5F875F", ansiBrightYellow: "#B36D43",
+        ansiBrightBlue: "#78824B", ansiBrightMagenta: "#BB7744", ansiBrightCyan: "#C9A554", ansiBrightWhite: "#C2C2B0")
 
-    /// Retro 82 — ported from Omarchy (MIT), chrome derived from its ANSI set. Its ANSI set is ONE
-    /// colour, so the syntax roles are a ramp in the theme's own key: the accent for keywords,
-    /// the foreground for names, steps between them and toward the page for the rest — with all
-    /// eight on the foreground, code would read as plain text.
+    /// Retro 82 — ported from Omarchy (MIT); the terminal's 16 colours are its colors.toml through Omarchy's
+    /// own terminal template. The syntax stays a ramp in the theme's single key (the accent for
+    /// keywords, the foreground for names, steps toward the page for the rest): it is a CRT look.
     public static let retro82 = ThemePalette(
         name: "Retro 82", appearance: "dark",
         background: "#05182E", foreground: "#F6DCAC", cursor: "#F6DCAC", selection: "#0B3565",
@@ -955,15 +954,14 @@ public enum BuiltInThemes {
         tabText: "#827E70", tabActiveText: "#F9E8C8", border: "#030C17",
         gutterBackground: "#05182E", gutterText: "#61625E", gutterActiveText: "#B3A589",
         statusBackground: "#030F1D", statusText: "#BAAB8C",
-        ansiBlack: "#F6DCAC", ansiRed: "#F6DCAC", ansiGreen: "#F6DCAC", ansiYellow: "#F6DCAC",
-        ansiBlue: "#F6DCAC", ansiMagenta: "#F6DCAC", ansiCyan: "#F6DCAC", ansiWhite: "#F6DCAC",
-        ansiBrightBlack: "#F6DCAC", ansiBrightRed: "#F6DCAC", ansiBrightGreen: "#F6DCAC", ansiBrightYellow: "#F6DCAC",
-        ansiBrightBlue: "#F6DCAC", ansiBrightMagenta: "#F6DCAC", ansiBrightCyan: "#F6DCAC", ansiBrightWhite: "#F6DCAC")
+        ansiBlack: "#05182E", ansiRed: "#F85525", ansiGreen: "#028391", ansiYellow: "#E97B3C",
+        ansiBlue: "#3F8F8A", ansiMagenta: "#3F8F8A", ansiCyan: "#8CBFB8", ansiWhite: "#F6DCAC",
+        ansiBrightBlack: "#2A6B78", ansiBrightRed: "#F85525", ansiBrightGreen: "#028391", ansiBrightYellow: "#E97B3C",
+        ansiBrightBlue: "#FAA968", ansiBrightMagenta: "#3F8F8A", ansiBrightCyan: "#8CBFB8", ansiBrightWhite: "#F6DCAC")
 
-    /// Hackerman — ported from Omarchy (MIT), chrome derived from its ANSI set. Its ANSI set is ONE
-    /// colour, so the syntax roles are a ramp in the theme's own key: the accent for keywords,
-    /// the foreground for names, steps between them and toward the page for the rest — with all
-    /// eight on the foreground, code would read as plain text.
+    /// Hackerman — ported from Omarchy (MIT); the terminal's 16 colours are its colors.toml through Omarchy's
+    /// own terminal template. The syntax stays a ramp in the theme's single key (the accent for
+    /// keywords, the foreground for names, steps toward the page for the rest): it is a CRT look.
     public static let hackerman = ThemePalette(
         name: "Hackerman", appearance: "dark",
         background: "#0B0C16", foreground: "#DDF7FF", cursor: "#DDF7FF", selection: "#1F223F",
@@ -973,10 +971,10 @@ public enum BuiltInThemes {
         tabText: "#78868F", tabActiveText: "#FCFEFF", border: "#020305",
         gutterBackground: "#0B0C16", gutterText: "#5B656F", gutterActiveText: "#A2B5BE",
         statusBackground: "#050509", statusText: "#A8BCC5",
-        ansiBlack: "#DDF7FF", ansiRed: "#DDF7FF", ansiGreen: "#DDF7FF", ansiYellow: "#DDF7FF",
-        ansiBlue: "#DDF7FF", ansiMagenta: "#DDF7FF", ansiCyan: "#DDF7FF", ansiWhite: "#DDF7FF",
-        ansiBrightBlack: "#DDF7FF", ansiBrightRed: "#DDF7FF", ansiBrightGreen: "#DDF7FF", ansiBrightYellow: "#DDF7FF",
-        ansiBrightBlue: "#DDF7FF", ansiBrightMagenta: "#DDF7FF", ansiBrightCyan: "#DDF7FF", ansiBrightWhite: "#DDF7FF")
+        ansiBlack: "#0B0C16", ansiRed: "#50F872", ansiGreen: "#4FE88F", ansiYellow: "#50F7D4",
+        ansiBlue: "#829DD4", ansiMagenta: "#86A7DF", ansiCyan: "#7CF8F7", ansiWhite: "#DDF7FF",
+        ansiBrightBlack: "#2D3450", ansiBrightRed: "#85FF9D", ansiBrightGreen: "#9CF7C2", ansiBrightYellow: "#A4FFEC",
+        ansiBrightBlue: "#C4D2ED", ansiBrightMagenta: "#CDDBF4", ansiBrightCyan: "#D1FFFE", ansiBrightWhite: "#DDF7FF")
 
     /// Matte Black — ported from Omarchy (MIT), chrome derived from its ANSI set. Syntax from
     /// matteblack.nvim, by the theme's author: green keywords, crimson functions, amber names, gold types
@@ -990,10 +988,10 @@ public enum BuiltInThemes {
         tabText: "#6B6B6B", tabActiveText: "#CDCDCD", border: "#050505",
         gutterBackground: "#121212", gutterText: "#535353", gutterActiveText: "#8E8E8E",
         statusBackground: "#080808", statusText: "#939393",
-        ansiBlack: "#BEBEBE", ansiRed: "#BEBEBE", ansiGreen: "#BEBEBE", ansiYellow: "#BEBEBE",
-        ansiBlue: "#BEBEBE", ansiMagenta: "#BEBEBE", ansiCyan: "#BEBEBE", ansiWhite: "#BEBEBE",
-        ansiBrightBlack: "#BEBEBE", ansiBrightRed: "#BEBEBE", ansiBrightGreen: "#BEBEBE", ansiBrightYellow: "#BEBEBE",
-        ansiBrightBlue: "#BEBEBE", ansiBrightMagenta: "#BEBEBE", ansiBrightCyan: "#BEBEBE", ansiBrightWhite: "#BEBEBE")
+        ansiBlack: "#121212", ansiRed: "#D35F5F", ansiGreen: "#FFC107", ansiYellow: "#B91C1C",
+        ansiBlue: "#E68E0D", ansiMagenta: "#D35F5F", ansiCyan: "#BEBEBE", ansiWhite: "#BEBEBE",
+        ansiBrightBlack: "#333333", ansiBrightRed: "#B91C1C", ansiBrightGreen: "#FFC107", ansiBrightYellow: "#B90A0A",
+        ansiBrightBlue: "#F59E0B", ansiBrightMagenta: "#B91C1C", ansiBrightCyan: "#EAEAEA", ansiBrightWhite: "#BEBEBE")
 
     /// Flexoki Light — ported from Omarchy (MIT), syntax and chrome derived from its ANSI set.
     public static let flexokiLight = ThemePalette(
@@ -1022,10 +1020,10 @@ public enum BuiltInThemes {
         tabText: "#717374", tabActiveText: "#DADBDB", border: "#050607",
         gutterBackground: "#101315", gutterText: "#57595B", gutterActiveText: "#969899",
         statusBackground: "#08090A", statusText: "#9B9E9E",
-        ansiBlack: "#CACCCC", ansiRed: "#CACCCC", ansiGreen: "#CACCCC", ansiYellow: "#CACCCC",
-        ansiBlue: "#CACCCC", ansiMagenta: "#CACCCC", ansiCyan: "#CACCCC", ansiWhite: "#CACCCC",
-        ansiBrightBlack: "#CACCCC", ansiBrightRed: "#CACCCC", ansiBrightGreen: "#CACCCC", ansiBrightYellow: "#CACCCC",
-        ansiBrightBlue: "#CACCCC", ansiBrightMagenta: "#CACCCC", ansiBrightCyan: "#CACCCC", ansiBrightWhite: "#CACCCC")
+        ansiBlack: "#101315", ansiRed: "#565D60", ansiGreen: "#9FA5A9", ansiYellow: "#D9DBDC",
+        ansiBlue: "#798186", ansiMagenta: "#AEAEAE", ansiCyan: "#707070", ansiWhite: "#CACCCC",
+        ansiBrightBlack: "#4B4E55", ansiBrightRed: "#DE6145", ansiBrightGreen: "#343D41", ansiBrightYellow: "#C9C2B4",
+        ansiBrightBlue: "#5D6367", ansiBrightMagenta: "#9A9A9A", ansiBrightCyan: "#707070", ansiBrightWhite: "#A5AEB4")
 
     /// Last Horizon — ported from Omarchy (MIT), chrome derived from its ANSI set. Syntax from the theme's
     /// own palette (Omarchy's colors.toml) in the roles the other ANSI-derived ports use: sea-glass
@@ -1040,10 +1038,10 @@ public enum BuiltInThemes {
         tabText: "#888888", tabActiveText: "#FFFFFF", border: "#000000",
         gutterBackground: "#0C0B0C", gutterText: "#666767", gutterActiveText: "#B7B9B8",
         statusBackground: "#020202", statusText: "#BEC0BF",
-        ansiBlack: "#FAFCFB", ansiRed: "#FAFCFB", ansiGreen: "#FAFCFB", ansiYellow: "#FAFCFB",
-        ansiBlue: "#FAFCFB", ansiMagenta: "#FAFCFB", ansiCyan: "#FAFCFB", ansiWhite: "#FAFCFB",
-        ansiBrightBlack: "#FAFCFB", ansiBrightRed: "#FAFCFB", ansiBrightGreen: "#FAFCFB", ansiBrightYellow: "#FAFCFB",
-        ansiBrightBlue: "#FAFCFB", ansiBrightMagenta: "#FAFCFB", ansiBrightCyan: "#FAFCFB", ansiBrightWhite: "#FAFCFB")
+        ansiBlack: "#0C0B0C", ansiRed: "#C38B7B", ansiGreen: "#87A9B0", ansiYellow: "#6B5E73",
+        ansiBlue: "#B59790", ansiMagenta: "#C4D8E2", ansiCyan: "#A5A0B6", ansiWhite: "#FAFCFB",
+        ansiBrightBlack: "#584E51", ansiBrightRed: "#C38B7B", ansiBrightGreen: "#87A9B0", ansiBrightYellow: "#6B5E73",
+        ansiBrightBlue: "#B59790", ansiBrightMagenta: "#C4D8E2", ansiBrightCyan: "#A5A0B6", ansiBrightWhite: "#E2DDDC")
 
     /// Ethereal — ported from Omarchy (MIT), syntax and chrome derived from its ANSI set.
     public static let ethereal = ThemePalette(
@@ -1341,9 +1339,11 @@ public enum BuiltInThemes {
     public static let all: [ThemePalette] = [
         // Sidewatch originals.
         beacon, orchid, sakura, peony, lilac, volt,
-        // Ported from Omarchy (MIT, github.com/basecamp/omarchy): base colours and the
-        // full 16-colour ANSI set come from each theme's colors.toml verbatim; syntax and
-        // chrome are derived from that ANSI set, because Omarchy defines neither.
+        // Ported from Omarchy (MIT, github.com/basecamp/omarchy): base colours and the full
+        // 16-colour ANSI set come from each theme's colors.toml, mapped to the slots exactly as
+        // Omarchy's terminal template does (black = background, bright black = muted, white =
+        // foreground, bright white = bright_foreground); chrome is derived, syntax from each
+        // theme's own editor theme where it has one.
         osakaJade, miasma, retro82, hackerman, matteBlack,
         flexokiLight, solitude, lastHorizon, ethereal,
         blackout,

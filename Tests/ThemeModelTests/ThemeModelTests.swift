@@ -124,6 +124,27 @@ final class ThemeModelTests: XCTestCase {
         XCTAssertEqual(paper.function.uppercased(), "#1F5FA8")
     }
 
+    /// The Omarchy ports carry a real 16-colour terminal palette, as Omarchy's own terminals do, not
+    /// one colour sixteen times (Osaka Jade's red is FF5345, its bright white F7E8B2).
+    func testOmarchyPortsHaveRealTerminalColours() {
+        let ports = [
+            BuiltInThemes.osakaJade, BuiltInThemes.miasma, BuiltInThemes.retro82, BuiltInThemes.hackerman,
+            BuiltInThemes.matteBlack, BuiltInThemes.solitude, BuiltInThemes.lastHorizon,
+        ]
+        for p in ports {
+            let ansi = [
+                p.ansiBlack, p.ansiRed, p.ansiGreen, p.ansiYellow, p.ansiBlue, p.ansiMagenta, p.ansiCyan, p.ansiWhite,
+                p.ansiBrightBlack, p.ansiBrightRed, p.ansiBrightGreen, p.ansiBrightYellow, p.ansiBrightBlue,
+                p.ansiBrightMagenta, p.ansiBrightCyan, p.ansiBrightWhite,
+            ].compactMap { $0?.uppercased() }
+            XCTAssertEqual(ansi.count, 16, p.name)
+            XCTAssertGreaterThanOrEqual(Set(ansi).count, 5, "\(p.name) has a one-colour terminal")
+            XCTAssertEqual(ansi.first, p.background.uppercased(), "\(p.name): ANSI black is the page, as Omarchy maps it")
+        }
+        XCTAssertEqual(BuiltInThemes.osakaJade.ansiRed?.uppercased(), "#FF5345")
+        XCTAssertEqual(BuiltInThemes.osakaJade.ansiBrightWhite?.uppercased(), "#F7E8B2")
+    }
+
     func testAppearanceDetection() throws {
         for name in lightThemes {
             let p = try XCTUnwrap(VSCodeThemeImporter.palette(from: try load(name), fallbackName: name))
