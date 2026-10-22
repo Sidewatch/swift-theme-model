@@ -13,8 +13,8 @@ A tiny, dependency-free editor **theme model** + a robust **VS Code theme import
 - 🔢 **Hex normalization** — expands `#RGB`/`#RGBA` shorthand, trims `#RRGGBBAA` → `#RRGGBB`, rejects non-hex values
 - 📦 **55 built-in palettes** — `BuiltInThemes.all`, 40 dark + 15 light (Sidewatch originals first: Beacon, Orchid, Sakura, Peony, Lilac, Volt):
   - **Signature** — `windshieldDark`, `windshieldLight` (see below)
-  - **Dark** — One Dark, Dracula, Tokyo Night, Catppuccin Mocha, Rosé Pine, Rosé Pine Moon, Kanagawa Wave, Everforest Dark, Night Owl, Nord, Gruvbox Dark, Ayu Dark, Monokai, GitHub Dark, Solarized Dark, Neon
-  - **Light** — Catppuccin Latte, Rosé Pine Dawn, GitHub Light, Everforest Light, Solarized Light
+  - **Dark** — One Dark, Dracula, Tokyo Night, Catppuccin Mocha, Rosé Pine, Rosé Pine Moon, Kanagawa Wave, Everforest Dark, Night Owl, Nord, Gruvbox Dark, Ayu Dark, Monokai, GitHub Dark, Solarized Dark, Neon, Foundry
+  - **Light** — Catppuccin Latte, Rosé Pine Dawn, GitHub Light, Everforest Light, Solarized Light, Foundry Light
 - ✒️ **Windshield — a review-first signature theme** (dark + light). Every other theme is designed for *writing* code and spends its colour on the language. Windshield renders **syntax in greyscale** — an eight-tier silver ladder ~6.4 L\* apart, every tier ≥4.5:1 including comments — and spends its entire colour budget on **signal**: the diff tint, git status, and a fully-specified ANSI palette. Against greyscale code, a change is the only chroma on screen. Its accent sits at 247° indigo, the hue maximally distant (≈115°) from both the conventional diff green and diff red, so "modified" can never be mistaken for "added" or "deleted". The greyscale/colour split is enforced by tests, not just documented
 - 🪶 **Zero dependencies** — Foundation only
 - 🍎 **Cross-platform** — iOS, macOS, tvOS, watchOS, visionOS
