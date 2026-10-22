@@ -567,16 +567,16 @@ final class ThemeModelTests: XCTestCase {
         // distinct (near-duplicates under ~12 mean CIE76 ΔE are hard to tell apart in use and are
         // not kept). Omarchy themes already covered here under their own names keep ours;
         // Ristretto is left out because the name belongs to a commercial Monokai Pro variant.
-        XCTAssertEqual(BuiltInThemes.all.count, 53)
+        XCTAssertEqual(BuiltInThemes.all.count, 55)
         let light = BuiltInThemes.all.filter { !$0.isDark }
         let dark = BuiltInThemes.all.filter { $0.isDark }
-        XCTAssertEqual(dark.count, 39)  // 26 + Beacon + eight dark Omarchy ports + VS Code Dark+ + Orchid, Sakura, Volt
+        XCTAssertEqual(dark.count, 40)  // 26 + Beacon + eight dark Omarchy ports + VS Code Dark+ + Orchid, Sakura, Volt + Foundry
         // The point of the light additions: daylight work needs real options.
-        XCTAssertEqual(light.count, 14)  // + Notion, + Porcelain, + Flexoki Light, + VS Code Light+, + Peony, + Lilac
+        XCTAssertEqual(light.count, 15)  // + Notion, + Porcelain, + Flexoki Light, + VS Code Light+, + Peony, + Lilac, + Foundry Light
         XCTAssertEqual(
             light.map(\.name).sorted(),
             [
-                "Catppuccin Latte", "Everforest Light", "Flexoki Light", "Frost",
+                "Catppuccin Latte", "Everforest Light", "Flexoki Light", "Foundry Light", "Frost",
                 "GitHub Light", "Gruvbox Light", "Lilac", "Notion", "Peony", "Porcelain",
                 "Rosé Pine Dawn", "Solarized Light", "VS Code Light+", "Windshield Light",
             ])

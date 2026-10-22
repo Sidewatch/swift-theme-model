@@ -1117,6 +1117,69 @@ public enum BuiltInThemes {
         statusText: "#D4D4D4"
     )
 
+    /// Foundry — orange keywords, blue functions, green strings, teal numbers and purple fields
+    /// over a near-black editor, with type names left in the text colour; the chrome a step
+    /// lighter than the editor, as a desktop IDE's tool windows are.
+    public static let foundry = ThemePalette(
+        name: "Foundry",
+        appearance: "dark",
+        background: "#1E1F22",
+        foreground: "#BCBEC4",
+        cursor: "#CED0D6",
+        selection: "#214283",
+        comment: "#7A7E85",
+        string: "#6AAB73",
+        keyword: "#CF8E6D",
+        type: "#BCBEC4",  // type names stay in the text colour
+        number: "#2AACB8",
+        function: "#56A8F5",
+        variable: "#BCBEC4",
+        property: "#C77DBB",
+        accent: "#3574F0",
+        sidebarBackground: "#1E1F22",
+        sidebarText: "#DFE1E5",
+        tabBarBackground: "#2B2D30",
+        tabText: "#9DA0A8",
+        tabActiveText: "#DFE1E5",
+        border: "#393B40",
+        gutterBackground: "#1E1F22",
+        gutterText: "#4B5059",
+        gutterActiveText: "#A1A3AB",
+        statusBackground: "#2B2D30",
+        statusText: "#9DA0A8"
+    )
+
+    /// Foundry Light — the light half of ``foundry``: blue keywords, green strings, teal functions
+    /// and purple fields on white, the side panels a pale grey.
+    public static let foundryLight = ThemePalette(
+        name: "Foundry Light",
+        appearance: "light",
+        background: "#FFFFFF",
+        foreground: "#080808",
+        cursor: "#000000",
+        selection: "#A6D2FF",
+        comment: "#8C8C8C",
+        string: "#067D17",
+        keyword: "#0033B3",
+        type: "#080808",  // type names stay in the text colour
+        number: "#1750EB",
+        function: "#00627A",
+        variable: "#080808",
+        property: "#871094",
+        accent: "#3574F0",
+        sidebarBackground: "#F7F8FA",
+        sidebarText: "#000000",
+        tabBarBackground: "#F7F8FA",
+        tabText: "#6C707E",
+        tabActiveText: "#000000",
+        border: "#EBECF0",
+        gutterBackground: "#FFFFFF",
+        gutterText: "#AEB3C2",
+        gutterActiveText: "#767A8A",
+        statusBackground: "#F7F8FA",
+        statusText: "#6C707E"
+    )
+
     /// VS Code Light+ — the light half of the same set, from `light_plus.json` merged onto
     /// `light_vs.json`, by the same route as ``vscodeDarkPlus``.
     ///
@@ -1354,8 +1417,8 @@ public enum BuiltInThemes {
         notion, sidewatch, graphite, porcelain,
         carbon, synthwave,
         oneDark, dracula, tokyoNight, catppuccin, rosePine, kanagawa, everforestDark, nightOwl, nord, gruvbox, ayu,
-        monokai, githubDark, solarizedDark, neon, vscodeDarkPlus,
+        monokai, githubDark, solarizedDark, neon, vscodeDarkPlus, foundry,
         frost, catppuccinLatte, rosePineDawn, githubLight, everforestLight, solarizedLight, gruvboxLight,
-        vscodeLightPlus,
+        vscodeLightPlus, foundryLight,
     ]
 }
