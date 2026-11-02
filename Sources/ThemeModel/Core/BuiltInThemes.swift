@@ -17,6 +17,7 @@ import Foundation
 public enum BuiltInThemes {
 
     /// Monokai — the classic warm dark theme.
+    /// Terminal colours: VS Code's built-in Monokai (microsoft/vscode, extensions/theme-monokai).
     public static let monokai = ThemePalette(
         name: "Monokai",
         appearance: "dark",
@@ -43,10 +44,15 @@ public enum BuiltInThemes {
         gutterText: "#90908A",
         gutterActiveText: "#CCCCC7",
         statusBackground: "#1C1D19",
-        statusText: "#90908A"
+        statusText: "#90908A",
+        ansiBlack: "#333333", ansiRed: "#C4265E", ansiGreen: "#86B42B", ansiYellow: "#B3B42B", ansiBlue: "#6A7EC8", ansiMagenta: "#8C6BC8",
+        ansiCyan: "#56ADBC", ansiWhite: "#E3E3DD", ansiBrightBlack: "#666666", ansiBrightRed: "#F92672", ansiBrightGreen: "#A6E22E",
+        ansiBrightYellow: "#E2E22E", ansiBrightBlue: "#819AFF", ansiBrightMagenta: "#AE81FF", ansiBrightCyan: "#66D9EF",
+        ansiBrightWhite: "#F8F8F2", selectionText: "#F8F8F2", identifier: "#FD971F"
     )
 
     /// One Dark — Atom's default dark theme.
+    /// Terminal colours: One Dark Pro's (Binaryify/OneDark-Pro, src/themes/data/oneDarkPro.ts).
     public static let oneDark = ThemePalette(
         name: "One Dark",
         appearance: "dark",
@@ -73,10 +79,15 @@ public enum BuiltInThemes {
         gutterText: "#495162",
         gutterActiveText: "#737C8C",
         statusBackground: "#21252B",
-        statusText: "#9DA5B4"
+        statusText: "#9DA5B4",
+        ansiBlack: "#3F4451", ansiRed: "#E05561", ansiGreen: "#8CC265", ansiYellow: "#D18F52", ansiBlue: "#4AA5F0", ansiMagenta: "#C162DE",
+        ansiCyan: "#42B3C2", ansiWhite: "#D7DAE0", ansiBrightBlack: "#4F5666", ansiBrightRed: "#FF616E", ansiBrightGreen: "#A5E075",
+        ansiBrightYellow: "#F0A45D", ansiBrightBlue: "#4DC4FF", ansiBrightMagenta: "#DE73FF", ansiBrightCyan: "#4CD1E0",
+        ansiBrightWhite: "#E6E6E6", selectionText: "#ABB2BF", identifier: "#E06C75"
     )
 
     /// GitHub Dark — GitHub's dark web/editor scheme.
+    /// Terminal colours: GitHub Dark Default's (primer/github-vscode-theme over @primer/primitives 7.10.0, ansi.*).
     public static let githubDark = ThemePalette(
         name: "GitHub Dark",
         appearance: "dark",
@@ -103,10 +114,15 @@ public enum BuiltInThemes {
         gutterText: "#484F58",
         gutterActiveText: "#8B949E",
         statusBackground: "#010409",
-        statusText: "#8B949E"
+        statusText: "#8B949E",
+        ansiBlack: "#484F58", ansiRed: "#FF7B72", ansiGreen: "#3FB950", ansiYellow: "#D29922", ansiBlue: "#58A6FF", ansiMagenta: "#BC8CFF",
+        ansiCyan: "#39C5CF", ansiWhite: "#B1BAC4", ansiBrightBlack: "#6E7681", ansiBrightRed: "#FFA198", ansiBrightGreen: "#56D364",
+        ansiBrightYellow: "#E3B341", ansiBrightBlue: "#79C0FF", ansiBrightMagenta: "#D2A8FF", ansiBrightCyan: "#56D4DD",
+        ansiBrightWhite: "#FFFFFF", selectionText: "#C9D1D9", identifier: "#FFA657"
     )
 
     /// Solarized Dark — Ethan Schoonover's low-contrast dark palette.
+    /// Terminal colours: Solarized's official 16-colour table (ethanschoonover.com/solarized; the same for both modes).
     public static let solarizedDark = ThemePalette(
         name: "Solarized Dark",
         appearance: "dark",
@@ -133,10 +149,15 @@ public enum BuiltInThemes {
         gutterText: "#586E75",
         gutterActiveText: "#93A1A1",
         statusBackground: "#001B22",
-        statusText: "#586E75"
+        statusText: "#586E75",
+        ansiBlack: "#073642", ansiRed: "#DC322F", ansiGreen: "#859900", ansiYellow: "#B58900", ansiBlue: "#268BD2", ansiMagenta: "#D33682",
+        ansiCyan: "#2AA198", ansiWhite: "#EEE8D5", ansiBrightBlack: "#002B36", ansiBrightRed: "#CB4B16", ansiBrightGreen: "#586E75",
+        ansiBrightYellow: "#657B83", ansiBrightBlue: "#839496", ansiBrightMagenta: "#6C71C4", ansiBrightCyan: "#93A1A1",
+        ansiBrightWhite: "#FDF6E3", selectionText: "#839496", identifier: "#CB4B16"
     )
 
     /// Solarized Light — the light counterpart to Solarized Dark.
+    /// Terminal colours: Solarized's official 16-colour table (ethanschoonover.com/solarized; the same for both modes).
     public static let solarizedLight = ThemePalette(
         name: "Solarized Light",
         appearance: "light",
@@ -163,10 +184,16 @@ public enum BuiltInThemes {
         gutterText: "#B0A999",
         gutterActiveText: "#586E75",
         statusBackground: "#EEE8D5",
-        statusText: "#657B83"
+        statusText: "#657B83",
+        ansiBlack: "#073642", ansiRed: "#DC322F", ansiGreen: "#859900", ansiYellow: "#B58900", ansiBlue: "#268BD2", ansiMagenta: "#D33682",
+        ansiCyan: "#2AA198", ansiWhite: "#EEE8D5", ansiBrightBlack: "#002B36", ansiBrightRed: "#CB4B16", ansiBrightGreen: "#586E75",
+        ansiBrightYellow: "#657B83", ansiBrightBlue: "#839496", ansiBrightMagenta: "#6C71C4", ansiBrightCyan: "#93A1A1",
+        ansiBrightWhite: "#FDF6E3", selectionText: "#657B83", identifier: "#CB4B16"
     )
 
     /// Neon — near-black with electric neon-green; hacker/terminal aesthetic.
+    /// Terminal colours: designed for this theme, from its own syntax hues where it has one near each ANSI hue
+    /// (red within 15 degrees, the rest within 25, each colour used once), every colour at least 4.5:1 on its background.
     public static let neon = ThemePalette(
         name: "Neon",
         appearance: "dark",
@@ -193,10 +220,15 @@ public enum BuiltInThemes {
         gutterText: "#3E4E45",
         gutterActiveText: "#9BB0A4",
         statusBackground: "#070D0A",
-        statusText: "#7E9086"
+        statusText: "#7E9086",
+        ansiBlack: "#1C3A2A", ansiRed: "#E46666", ansiGreen: "#3DE86A", ansiYellow: "#E4CF66", ansiBlue: "#6690E4", ansiMagenta: "#E466E4",
+        ansiCyan: "#6FD3E8", ansiWhite: "#8FA69A", ansiBrightBlack: "#556A5F", ansiBrightRed: "#EF8E8E", ansiBrightGreen: "#66F28B",
+        ansiBrightYellow: "#EFDF8E", ansiBrightBlue: "#8EAEEF", ansiBrightMagenta: "#EF8EEF", ansiBrightCyan: "#98E2F2",
+        ansiBrightWhite: "#D8E4DE", selectionText: "#C6D0CB", identifier: "#A9D1D5"
     )
 
     /// Dracula — the popular purple-tinted dark theme.
+    /// Terminal colours: Dracula's spec (draculatheme.com/spec; dracula/visual-studio-code).
     public static let dracula = ThemePalette(
         name: "Dracula", appearance: "dark",
         background: "#282A36", foreground: "#F8F8F2", cursor: "#F8F8F2", selection: "#44475A",
@@ -205,9 +237,15 @@ public enum BuiltInThemes {
         sidebarBackground: "#21222C", sidebarText: "#B4B8CC", tabBarBackground: "#191A21",
         tabText: "#6272A4", tabActiveText: "#F8F8F2", border: "#191A21",
         gutterBackground: "#282A36", gutterText: "#6272A4", gutterActiveText: "#B4B8CC",
-        statusBackground: "#191A21", statusText: "#B4B8CC")
+        statusBackground: "#191A21", statusText: "#B4B8CC",
+        ansiBlack: "#21222C", ansiRed: "#FF5555", ansiGreen: "#50FA7B", ansiYellow: "#F1FA8C", ansiBlue: "#BD93F9", ansiMagenta: "#FF79C6",
+        ansiCyan: "#8BE9FD", ansiWhite: "#F8F8F2", ansiBrightBlack: "#6272A4", ansiBrightRed: "#FF6E6E", ansiBrightGreen: "#69FF94",
+        ansiBrightYellow: "#FFFFA5", ansiBrightBlue: "#D6ACFF", ansiBrightMagenta: "#FF92DF", ansiBrightCyan: "#A4FFFF",
+        ansiBrightWhite: "#FFFFFF", selectionText: "#F8F8F2", identifier: "#D4F3F6"
+    )
 
     /// Nord — the arctic blue-grey palette.
+    /// Terminal colours: Nord's (nordtheme/visual-studio-code and nordtheme/alacritty agree).
     public static let nord = ThemePalette(
         name: "Nord", appearance: "dark",
         background: "#2E3440", foreground: "#D8DEE9", cursor: "#D8DEE9", selection: "#434C5E",
@@ -216,9 +254,15 @@ public enum BuiltInThemes {
         sidebarBackground: "#2B303B", sidebarText: "#AEB6C6", tabBarBackground: "#272B35",
         tabText: "#616E88", tabActiveText: "#ECEFF4", border: "#3B4252",
         gutterBackground: "#2E3440", gutterText: "#4C566A", gutterActiveText: "#AEB6C6",
-        statusBackground: "#272B35", statusText: "#AEB6C6")
+        statusBackground: "#272B35", statusText: "#AEB6C6",
+        ansiBlack: "#3B4252", ansiRed: "#BF616A", ansiGreen: "#A3BE8C", ansiYellow: "#EBCB8B", ansiBlue: "#81A1C1", ansiMagenta: "#B48EAD",
+        ansiCyan: "#88C0D0", ansiWhite: "#E5E9F0", ansiBrightBlack: "#4C566A", ansiBrightRed: "#BF616A", ansiBrightGreen: "#A3BE8C",
+        ansiBrightYellow: "#EBCB8B", ansiBrightBlue: "#81A1C1", ansiBrightMagenta: "#B48EAD", ansiBrightCyan: "#8FBCBB",
+        ansiBrightWhite: "#ECEFF4", selectionText: "#D8DEE9", identifier: "#C0D3DA"
+    )
 
     /// Tokyo Night — deep indigo with pastel syntax colors.
+    /// Terminal colours: Tokyo Night's (enkia/tokyo-night-vscode-theme, which sets brights 8-14 equal to normals by design).
     public static let tokyoNight = ThemePalette(
         name: "Tokyo Night", appearance: "dark",
         background: "#1A1B26", foreground: "#A9B1D6", cursor: "#C0CAF5", selection: "#33467C",
@@ -227,9 +271,15 @@ public enum BuiltInThemes {
         sidebarBackground: "#16161E", sidebarText: "#9AA5CE", tabBarBackground: "#16161E",
         tabText: "#565F89", tabActiveText: "#C0CAF5", border: "#1F2335",
         gutterBackground: "#1A1B26", gutterText: "#363B54", gutterActiveText: "#737AA2",
-        statusBackground: "#16161E", statusText: "#9AA5CE")
+        statusBackground: "#16161E", statusText: "#9AA5CE",
+        ansiBlack: "#363B54", ansiRed: "#F7768E", ansiGreen: "#73DACA", ansiYellow: "#E0AF68", ansiBlue: "#7AA2F7", ansiMagenta: "#BB9AF7",
+        ansiCyan: "#7DCFFF", ansiWhite: "#787C99", ansiBrightBlack: "#363B54", ansiBrightRed: "#F7768E", ansiBrightGreen: "#73DACA",
+        ansiBrightYellow: "#E0AF68", ansiBrightBlue: "#7AA2F7", ansiBrightMagenta: "#BB9AF7", ansiBrightCyan: "#7DCFFF",
+        ansiBrightWhite: "#ACB0D0", selectionText: "#A9B1D6", identifier: "#C0CAF5"
+    )
 
     /// Catppuccin Mocha — the soothing pastel dark variant.
+    /// Terminal colours: Catppuccin's own (catppuccin/palette, mocha.ansiColors).
     public static let catppuccin = ThemePalette(
         name: "Catppuccin Mocha", appearance: "dark",
         background: "#1E1E2E", foreground: "#CDD6F4", cursor: "#F5E0DC", selection: "#414458",
@@ -238,9 +288,15 @@ public enum BuiltInThemes {
         sidebarBackground: "#181825", sidebarText: "#BAC2DE", tabBarBackground: "#11111B",
         tabText: "#6C7086", tabActiveText: "#CDD6F4", border: "#313244",
         gutterBackground: "#1E1E2E", gutterText: "#45475A", gutterActiveText: "#9399B2",
-        statusBackground: "#11111B", statusText: "#BAC2DE")
+        statusBackground: "#11111B", statusText: "#BAC2DE",
+        ansiBlack: "#45475A", ansiRed: "#F38BA8", ansiGreen: "#A6E3A1", ansiYellow: "#F9E2AF", ansiBlue: "#89B4FA", ansiMagenta: "#F5C2E7",
+        ansiCyan: "#94E2D5", ansiWhite: "#A6ADC8", ansiBrightBlack: "#585B70", ansiBrightRed: "#F37799", ansiBrightGreen: "#89D88B",
+        ansiBrightYellow: "#EBD391", ansiBrightBlue: "#74A8FC", ansiBrightMagenta: "#F2AEDE", ansiBrightCyan: "#6BD7CA",
+        ansiBrightWhite: "#BAC2DE", selectionText: "#CDD6F4", identifier: "#BADAEA"
+    )
 
     /// Gruvbox Dark — retro warm earth tones.
+    /// Terminal colours: gruvbox.vim's g:terminal_color_0..15, dark medium (morhetz/gruvbox; gruvbox-contrib's Xresources agree).
     public static let gruvbox = ThemePalette(
         name: "Gruvbox Dark", appearance: "dark",
         background: "#282828", foreground: "#EBDBB2", cursor: "#EBDBB2", selection: "#3C3836",
@@ -249,9 +305,15 @@ public enum BuiltInThemes {
         sidebarBackground: "#1D2021", sidebarText: "#D5C4A1", tabBarBackground: "#1D2021",
         tabText: "#928374", tabActiveText: "#FBF1C7", border: "#3C3836",
         gutterBackground: "#282828", gutterText: "#7C6F64", gutterActiveText: "#BDAE93",
-        statusBackground: "#1D2021", statusText: "#D5C4A1")
+        statusBackground: "#1D2021", statusText: "#D5C4A1",
+        ansiBlack: "#282828", ansiRed: "#CC241D", ansiGreen: "#98971A", ansiYellow: "#D79921", ansiBlue: "#458588", ansiMagenta: "#B16286",
+        ansiCyan: "#689D6A", ansiWhite: "#A89984", ansiBrightBlack: "#928374", ansiBrightRed: "#FB4934", ansiBrightGreen: "#B8BB26",
+        ansiBrightYellow: "#FABD2F", ansiBrightBlue: "#83A598", ansiBrightMagenta: "#D3869B", ansiBrightCyan: "#8EC07C",
+        ansiBrightWhite: "#EBDBB2", selectionText: "#EBDBB2", identifier: "#83A598"
+    )
 
     /// Gruvbox Light — the cream-paper companion to Gruvbox Dark (morhetz, MIT).
+    /// Terminal colours: gruvbox.vim's g:terminal_color_0..15, light medium (morhetz/gruvbox; contrib's Xresources give the legacy #FDF4C1 for 0).
     public static let gruvboxLight = ThemePalette(
         name: "Gruvbox Light", appearance: "light",
         background: "#FBF1C7", foreground: "#3C3836", cursor: "#3C3836", selection: "#EBDBB2",
@@ -260,9 +322,15 @@ public enum BuiltInThemes {
         sidebarBackground: "#F2E5BC", sidebarText: "#504945", tabBarBackground: "#EBDBB2",
         tabText: "#928374", tabActiveText: "#282828", border: "#D5C4A1",
         gutterBackground: "#FBF1C7", gutterText: "#A89984", gutterActiveText: "#504945",
-        statusBackground: "#EBDBB2", statusText: "#504945")
+        statusBackground: "#EBDBB2", statusText: "#504945",
+        ansiBlack: "#FBF1C7", ansiRed: "#CC241D", ansiGreen: "#98971A", ansiYellow: "#D79921", ansiBlue: "#458588", ansiMagenta: "#B16286",
+        ansiCyan: "#689D6A", ansiWhite: "#7C6F64", ansiBrightBlack: "#928374", ansiBrightRed: "#9D0006", ansiBrightGreen: "#79740E",
+        ansiBrightYellow: "#B57614", ansiBrightBlue: "#076678", ansiBrightMagenta: "#8F3F71", ansiBrightCyan: "#427B58",
+        ansiBrightWhite: "#3C3836", selectionText: "#3C3836", identifier: "#AF3A03"
+    )
 
     /// Ayu Dark — near-black with warm orange/gold accents.
+    /// Terminal colours: vscode-ayu 1.0.3's ayu-dark.json, the generation whose background this is (later releases moved both).
     public static let ayu = ThemePalette(
         name: "Ayu Dark", appearance: "dark",
         background: "#0B0E14", foreground: "#BFBDB6", cursor: "#E6B450", selection: "#1C2733",
@@ -271,7 +339,12 @@ public enum BuiltInThemes {
         sidebarBackground: "#0D1017", sidebarText: "#9DA3A9", tabBarBackground: "#0B0E14",
         tabText: "#646B73", tabActiveText: "#BFBDB6", border: "#1C2027",
         gutterBackground: "#0B0E14", gutterText: "#3D424D", gutterActiveText: "#8A9199",
-        statusBackground: "#0B0E14", statusText: "#9DA3A9")
+        statusBackground: "#0B0E14", statusText: "#9DA3A9",
+        ansiBlack: "#11151C", ansiRed: "#EA6C73", ansiGreen: "#7FD962", ansiYellow: "#F9AF4F", ansiBlue: "#53BDFA", ansiMagenta: "#CDA1FA",
+        ansiCyan: "#90E1C6", ansiWhite: "#C7C7C7", ansiBrightBlack: "#686868", ansiBrightRed: "#F07178", ansiBrightGreen: "#AAD94C",
+        ansiBrightYellow: "#FFB454", ansiBrightBlue: "#59C2FF", ansiBrightMagenta: "#D2A6FF", ansiBrightCyan: "#95E6CB",
+        ansiBrightWhite: "#FFFFFF", selectionText: "#BFBDB6", identifier: "#9DBFCE"
+    )
 
     // MARK: - Signature — Windshield
     //
@@ -322,7 +395,8 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#797D80", ansiBrightRed: "#FF6F6A",
         ansiBrightGreen: "#5FD97A", ansiBrightYellow: "#F0C46A",
         ansiBrightBlue: "#93A9FF", ansiBrightMagenta: "#B9A9FF",
-        ansiBrightCyan: "#6FD3E0", ansiBrightWhite: "#F1F5FA"
+        ansiBrightCyan: "#6FD3E0", ansiBrightWhite: "#F1F5FA",
+        selectionText: "#BDC1C5", identifier: "#B7BBBF"
     )
 
     /// Windshield Light — the daylight half of the signature pair, same thesis as
@@ -364,7 +438,8 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#71757A", ansiBrightRed: "#9C241E",
         ansiBrightGreen: "#145E27", ansiBrightYellow: "#654807",
         ansiBrightBlue: "#1F35A0", ansiBrightMagenta: "#3325B0",
-        ansiBrightCyan: "#0B5764", ansiBrightWhite: "#3B3E41"
+        ansiBrightCyan: "#0B5764", ansiBrightWhite: "#3B3E41",
+        selectionText: "#3B3E41", identifier: "#3F4346"
     )
 
     /// Claude — a warm-charcoal theme built around Anthropic's brand clay
@@ -409,7 +484,8 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#8C837A", ansiBrightRed: "#FF6F6A",
         ansiBrightGreen: "#5FD97A", ansiBrightYellow: "#E8C07D",
         ansiBrightBlue: "#9DC0D9", ansiBrightMagenta: "#D6A6DA",
-        ansiBrightCyan: "#8FD0CB", ansiBrightWhite: "#F0EBE3"
+        ansiBrightCyan: "#8FD0CB", ansiBrightWhite: "#F0EBE3",
+        selectionText: "#E6E1DA", identifier: "#DBD5CD"
     )
 
     /// Claude Code — the desktop app's dark palette from its usage/chat UI: a warm
@@ -449,7 +525,8 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#7C756A", ansiBrightRed: "#FF6F6A",
         ansiBrightGreen: "#5FD97A", ansiBrightYellow: "#E8C07D",
         ansiBrightBlue: "#9BA7E8", ansiBrightMagenta: "#C4B0EC",
-        ansiBrightCyan: "#8FD0CB", ansiBrightWhite: "#FAF9F5"
+        ansiBrightCyan: "#8FD0CB", ansiBrightWhite: "#FAF9F5",
+        selectionText: "#F2EFE7", identifier: "#D8DBE7"
     )
 
     // MARK: - Modern
@@ -461,6 +538,8 @@ public enum BuiltInThemes {
 
     /// Carbon — an ultra-minimal near-black (pure neutral, no colour cast) with a single
     /// electric-blue accent. The flat "Vercel / Linear" modern look.
+    /// Terminal colours: designed for this theme, from its own syntax hues where it has one near each ANSI hue
+    /// (red within 15 degrees, the rest within 25, each colour used once), every colour at least 4.5:1 on its background.
     public static let carbon = ThemePalette(
         name: "Carbon", appearance: "dark",
         background: "#0C0C0D", foreground: "#ECECEE", cursor: "#3B9EFF", selection: "#26262A",
@@ -469,9 +548,16 @@ public enum BuiltInThemes {
         sidebarBackground: "#0A0A0B", sidebarText: "#9E9EA4", tabBarBackground: "#08080A",
         tabText: "#6E6E75", tabActiveText: "#F5F5F6", border: "#1D1D20",
         gutterBackground: "#0C0C0D", gutterText: "#3A3A3E", gutterActiveText: "#9E9EA4",
-        statusBackground: "#08080A", statusText: "#9E9EA4")
+        statusBackground: "#08080A", statusText: "#9E9EA4",
+        ansiBlack: "#26262A", ansiRed: "#E77777", ansiGreen: "#7EE787", ansiYellow: "#E7D477", ansiBlue: "#58A6FF", ansiMagenta: "#E777E7",
+        ansiCyan: "#77E7E7", ansiWhite: "#9E9EA4", ansiBrightBlack: "#6E6E75", ansiBrightRed: "#F1A0A0", ansiBrightGreen: "#A6F2AD",
+        ansiBrightYellow: "#F1E4A0", ansiBrightBlue: "#8BC1FF", ansiBrightMagenta: "#F1A0F1", ansiBrightCyan: "#A0F1F1",
+        ansiBrightWhite: "#F5F5F6", selectionText: "#ECECEE", identifier: "#D4E5F4"
+    )
 
     /// Synthwave — neon magenta + cyan on a deep indigo; the retro-modern glow.
+    /// Terminal colours: designed for this theme, from its own syntax hues where it has one near each ANSI hue
+    /// (red within 15 degrees, the rest within 25, each colour used once), every colour at least 4.5:1 on its background.
     public static let synthwave = ThemePalette(
         name: "Synthwave", appearance: "dark",
         background: "#191228", foreground: "#E5DBF0", cursor: "#FF6AD5", selection: "#38294F",
@@ -480,9 +566,16 @@ public enum BuiltInThemes {
         sidebarBackground: "#150F22", sidebarText: "#B4A6C8", tabBarBackground: "#110C1B",
         tabText: "#7A6B94", tabActiveText: "#F5EDFF", border: "#2E2442",
         gutterBackground: "#191228", gutterText: "#463A5E", gutterActiveText: "#B4A6C8",
-        statusBackground: "#110C1B", statusText: "#B4A6C8")
+        statusBackground: "#110C1B", statusText: "#B4A6C8",
+        ansiBlack: "#38294F", ansiRed: "#F97E72", ansiGreen: "#80E980", ansiYellow: "#FDE68A", ansiBlue: "#80A3E9", ansiMagenta: "#FF6AD5",
+        ansiCyan: "#36E0E0", ansiWhite: "#B4A6C8", ansiBrightBlack: "#7A6B94", ansiBrightRed: "#FDA9A1", ansiBrightGreen: "#A9F3A9",
+        ansiBrightYellow: "#FFF1BB", ansiBrightBlue: "#A9C2F3", ansiBrightMagenta: "#FF9DE3", ansiBrightCyan: "#5EEBEB",
+        ansiBrightWhite: "#F5EDFF", selectionText: "#E5DBF0", identifier: "#ABDDEB"
+    )
 
     /// Frost — a cool, clean modern light theme: soft blue-white surfaces, crisp blue accent.
+    /// Terminal colours: designed for this theme, from its own syntax hues where it has one near each ANSI hue
+    /// (red within 15 degrees, the rest within 25, each colour used once), every colour at least 4.5:1 on its background.
     public static let frost = ThemePalette(
         name: "Frost", appearance: "light",
         background: "#FBFCFE", foreground: "#2A2E37", cursor: "#3B82F6", selection: "#DBE7FB",
@@ -491,7 +584,12 @@ public enum BuiltInThemes {
         sidebarBackground: "#F1F4F9", sidebarText: "#4A505C", tabBarBackground: "#E9EEF5",
         tabText: "#8A93A3", tabActiveText: "#1A1E27", border: "#DBE1EA",
         gutterBackground: "#FBFCFE", gutterText: "#AEB6C4", gutterActiveText: "#4A505C",
-        statusBackground: "#E9EEF5", statusText: "#4A505C")
+        statusBackground: "#E9EEF5", statusText: "#4A505C",
+        ansiBlack: "#2A2E37", ansiRed: "#DB3333", ansiGreen: "#188518", ansiYellow: "#857418", ansiBlue: "#2563EB", ansiMagenta: "#C623C6",
+        ansiCyan: "#0E7490", ansiWhite: "#8A93A3", ansiBrightBlack: "#8A93A3", ansiBrightRed: "#C91D1D", ansiBrightGreen: "#0F650F",
+        ansiBrightYellow: "#65580F", ansiBrightBlue: "#0E4DDA", ansiBrightMagenta: "#A818A8", ansiBrightCyan: "#07586E",
+        ansiBrightWhite: "#DBE7FB", selectionText: "#2A2E37", identifier: "#214555"
+    )
 
     // MARK: - Ports
     //
@@ -520,7 +618,9 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#908CAA", ansiBrightRed: "#EB6F92",
         ansiBrightGreen: "#31748F", ansiBrightYellow: "#F6C177",
         ansiBrightBlue: "#9CCFD8", ansiBrightMagenta: "#C4A7E7",
-        ansiBrightCyan: "#EBBCBA", ansiBrightWhite: "#E0DEF4")
+        ansiBrightCyan: "#EBBCBA", ansiBrightWhite: "#E0DEF4",
+        selectionText: "#E0DEF4", identifier: "#C9D9EB"
+    )
 
     /// Rosé Pine Dawn — the light variant.
     ///
@@ -542,7 +642,9 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#797593", ansiBrightRed: "#B4637A",
         ansiBrightGreen: "#286983", ansiBrightYellow: "#EA9D34",
         ansiBrightBlue: "#56949F", ansiBrightMagenta: "#907AA9",
-        ansiBrightCyan: "#D7827E", ansiBrightWhite: "#575279")
+        ansiBrightCyan: "#D7827E", ansiBrightWhite: "#575279",
+        selectionText: "#575279", identifier: "#576886"
+    )
 
     /// Kanagawa Wave — inspired by Katsushika Hokusai's *The Great Wave*.
     ///
@@ -565,7 +667,9 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#727169", ansiBrightRed: "#E82424",
         ansiBrightGreen: "#98BB6C", ansiBrightYellow: "#E6C384",
         ansiBrightBlue: "#7FB4CA", ansiBrightMagenta: "#938AA9",
-        ansiBrightCyan: "#7AA89F", ansiBrightWhite: "#DCD7BA")
+        ansiBrightCyan: "#7AA89F", ansiBrightWhite: "#DCD7BA",
+        selectionText: "#DCD7BA", identifier: "#DFD0A8"
+    )
 
     /// Everforest Dark (medium) — a green-based, low-contrast forest palette.
     ///
@@ -587,7 +691,9 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#859289", ansiBrightRed: "#E67E80",
         ansiBrightGreen: "#A7C080", ansiBrightYellow: "#DBBC7F",
         ansiBrightBlue: "#7FBBB3", ansiBrightMagenta: "#D699B6",
-        ansiBrightCyan: "#83C092", ansiBrightWhite: "#D3C6AA")
+        ansiBrightCyan: "#83C092", ansiBrightWhite: "#D3C6AA",
+        selectionText: "#D3C6AA", identifier: "#B7C2AD"
+    )
 
     /// Everforest Light (medium) — the light counterpart to ``everforestDark``.
     public static let everforestLight = ThemePalette(
@@ -605,7 +711,9 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#5C6A72", ansiBrightRed: "#F85552",
         ansiBrightGreen: "#8DA101", ansiBrightYellow: "#DFA000",
         ansiBrightBlue: "#3A94C5", ansiBrightMagenta: "#DF69BA",
-        ansiBrightCyan: "#35A77C", ansiBrightWhite: "#F4F0D9")
+        ansiBrightCyan: "#35A77C", ansiBrightWhite: "#F4F0D9",
+        selectionText: "#5C6A72", identifier: "#51788E"
+    )
 
     /// Night Owl — Sarah Drasner's theme "for the night owls out there."
     ///
@@ -626,7 +734,9 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#575656", ansiBrightRed: "#EF5350",
         ansiBrightGreen: "#22DA6E", ansiBrightYellow: "#FFEB95",
         ansiBrightBlue: "#82AAFF", ansiBrightMagenta: "#C792EA",
-        ansiBrightCyan: "#7FDBCA", ansiBrightWhite: "#FFFFFF")
+        ansiBrightCyan: "#7FDBCA", ansiBrightWhite: "#FFFFFF",
+        selectionText: "#D6DEEB", identifier: "#C5E478"
+    )
 
     /// Catppuccin Latte — the light counterpart to ``catppuccin`` (Mocha). Palette from
     /// `catppuccin/palette`, roles and ANSI from the Catppuccin VS Code extension (brights 9–14
@@ -647,7 +757,9 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#6C6F85", ansiBrightRed: "#DE293E",
         ansiBrightGreen: "#49AF3D", ansiBrightYellow: "#EEA02D",
         ansiBrightBlue: "#456EFF", ansiBrightMagenta: "#FE85D8",
-        ansiBrightCyan: "#2D9FA8", ansiBrightWhite: "#BCC0CC")
+        ansiBrightCyan: "#2D9FA8", ansiBrightWhite: "#BCC0CC",
+        selectionText: "#4C4F69", identifier: "#3A6579"
+    )
 
     /// GitHub Light — GitHub's light web/editor scheme, and the counterpart to
     /// ``githubDark``.
@@ -670,7 +782,9 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#57606A", ansiBrightRed: "#A40E26",
         ansiBrightGreen: "#1A7F37", ansiBrightYellow: "#633C01",
         ansiBrightBlue: "#218BFF", ansiBrightMagenta: "#A475F9",
-        ansiBrightCyan: "#3192AA", ansiBrightWhite: "#8C959F")
+        ansiBrightCyan: "#3192AA", ansiBrightWhite: "#8C959F",
+        selectionText: "#1F2328", identifier: "#953800"
+    )
 
     /// Notion — the warm off-white document look: white page, `#F7F6F3` sidebar,
     /// `#37352F` ink.
@@ -694,7 +808,9 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#5F5E5A", ansiBrightRed: "#A32F27",
         ansiBrightGreen: "#2F5C43", ansiBrightYellow: "#6E4D11",
         ansiBrightBlue: "#245973", ansiBrightMagenta: "#6A428A",
-        ansiBrightCyan: "#22615C", ansiBrightWhite: "#37352F")
+        ansiBrightCyan: "#22615C", ansiBrightWhite: "#37352F",
+        selectionText: "#37352F", identifier: "#344850"
+    )
 
     /// Sidewatch — the default, and the app's signature look: a `#191919` page with `#202020`
     /// chrome, warm enough not to read as pure black and quiet enough that syntax colour is the
@@ -715,7 +831,9 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#8A8D8F", ansiBrightRed: "#FF9088",
         ansiBrightGreen: "#6BC4B3", ansiBrightYellow: "#FFE785",
         ansiBrightBlue: "#6FB0D8", ansiBrightMagenta: "#B48AE3",
-        ansiBrightCyan: "#7BD3D1", ansiBrightWhite: "#EDEDED")
+        ansiBrightCyan: "#7BD3D1", ansiBrightWhite: "#EDEDED",
+        selectionText: "#D4D4D4", identifier: "#A9C1D1"
+    )
 
     /// Graphite — near-black neutral greys with a cool, restrained accent set. The
     /// chrome is pure `#000000` against a `#0A0A0A` page, so the panes read as one
@@ -735,7 +853,9 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#7B7B86", ansiBrightRed: "#FCA5A5",
         ansiBrightGreen: "#A7E8C1", ansiBrightYellow: "#FCD34D",
         ansiBrightBlue: "#93C5FD", ansiBrightMagenta: "#C4B5FD",
-        ansiBrightCyan: "#99F6E4", ansiBrightWhite: "#FAFAFA")
+        ansiBrightCyan: "#99F6E4", ansiBrightWhite: "#FAFAFA",
+        selectionText: "#E4E4E7", identifier: "#B7E6E1"
+    )
 
     /// Porcelain — the cool-neutral light counterpart to ``graphite``: white page,
     /// `#FAFAFA` chrome, and saturated-but-dark syntax that holds up in daylight.
@@ -758,12 +878,16 @@ public enum BuiltInThemes {
         ansiBrightBlack: "#3F3F46", ansiBrightRed: "#991B1B",
         ansiBrightGreen: "#166534", ansiBrightYellow: "#854D0E",
         ansiBrightBlue: "#1E40AF", ansiBrightMagenta: "#6D28D9",
-        ansiBrightCyan: "#115E59", ansiBrightWhite: "#18181B")
+        ansiBrightCyan: "#115E59", ansiBrightWhite: "#18181B",
+        selectionText: "#18181B", identifier: "#153737"
+    )
 
     /// Every built-in palette, in theme-picker display order (not alphabetical):
     /// the signature pair, then darks, then lights.
 
     /// Redline — danger-red neon on warm black. Full send.
+    /// Terminal colours: designed for this theme, from its own syntax hues where it has one near each ANSI hue
+    /// (red within 15 degrees, the rest within 25, each colour used once), every colour at least 4.5:1 on its background.
     public static let redline = ThemePalette(
         name: "Redline",
         appearance: "dark",
@@ -790,11 +914,17 @@ public enum BuiltInThemes {
         gutterText: "#4A2E36",
         gutterActiveText: "#A87886",
         statusBackground: "#0A0507",
-        statusText: "#B08A94"
+        statusText: "#B08A94",
+        ansiBlack: "#3A0E18", ansiRed: "#FF3B5C", ansiGreen: "#60E360", ansiYellow: "#FFC24D", ansiBlue: "#608CE3", ansiMagenta: "#E360E3",
+        ansiCyan: "#5FD8D0", ansiWhite: "#B08A94", ansiBrightBlack: "#77525B", ansiBrightRed: "#FF6E86", ansiBrightGreen: "#88EE88",
+        ansiBrightYellow: "#FFD380", ansiBrightBlue: "#88AAEE", ansiBrightMagenta: "#EE88EE", ansiBrightCyan: "#84E6DF",
+        ansiBrightWhite: "#FBF2F3", selectionText: "#F2E9EA", identifier: "#F6C4D4"
     )
 
     /// Blackout — OLED black with acid-lime signal. Near-total darkness for the
     /// chrome so the code (and the diff tint) is the only light in the room.
+    /// Terminal colours: designed for this theme, from its own syntax hues where it has one near each ANSI hue
+    /// (red within 15 degrees, the rest within 25, each colour used once), every colour at least 4.5:1 on its background.
     public static let blackout = ThemePalette(
         name: "Blackout",
         appearance: "dark",
@@ -821,10 +951,16 @@ public enum BuiltInThemes {
         gutterText: "#383842",
         gutterActiveText: "#8A8A98",
         statusBackground: "#08080C",
-        statusText: "#9A9AA8"
+        statusText: "#9A9AA8",
+        ansiBlack: "#22320A", ansiRed: "#E46969", ansiGreen: "#69E469", ansiYellow: "#FFB86B", ansiBlue: "#69D2FF", ansiMagenta: "#E469E4",
+        ansiCyan: "#5FE8D8", ansiWhite: "#9A9AA8", ansiBrightBlack: "#5A5A68", ansiBrightRed: "#EF9191", ansiBrightGreen: "#91EF91",
+        ansiBrightYellow: "#FFD09E", ansiBrightBlue: "#9CE1FF", ansiBrightMagenta: "#EF91EF", ansiBrightCyan: "#88F2E5",
+        ansiBrightWhite: "#F5F5F8", selectionText: "#E8E8EC", identifier: "#DDCEF2"
     )
 
     /// Ultraviolet — deep violet dusk with magenta neon. The edgy one.
+    /// Terminal colours: designed for this theme, from its own syntax hues where it has one near each ANSI hue
+    /// (red within 15 degrees, the rest within 25, each colour used once), every colour at least 4.5:1 on its background.
     public static let ultraviolet = ThemePalette(
         name: "Ultraviolet",
         appearance: "dark",
@@ -851,7 +987,11 @@ public enum BuiltInThemes {
         gutterText: "#443364",
         gutterActiveText: "#8F7BB0",
         statusBackground: "#0A0412",
-        statusText: "#A390C2"
+        statusText: "#A390C2",
+        ansiBlack: "#2C1450", ansiRed: "#E98383", ansiGreen: "#83E983", ansiYellow: "#FFCA7A", ansiBlue: "#61C8FF", ansiMagenta: "#FF2EC8",
+        ansiCyan: "#64E8E0", ansiWhite: "#A390C2", ansiBrightBlack: "#67538D", ansiBrightRed: "#F3ACAC", ansiBrightGreen: "#ACF3AC",
+        ansiBrightYellow: "#FFDEAD", ansiBrightBlue: "#94DAFF", ansiBrightMagenta: "#FF61D5", ansiBrightCyan: "#8DF2EC",
+        ansiBrightWhite: "#F5EEFC", selectionText: "#E9E0F7", identifier: "#BCD8FA"
     )
 
     /// Meridian — cool charcoal with a teal signal and pastel-electric syntax: the
@@ -904,7 +1044,8 @@ public enum BuiltInThemes {
         ansiBrightBlue: "#93C5FD",
         ansiBrightMagenta: "#D8B4FE",
         ansiBrightCyan: "#5EEAD4",
-        ansiBrightWhite: "#F8FAFC"
+        ansiBrightWhite: "#F8FAFC",
+        selectionText: "#E6EAF2", identifier: "#B9EAE8"
     )
 
     /// Osaka Jade — ported from Omarchy (MIT), chrome derived from its ANSI set. Syntax from the theme's
@@ -923,7 +1064,9 @@ public enum BuiltInThemes {
         ansiBlack: "#111C18", ansiRed: "#FF5345", ansiGreen: "#549E6A", ansiYellow: "#459451",
         ansiBlue: "#509475", ansiMagenta: "#D2689C", ansiCyan: "#2DD5B7", ansiWhite: "#C1C497",
         ansiBrightBlack: "#53685B", ansiBrightRed: "#DB9F9C", ansiBrightGreen: "#63B07A", ansiBrightYellow: "#E5C736",
-        ansiBrightBlue: "#ACD4CF", ansiBrightMagenta: "#75BBB3", ansiBrightCyan: "#8CD3CB", ansiBrightWhite: "#F7E8B2")
+        ansiBrightBlue: "#ACD4CF", ansiBrightMagenta: "#75BBB3", ansiBrightCyan: "#8CD3CB", ansiBrightWhite: "#F7E8B2",
+        selectionText: "#C1C497", identifier: "#90CAA2"
+    )
 
     /// Miasma — ported from Omarchy (MIT), chrome derived from its ANSI set. Syntax from miasma.vim, the
     /// theme's origin: olive functions and types, moss keywords, bark strings, straw names. Hues kept,
@@ -940,7 +1083,9 @@ public enum BuiltInThemes {
         ansiBlack: "#222222", ansiRed: "#685742", ansiGreen: "#5F875F", ansiYellow: "#B36D43",
         ansiBlue: "#78824B", ansiMagenta: "#BB7744", ansiCyan: "#C9A554", ansiWhite: "#C2C2B0",
         ansiBrightBlack: "#666666", ansiBrightRed: "#685742", ansiBrightGreen: "#5F875F", ansiBrightYellow: "#B36D43",
-        ansiBrightBlue: "#78824B", ansiBrightMagenta: "#BB7744", ansiBrightCyan: "#C9A554", ansiBrightWhite: "#C2C2B0")
+        ansiBrightBlue: "#78824B", ansiBrightMagenta: "#BB7744", ansiBrightCyan: "#C9A554", ansiBrightWhite: "#C2C2B0",
+        selectionText: "#C2C2B0", identifier: "#D7C483"
+    )
 
     /// Retro 82 — ported from Omarchy (MIT); the terminal's 16 colours are its colors.toml through Omarchy's
     /// own terminal template. The syntax stays a ramp in the theme's single key (the accent for
@@ -957,7 +1102,9 @@ public enum BuiltInThemes {
         ansiBlack: "#05182E", ansiRed: "#F85525", ansiGreen: "#028391", ansiYellow: "#E97B3C",
         ansiBlue: "#3F8F8A", ansiMagenta: "#3F8F8A", ansiCyan: "#8CBFB8", ansiWhite: "#F6DCAC",
         ansiBrightBlack: "#2A6B78", ansiBrightRed: "#F85525", ansiBrightGreen: "#028391", ansiBrightYellow: "#E97B3C",
-        ansiBrightBlue: "#FAA968", ansiBrightMagenta: "#3F8F8A", ansiBrightCyan: "#8CBFB8", ansiBrightWhite: "#F6DCAC")
+        ansiBrightBlue: "#FAA968", ansiBrightMagenta: "#3F8F8A", ansiBrightCyan: "#8CBFB8", ansiBrightWhite: "#F6DCAC",
+        selectionText: "#F6DCAC", identifier: "#ECD4A7"
+    )
 
     /// Hackerman — ported from Omarchy (MIT); the terminal's 16 colours are its colors.toml through Omarchy's
     /// own terminal template. The syntax stays a ramp in the theme's single key (the accent for
@@ -974,7 +1121,9 @@ public enum BuiltInThemes {
         ansiBlack: "#0B0C16", ansiRed: "#50F872", ansiGreen: "#4FE88F", ansiYellow: "#50F7D4",
         ansiBlue: "#829DD4", ansiMagenta: "#86A7DF", ansiCyan: "#7CF8F7", ansiWhite: "#DDF7FF",
         ansiBrightBlack: "#2D3450", ansiBrightRed: "#85FF9D", ansiBrightGreen: "#9CF7C2", ansiBrightYellow: "#A4FFEC",
-        ansiBrightBlue: "#C4D2ED", ansiBrightMagenta: "#CDDBF4", ansiBrightCyan: "#D1FFFE", ansiBrightWhite: "#DDF7FF")
+        ansiBrightBlue: "#C4D2ED", ansiBrightMagenta: "#CDDBF4", ansiBrightCyan: "#D1FFFE", ansiBrightWhite: "#DDF7FF",
+        selectionText: "#DDF7FF", identifier: "#D5EEF6"
+    )
 
     /// Matte Black — ported from Omarchy (MIT), chrome derived from its ANSI set. Syntax from
     /// matteblack.nvim, by the theme's author: green keywords, crimson functions, amber names, gold types
@@ -991,7 +1140,9 @@ public enum BuiltInThemes {
         ansiBlack: "#121212", ansiRed: "#D35F5F", ansiGreen: "#FFC107", ansiYellow: "#B91C1C",
         ansiBlue: "#E68E0D", ansiMagenta: "#D35F5F", ansiCyan: "#BEBEBE", ansiWhite: "#BEBEBE",
         ansiBrightBlack: "#333333", ansiBrightRed: "#B91C1C", ansiBrightGreen: "#FFC107", ansiBrightYellow: "#B90A0A",
-        ansiBrightBlue: "#F59E0B", ansiBrightMagenta: "#B91C1C", ansiBrightCyan: "#EAEAEA", ansiBrightWhite: "#BEBEBE")
+        ansiBrightBlue: "#F59E0B", ansiBrightMagenta: "#B91C1C", ansiBrightCyan: "#EAEAEA", ansiBrightWhite: "#BEBEBE",
+        selectionText: "#BEBEBE", identifier: "#D97706"
+    )
 
     /// Flexoki Light — ported from Omarchy (MIT), syntax and chrome derived from its ANSI set.
     public static let flexokiLight = ThemePalette(
@@ -1006,7 +1157,9 @@ public enum BuiltInThemes {
         ansiBlack: "#100F0F", ansiRed: "#100F0F", ansiGreen: "#100F0F", ansiYellow: "#100F0F",
         ansiBlue: "#100F0F", ansiMagenta: "#100F0F", ansiCyan: "#100F0F", ansiWhite: "#100F0F",
         ansiBrightBlack: "#100F0F", ansiBrightRed: "#100F0F", ansiBrightGreen: "#100F0F", ansiBrightYellow: "#100F0F",
-        ansiBrightBlue: "#100F0F", ansiBrightMagenta: "#100F0F", ansiBrightCyan: "#100F0F", ansiBrightWhite: "#100F0F")
+        ansiBrightBlue: "#100F0F", ansiBrightMagenta: "#100F0F", ansiBrightCyan: "#100F0F", ansiBrightWhite: "#100F0F",
+        selectionText: "#100F0F", identifier: "#1A1818"
+    )
 
     /// Solitude — ported from Omarchy (MIT), chrome derived from its ANSI set. Syntax from ashen.nvim, its
     /// paired editor theme: greys for names, types and functions, ember-red keywords and strings, teal
@@ -1023,7 +1176,9 @@ public enum BuiltInThemes {
         ansiBlack: "#101315", ansiRed: "#565D60", ansiGreen: "#9FA5A9", ansiYellow: "#D9DBDC",
         ansiBlue: "#798186", ansiMagenta: "#AEAEAE", ansiCyan: "#707070", ansiWhite: "#CACCCC",
         ansiBrightBlack: "#4B4E55", ansiBrightRed: "#DE6145", ansiBrightGreen: "#343D41", ansiBrightYellow: "#C9C2B4",
-        ansiBrightBlue: "#5D6367", ansiBrightMagenta: "#9A9A9A", ansiBrightCyan: "#707070", ansiBrightWhite: "#A5AEB4")
+        ansiBrightBlue: "#5D6367", ansiBrightMagenta: "#9A9A9A", ansiBrightCyan: "#707070", ansiBrightWhite: "#A5AEB4",
+        selectionText: "#CACCCC", identifier: "#B4B4B4"
+    )
 
     /// Last Horizon — ported from Omarchy (MIT), chrome derived from its ANSI set. Syntax from the theme's
     /// own palette (Omarchy's colors.toml) in the roles the other ANSI-derived ports use: sea-glass
@@ -1041,7 +1196,9 @@ public enum BuiltInThemes {
         ansiBlack: "#0C0B0C", ansiRed: "#C38B7B", ansiGreen: "#87A9B0", ansiYellow: "#6B5E73",
         ansiBlue: "#B59790", ansiMagenta: "#C4D8E2", ansiCyan: "#A5A0B6", ansiWhite: "#FAFCFB",
         ansiBrightBlack: "#584E51", ansiBrightRed: "#C38B7B", ansiBrightGreen: "#87A9B0", ansiBrightYellow: "#6B5E73",
-        ansiBrightBlue: "#B59790", ansiBrightMagenta: "#C4D8E2", ansiBrightCyan: "#A5A0B6", ansiBrightWhite: "#E2DDDC")
+        ansiBrightBlue: "#B59790", ansiBrightMagenta: "#C4D8E2", ansiBrightCyan: "#A5A0B6", ansiBrightWhite: "#E2DDDC",
+        selectionText: "#FAFCFB", identifier: "#D3CFD6"
+    )
 
     /// Ethereal — ported from Omarchy (MIT), syntax and chrome derived from its ANSI set.
     public static let ethereal = ThemePalette(
@@ -1056,7 +1213,9 @@ public enum BuiltInThemes {
         ansiBlack: "#3C486D", ansiRed: "#ED5B5A", ansiGreen: "#92A593", ansiYellow: "#E9BB4F",
         ansiBlue: "#7D82D9", ansiMagenta: "#C89DC1", ansiCyan: "#A3BFD1", ansiWhite: "#F99957",
         ansiBrightBlack: "#6D7DB6", ansiBrightRed: "#FAAAA9", ansiBrightGreen: "#C4CFC4", ansiBrightYellow: "#F7DC9C",
-        ansiBrightBlue: "#C2C4F0", ansiBrightMagenta: "#EAD7E7", ansiBrightCyan: "#DFEAF0", ansiBrightWhite: "#FFCEAD")
+        ansiBrightBlue: "#C2C4F0", ansiBrightMagenta: "#EAD7E7", ansiBrightCyan: "#DFEAF0", ansiBrightWhite: "#FFCEAD",
+        selectionText: "#FFCEAD", identifier: "#F4D7C3"
+    )
 
     /// Beacon — a Sidewatch original. Cool slate ground, one warm gold accent.
     ///
@@ -1078,7 +1237,9 @@ public enum BuiltInThemes {
         ansiBlack: "#1B1F25", ansiRed: "#E06C6C", ansiGreen: "#8FBF87", ansiYellow: "#DCBF4B",
         ansiBlue: "#7FA9E8", ansiMagenta: "#C7A2E8", ansiCyan: "#6FC2C7", ansiWhite: "#C6CBD3",
         ansiBrightBlack: "#5A616B", ansiBrightRed: "#F08A8A", ansiBrightGreen: "#A8D4A0", ansiBrightYellow: "#EBD277",
-        ansiBrightBlue: "#9CBFF0", ansiBrightMagenta: "#D8BCF0", ansiBrightCyan: "#8FD4D8", ansiBrightWhite: "#EDF0F4")
+        ansiBrightBlue: "#9CBFF0", ansiBrightMagenta: "#D8BCF0", ansiBrightCyan: "#8FD4D8", ansiBrightWhite: "#EDF0F4",
+        selectionText: "#D3D7DE", identifier: "#C2D5DB"
+    )
 
     /// VS Code Dark+ — Microsoft's classic default dark theme (MIT, microsoft/vscode,
     /// `extensions/theme-defaults`). Generated by running this package's own
@@ -1088,6 +1249,7 @@ public enum BuiltInThemes {
     /// `selection` and `border` are VS Code's built-in defaults (`#264F78`, and `widget.border`
     /// `#303031`) since those files leave them unset; the importer's border would equal the
     /// background and draw cards and dividers invisibly.
+    /// Terminal colours: VS Code's terminal defaults for dark themes (microsoft/vscode, terminalColorRegistry.ts).
     public static let vscodeDarkPlus = ThemePalette(
         name: "VS Code Dark+",
         appearance: "dark",
@@ -1114,12 +1276,18 @@ public enum BuiltInThemes {
         gutterText: "#858585",
         gutterActiveText: "#D4D4D4",
         statusBackground: "#1E1E1E",
-        statusText: "#D4D4D4"
+        statusText: "#D4D4D4",
+        ansiBlack: "#000000", ansiRed: "#CD3131", ansiGreen: "#0DBC79", ansiYellow: "#E5E510", ansiBlue: "#2472C8", ansiMagenta: "#BC3FBC",
+        ansiCyan: "#11A8CD", ansiWhite: "#E5E5E5", ansiBrightBlack: "#666666", ansiBrightRed: "#F14C4C", ansiBrightGreen: "#23D18B",
+        ansiBrightYellow: "#F5F543", ansiBrightBlue: "#3B8EEA", ansiBrightMagenta: "#D670D6", ansiBrightCyan: "#29B8DB",
+        ansiBrightWhite: "#E5E5E5", selectionText: "#D4D4D4", identifier: "#9CDCFE"
     )
 
     /// Foundry — orange keywords, blue functions, green strings, teal numbers and purple fields
     /// over a near-black editor, with type names left in the text colour; the chrome a step
     /// lighter than the editor, as a desktop IDE's tool windows are.
+    /// Terminal colours: designed for this theme, from its own syntax hues where it has one near each ANSI hue
+    /// (red within 15 degrees, the rest within 25, each colour used once), every colour at least 4.5:1 on its background.
     public static let foundry = ThemePalette(
         name: "Foundry",
         appearance: "dark",
@@ -1146,11 +1314,17 @@ public enum BuiltInThemes {
         gutterText: "#4B5059",
         gutterActiveText: "#A1A3AB",
         statusBackground: "#2B2D30",
-        statusText: "#9DA0A8"
+        statusText: "#9DA0A8",
+        ansiBlack: "#214283", ansiRed: "#D46464", ansiGreen: "#6AAB73", ansiYellow: "#D2BF5E", ansiBlue: "#4A83F2", ansiMagenta: "#C77DBB",
+        ansiCyan: "#2AACB8", ansiWhite: "#DFE1E5", ansiBrightBlack: "#7A7E85", ansiBrightRed: "#E38888", ansiBrightGreen: "#86C28E",
+        ansiBrightYellow: "#E1D182", ansiBrightBlue: "#76A2F9", ansiBrightMagenta: "#DA9DD0", ansiBrightCyan: "#3BCCDA",
+        ansiBrightWhite: "#DFE1E5", selectionText: "#BCBEC4", identifier: "#C0A8C1"
     )
 
     /// Foundry Light — the light half of ``foundry``: blue keywords, green strings, teal functions
     /// and purple fields on white, the side panels a pale grey.
+    /// Terminal colours: designed for this theme, from its own syntax hues where it has one near each ANSI hue
+    /// (red within 15 degrees, the rest within 25, each colour used once), every colour at least 4.5:1 on its background.
     public static let foundryLight = ThemePalette(
         name: "Foundry Light",
         appearance: "light",
@@ -1177,7 +1351,11 @@ public enum BuiltInThemes {
         gutterText: "#AEB3C2",
         gutterActiveText: "#767A8A",
         statusBackground: "#F7F8FA",
-        statusText: "#6C707E"
+        statusText: "#6C707E",
+        ansiBlack: "#080808", ansiRed: "#921A1A", ansiGreen: "#067D17", ansiYellow: "#877518", ansiBlue: "#2E6FEF", ansiMagenta: "#871094",
+        ansiCyan: "#00627A", ansiWhite: "#8C8C8C", ansiBrightBlack: "#8C8C8C", ansiBrightRed: "#731111", ansiBrightGreen: "#02580E",
+        ansiBrightYellow: "#67590F", ansiBrightBlue: "#0B56E9", ansiBrightMagenta: "#680972", ansiBrightCyan: "#004151",
+        ansiBrightWhite: "#A6D2FF", selectionText: "#080808", identifier: "#320B37"
     )
 
     /// VS Code Light+ — the light half of the same set, from `light_plus.json` merged onto
@@ -1186,6 +1364,7 @@ public enum BuiltInThemes {
     /// `selection` is `#ADD6FF`, VS Code's built-in light default (the importer's dark fallback
     /// hides text on white); `border` is `widget.border` as above. Neither theme sets any
     /// `terminal.ansi*` colour, so the ANSI roles stay nil — faithful, not an omission.
+    /// Terminal colours: VS Code's terminal defaults for light themes (microsoft/vscode, terminalColorRegistry.ts).
     public static let vscodeLightPlus = ThemePalette(
         name: "VS Code Light+",
         appearance: "light",
@@ -1212,7 +1391,11 @@ public enum BuiltInThemes {
         gutterText: "#858585",
         gutterActiveText: "#000000",
         statusBackground: "#FFFFFF",
-        statusText: "#000000"
+        statusText: "#000000",
+        ansiBlack: "#000000", ansiRed: "#CD3131", ansiGreen: "#107C10", ansiYellow: "#949800", ansiBlue: "#0451A5", ansiMagenta: "#BC05BC",
+        ansiCyan: "#0598BC", ansiWhite: "#555555", ansiBrightBlack: "#666666", ansiBrightRed: "#F14C4C", ansiBrightGreen: "#14CE14",
+        ansiBrightYellow: "#B5BA00", ansiBrightBlue: "#3B8EEA", ansiBrightMagenta: "#D670D6", ansiBrightCyan: "#29B8DB",
+        ansiBrightWhite: "#A5A5A5", selectionText: "#000000", identifier: "#001080"
     )
 
     // MARK: - Sidewatch originals — pastel pairs and a modern dark
@@ -1251,7 +1434,8 @@ public enum BuiltInThemes {
         ansiBlack: "#241D2B", ansiRed: "#F49CB6", ansiGreen: "#A8E0BB", ansiYellow: "#F9D69B",
         ansiBlue: "#A6C8F0", ansiMagenta: "#D8B4FE", ansiCyan: "#9AD9E8", ansiWhite: "#E6DCEC",
         ansiBrightBlack: "#5C5066", ansiBrightRed: "#FFB7CB", ansiBrightGreen: "#C2F0D2", ansiBrightYellow: "#FFE6B8",
-        ansiBrightBlue: "#C0D9FA", ansiBrightMagenta: "#E9CFFF", ansiBrightCyan: "#BDEAF4", ansiBrightWhite: "#FBF5FF"
+        ansiBrightBlue: "#C0D9FA", ansiBrightMagenta: "#E9CFFF", ansiBrightCyan: "#BDEAF4", ansiBrightWhite: "#FBF5FF",
+        selectionText: "#EFE6F3", identifier: "#E2D6F7"
     )
 
     /// Sakura — the warm pastel dark. Cocoa-rose ground, blossom-pink accent, and warm
@@ -1287,7 +1471,8 @@ public enum BuiltInThemes {
         ansiBlack: "#2A1F24", ansiRed: "#FF9DB5", ansiGreen: "#B7E2B1", ansiYellow: "#FFE29A",
         ansiBlue: "#B6CDF5", ansiMagenta: "#E2B8F0", ansiCyan: "#A8E3DD", ansiWhite: "#EBDDE1",
         ansiBrightBlack: "#6A5761", ansiBrightRed: "#FFB9CB", ansiBrightGreen: "#CDEECA", ansiBrightYellow: "#FFEDB8",
-        ansiBrightBlue: "#CDDDFA", ansiBrightMagenta: "#EED0F7", ansiBrightCyan: "#C2EEE9", ansiBrightWhite: "#FFF6F8"
+        ansiBrightBlue: "#CDDDFA", ansiBrightMagenta: "#EED0F7", ansiBrightCyan: "#C2EEE9", ansiBrightWhite: "#FFF6F8",
+        selectionText: "#F3E8EA", identifier: "#F7DBD4"
     )
 
     /// Peony — a pastel light. Blush-white ground, plum-grey text, rose accent. The pastel is
@@ -1323,7 +1508,8 @@ public enum BuiltInThemes {
         ansiBlack: "#2E2230", ansiRed: "#C43D5A", ansiGreen: "#2E7D5B", ansiYellow: "#A8731A",
         ansiBlue: "#3A6FB0", ansiMagenta: "#8A5BC7", ansiCyan: "#2F7FA0", ansiWhite: "#8C7A88",
         ansiBrightBlack: "#5B4A57", ansiBrightRed: "#A32D48", ansiBrightGreen: "#22684B", ansiBrightYellow: "#8F5F0F",
-        ansiBrightBlue: "#2B5A95", ansiBrightMagenta: "#6F44A8", ansiBrightCyan: "#226A88", ansiBrightWhite: "#4A3B47"
+        ansiBrightBlue: "#2B5A95", ansiBrightMagenta: "#6F44A8", ansiBrightCyan: "#226A88", ansiBrightWhite: "#4A3B47",
+        selectionText: "#4A3B47", identifier: "#55456D"
     )
 
     /// Lilac — the cool pastel light. Lavender-white ground, slate-violet text, violet accent,
@@ -1358,7 +1544,8 @@ public enum BuiltInThemes {
         ansiBlack: "#3F3A55", ansiRed: "#C2405E", ansiGreen: "#2F7D5F", ansiYellow: "#A0731D",
         ansiBlue: "#3B6FC4", ansiMagenta: "#6B4FD1", ansiCyan: "#2F8F83", ansiWhite: "#8B86A0",
         ansiBrightBlack: "#5F5977", ansiBrightRed: "#A33350", ansiBrightGreen: "#24684F", ansiBrightYellow: "#86600F",
-        ansiBrightBlue: "#2E5AA8", ansiBrightMagenta: "#5740B3", ansiBrightCyan: "#26786D", ansiBrightWhite: "#3F3A55"
+        ansiBrightBlue: "#2E5AA8", ansiBrightMagenta: "#5740B3", ansiBrightCyan: "#26786D", ansiBrightWhite: "#3F3A55",
+        selectionText: "#3F3A55", identifier: "#4A4C7E"
     )
 
     /// Volt — a modern dark. Graphite-black ground with a cold cast, one electric ice-cyan
@@ -1395,7 +1582,8 @@ public enum BuiltInThemes {
         ansiBlack: "#0A0C10", ansiRed: "#FF5C5C", ansiGreen: "#5CFF9D", ansiYellow: "#FFD166",
         ansiBlue: "#5CA8FF", ansiMagenta: "#D08CFF", ansiCyan: "#7DF9FF", ansiWhite: "#D6DADF",
         ansiBrightBlack: "#4E5560", ansiBrightRed: "#FF8A8A", ansiBrightGreen: "#8CFFBE", ansiBrightYellow: "#FFE29A",
-        ansiBrightBlue: "#8CC4FF", ansiBrightMagenta: "#E2B3FF", ansiBrightCyan: "#B3FBFF", ansiBrightWhite: "#FFFFFF"
+        ansiBrightBlue: "#8CC4FF", ansiBrightMagenta: "#E2B3FF", ansiBrightCyan: "#B3FBFF", ansiBrightWhite: "#FFFFFF",
+        selectionText: "#EDEDED", identifier: "#D1EBF3"
     )
 
     /// Every built-in theme, for populating a picker.

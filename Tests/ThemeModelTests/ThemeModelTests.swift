@@ -58,11 +58,27 @@ final class ThemeModelTests: XCTestCase {
         XCTAssertEqual(again.selectionText, "#101010")
     }
 
+    /// `palette` as a theme written before the optional colours existed: no selection text, no
+    /// identifier, no terminal colours (every built-in now sets them all).
+    func withoutOptionalColours(_ palette: ThemePalette) -> ThemePalette {
+        var p = palette
+        p.selectionText = nil
+        p.identifier = nil
+        for path in [
+            \ThemePalette.ansiBlack, \.ansiRed, \.ansiGreen, \.ansiYellow, \.ansiBlue, \.ansiMagenta, \.ansiCyan, \.ansiWhite,
+            \.ansiBrightBlack, \.ansiBrightRed, \.ansiBrightGreen, \.ansiBrightYellow, \.ansiBrightBlue, \.ansiBrightMagenta,
+            \.ansiBrightCyan, \.ansiBrightWhite,
+        ] as [WritableKeyPath<ThemePalette, String?>] {
+            p[keyPath: path] = nil
+        }
+        return p
+    }
+
     /// `identifier` is optional and decodes without the key; ``resolvedIdentifier`` takes an explicit one
     /// first, then a `variable` that differs from the foreground, then the foreground tinted toward
     /// `property`.
     func testIdentifierResolvesExplicitThenVariableThenTint() throws {
-        var p = BuiltInThemes.all.first { $0.name == "Sidewatch" }!
+        var p = withoutOptionalColours(BuiltInThemes.all.first { $0.name == "Sidewatch" }!)
         XCTAssertNil(p.identifier)
         p.foreground = "#D4D4D4"; p.variable = "#D4D4D4"; p.property = "#529CCA"
         XCTAssertEqual(p.resolvedIdentifier, "#A9C1D1")  // a third of the way to the property colour
@@ -384,19 +400,20 @@ final class ThemeModelTests: XCTestCase {
     /// Decode-safety: palette JSON written before ANSI existed must still decode
     /// unchanged, and a nil ANSI field must not be encoded.
     func testPaletteJSONWithoutANSIStillDecodes() throws {
-        let data = try JSONEncoder().encode(BuiltInThemes.monokai)
+        let old = withoutOptionalColours(BuiltInThemes.monokai)
+        let data = try JSONEncoder().encode(old)
         let json = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
         XCTAssertNil(json["ansiRed"], "a nil ANSI field must not be encoded")
 
         let decoded = try JSONDecoder().decode(ThemePalette.self, from: data)
-        XCTAssertEqual(decoded, BuiltInThemes.monokai)
+        XCTAssertEqual(decoded, old)
         XCTAssertNil(decoded.ansiRed)
         XCTAssertEqual(decoded.resolvedANSI, .dark)
     }
 
     /// A stored theme that DOES carry ANSI fields round-trips them.
     func testPaletteANSIRoundTrips() throws {
-        var p = BuiltInThemes.solarizedLight
+        var p = withoutOptionalColours(BuiltInThemes.solarizedLight)
         p.ansiRed = "#DC322F"
         let decoded = try JSONDecoder().decode(
             ThemePalette.self, from: try JSONEncoder().encode(p))
@@ -660,25 +677,33 @@ final class ThemeModelTests: XCTestCase {
         }
     }
 
-    /// Every theme added alongside the ANSI feature carries its own 16 colours —
-    /// the whole reason the fields exist. (Older built-ins intentionally keep
-    /// `nil` and fall back, since inventing ANSI for someone else's theme would
-    /// be a fabrication.)
-    func testNewThemesDeclareTheirOwnANSI() {
-        // "Rosé Pine Moon" was cut as a near-duplicate of Rosé Pine (ΔE 5.8); its sibling
-        // variants still carry their own ANSI and still hold this line.
-        let named = [
-            "Windshield Dark", "Windshield Light", "Rosé Pine",
-            "Rosé Pine Dawn", "Kanagawa Wave", "Everforest Dark", "Everforest Light",
-            "Night Owl", "Catppuccin Latte", "GitHub Light",
-        ]
-        for name in named {
+    /// Nothing is left to a fallback: every built-in sets every colour the palette has, the optional
+    /// ones included (selection text, the identifier role and all 16 terminal colours), and its
+    /// terminal is its own, never the curated set a theme without one gets. A published theme's
+    /// terminal colours are its authors' own (each theme's doc comment names the source).
+    func testEveryBuiltInSetsEveryColour() {
+        for t in BuiltInThemes.all {
+            let unset = Mirror(reflecting: t).children.compactMap { child -> String? in
+                let value = Mirror(reflecting: child.value)
+                return value.displayStyle == .optional && value.children.isEmpty ? child.label : nil
+            }
+            XCTAssertEqual(unset, [], "\(t.name) leaves colours unset")
+            XCTAssertNotEqual(t.resolvedANSI, ANSIColors.curated(isDark: t.isDark), "\(t.name) wears the fallback terminal colours")
+        }
+    }
+
+    /// The terminal colours designed for Sidewatch's own themes (not copied from an upstream): every
+    /// coloured slot, normal and bright, reads at 4.5:1 or more on the theme's background, and no two
+    /// of the six normal hues are the same colour.
+    func testDesignedTerminalColoursAreLegibleAndDistinct() {
+        let designed = ["Blackout", "Redline", "Ultraviolet", "Carbon", "Synthwave", "Neon", "Foundry", "Frost", "Foundry Light"]
+        for name in designed {
             let t = try! XCTUnwrap(BuiltInThemes.all.first { $0.name == name })
-            XCTAssertNotNil(t.ansiRed, "\(name) must declare its own ANSI")
-            XCTAssertNotNil(t.ansiBrightWhite, "\(name) must declare a complete ANSI set")
-            XCTAssertNotEqual(
-                t.resolvedANSI, ANSIColors.curated(isDark: t.isDark),
-                "\(name) declares ANSI, so it must not equal the curated fallback")
+            let a = t.resolvedANSI.indexed
+            for i in [1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14] {
+                XCTAssertGreaterThanOrEqual(contrast(a[i], t.background), 4.5, "\(name) ANSI \(i) = \(a[i]) is illegible")
+            }
+            XCTAssertEqual(Set(a[1...6].map { $0.uppercased() }).count, 6, "\(name) repeats a colour among its six hues")
         }
     }
 
