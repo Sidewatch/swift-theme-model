@@ -488,47 +488,6 @@ public enum BuiltInThemes {
         selectionText: "#E6E1DA", identifier: "#DBD5CD"
     )
 
-    /// Claude Code — the desktop app's dark palette from its usage/chat UI: a warm
-    /// near-black, warm off-white text, the coral asterisk accent, and the
-    /// periwinkle blue it uses for charts, the heatmap, and links (here the
-    /// function/property color).
-    public static let claudeCode = ThemePalette(
-        name: "Claude Code",
-        appearance: "dark",
-        background: "#14130F",
-        foreground: "#F2EFE7",
-        cursor: "#CC785C",
-        selection: "#33302A",
-        comment: "#7C756A",
-        string: "#B5C77C",
-        keyword: "#CC785C",
-        type: "#8FA9E6",
-        number: "#D3A15F",
-        function: "#7C8FE4",
-        variable: "#F2EFE7",
-        property: "#A5B4E8",
-        accent: "#CC785C",
-        sidebarBackground: "#100F0C",
-        sidebarText: "#A8A196",
-        tabBarBackground: "#0D0C0A",
-        tabText: "#7C756A",
-        tabActiveText: "#F2EFE7",
-        border: "#272520",
-        gutterBackground: "#14130F",
-        gutterText: "#4C483F",
-        gutterActiveText: "#A8A196",
-        statusBackground: "#0D0C0A",
-        statusText: "#A8A196",
-        ansiBlack: "#2A2622", ansiRed: "#F24F4A", ansiGreen: "#3DB554",
-        ansiYellow: "#D3A15F", ansiBlue: "#7C8FE4", ansiMagenta: "#B4A0DC",
-        ansiCyan: "#7FB5C4", ansiWhite: "#F2EFE7",
-        ansiBrightBlack: "#7C756A", ansiBrightRed: "#FF6F6A",
-        ansiBrightGreen: "#5FD97A", ansiBrightYellow: "#E8C07D",
-        ansiBrightBlue: "#9BA7E8", ansiBrightMagenta: "#C4B0EC",
-        ansiBrightCyan: "#8FD0CB", ansiBrightWhite: "#FAF9F5",
-        selectionText: "#F2EFE7", identifier: "#D8DBE7"
-    )
-
     // MARK: - Modern
     //
     // Designed for this app, not ported — clean "app-modern" palettes (deep neutral or
@@ -1766,7 +1725,7 @@ public enum BuiltInThemes {
         redline,
         ultraviolet,
         meridian,
-        windshieldDark, windshieldLight, claude, claudeCode,
+        windshieldDark, windshieldLight, claude,
         notion, sidewatch, graphite, porcelain,
         carbon, synthwave,
         oneDark, dracula, tokyoNight, catppuccin, rosePine, kanagawa, everforestDark, nightOwl, nord, gruvbox, ayu,

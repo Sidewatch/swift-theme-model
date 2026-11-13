@@ -605,10 +605,10 @@ final class ThemeModelTests: XCTestCase {
         // distinct (near-duplicates under ~12 mean CIE76 ΔE are hard to tell apart in use and are
         // not kept). Omarchy themes already covered here under their own names keep ours;
         // Ristretto is left out because the name belongs to a commercial Monokai Pro variant.
-        XCTAssertEqual(BuiltInThemes.all.count, 63)
+        XCTAssertEqual(BuiltInThemes.all.count, 62)
         let light = BuiltInThemes.all.filter { !$0.isDark }
         let dark = BuiltInThemes.all.filter { $0.isDark }
-        XCTAssertEqual(dark.count, 46)  // … + Vesper, Poimandres, Vitesse Dark, Houston, Aura, Flexoki Dark
+        XCTAssertEqual(dark.count, 45)  // … + six published themes; Claude Code removed (Claude stays)
         // The point of the light additions: daylight work needs real options.
         XCTAssertEqual(light.count, 17)  // … + Vitesse Light, + Tokyo Night Light
         XCTAssertEqual(
