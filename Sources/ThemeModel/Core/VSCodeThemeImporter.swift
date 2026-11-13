@@ -25,9 +25,11 @@ public enum VSCodeThemeImporter {
     public static func palette(from data: Data, fallbackName: String) -> ThemePalette? {
         let sanitized = Data(sanitizeJSONC(String(decoding: data, as: UTF8.self)).utf8)
         guard let json = try? JSONSerialization.jsonObject(with: sanitized) as? [String: Any] else { return nil }
-        let ui = VSCodeUIColors(json["colors"] as? [String: Any] ?? [:])
-        let tokens = VSCodeTokenRules(tokenColors: json["tokenColors"] as? [[String: Any]] ?? [])
-        let bg = ui.hex("editor.background", "#1E1E1E")
+        let colors = json["colors"] as? [String: Any] ?? [:]
+        // The editor background first: every colour written with an alpha is that colour laid over it.
+        let bg = hex6(colors["editor.background"] as? String) ?? "#1E1E1E"
+        let ui = VSCodeUIColors(colors, background: bg)
+        let tokens = VSCodeTokenRules(tokenColors: json["tokenColors"] as? [[String: Any]] ?? [], background: bg)
         let fg = ui.hex("editor.foreground", "#D4D4D4")
         let keyword = tokens.color(for: ["keyword", "storage"], fallback: "#C586C0")
         return ThemePalette(
@@ -89,9 +91,33 @@ public enum VSCodeThemeImporter {
         return (0.299 * r + 0.587 * g + 0.114 * b) > 140
     }
 
-    /// Normalizes a hex color string to `#RRGGBB`, expanding `#RGB`/`#RGBA`
-    /// shorthand and dropping any 2-digit alpha. Returns `nil` if not a hex color.
-    static func hex6(_ s: String?) -> String? {
+    /// Normalizes a hex color string to `#RRGGBB`, expanding `#RGB`/`#RGBA` shorthand. Returns `nil` if
+    /// not a hex color.
+    ///
+    /// A colour written with an alpha (`#RRGGBBAA`, `#RGBA`) is what shows through it: given a
+    /// `background` it is laid over that colour, as the editor draws it, so a selection written
+    /// `#FFFFFF25` over a near-black page is a dark grey and not white. With no background the alpha
+    /// is dropped.
+    static func hex6(_ s: String?, over background: String? = nil) -> String? {
+        guard let opaque = opaqueHex6(s) else { return nil }
+        guard let s, let background, let alpha = alpha(of: s), alpha < 1,
+            let blended = ThemePalette.blendHex(background, toward: opaque, fraction: alpha)
+        else { return opaque }
+        return blended
+    }
+
+    /// The alpha a hex colour carries (0…1), or nil when it carries none.
+    static func alpha(of s: String) -> Double? {
+        let digits = s.dropFirst()
+        switch digits.count {
+        case 4: return digits.last.flatMap { Int(String($0), radix: 16) }.map { Double($0 * 17) / 255 }
+        case 8: return Int(digits.suffix(2), radix: 16).map { Double($0) / 255 }
+        default: return nil
+        }
+    }
+
+    /// `#RRGGBB` for a hex colour, any alpha dropped.
+    private static func opaqueHex6(_ s: String?) -> String? {
         guard var s = s, s.hasPrefix("#"),
             !s.dropFirst().isEmpty,
             s.dropFirst().allSatisfy({ $0.isASCII && $0.isHexDigit })

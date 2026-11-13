@@ -16,8 +16,8 @@ struct VSCodeTokenRules {
     private let rules: [(scopes: [String], fg: String)]
 
     /// Extracts the rules from the theme JSON's `tokenColors` array; `scope` may be a
-    /// comma-separated string or an array.
-    init(tokenColors: [[String: Any]]) {
+    /// comma-separated string or an array. A foreground written with an alpha is laid over `background`.
+    init(tokenColors: [[String: Any]], background: String? = nil) {
         rules = tokenColors.compactMap { t in
             let scopes: [String]
             if let s = t["scope"] as? String {
@@ -28,7 +28,7 @@ struct VSCodeTokenRules {
                 return nil
             }
             guard let settings = t["settings"] as? [String: Any],
-                let fg = VSCodeThemeImporter.hex6(settings["foreground"] as? String)
+                let fg = VSCodeThemeImporter.hex6(settings["foreground"] as? String, over: background)
             else { return nil }
             return (scopes, fg)
         }

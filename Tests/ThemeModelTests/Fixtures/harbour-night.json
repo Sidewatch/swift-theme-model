@@ -10,7 +10,7 @@
     "editor.background": "#14181F",
     "editor.foreground": "#C9D1DC",
     "editorCursor.foreground": "#F2B45A",
-    "editor.selectionBackground": "#2B3A55CC", // 8-digit: alpha is dropped on import
+    "editor.selectionBackground": "#2B3A55CC", // 8-digit: laid over the background on import
     "editorLineNumber.foreground": "#4A5466",
     "editorLineNumber.activeForeground": "#9AA6B8",
     "sideBar.background": "#10141A",

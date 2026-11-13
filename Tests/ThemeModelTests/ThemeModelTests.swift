@@ -122,14 +122,14 @@ final class ThemeModelTests: XCTestCase {
     }
 
     /// The forms theme authors actually write (from the test-files corpus, fictional themes):
-    /// comma-joined and array scopes, `#RRGGBBAA` (alpha dropped), `#RGB` (expanded), and a light
+    /// comma-joined and array scopes, `#RRGGBBAA` (laid over the background), `#RGB` (expanded), and a light
     /// theme with no `type`, decided from its background.
     func testAuthorWrittenColourForms() throws {
         let night = try XCTUnwrap(VSCodeThemeImporter.palette(from: try load("harbour-night"), fallbackName: "x"))
         XCTAssertEqual(night.name, "Harbour Night")
         XCTAssertTrue(night.isDark)
         XCTAssertEqual(night.background.uppercased(), "#14181F")
-        XCTAssertEqual(night.selection.uppercased(), "#2B3A55", "8-digit colour: alpha dropped")
+        XCTAssertEqual(night.selection.uppercased(), "#26334A", "8-digit colour: #2B3A55 at CC over the #14181F page")
         XCTAssertEqual(night.ansiBrightWhite?.uppercased(), "#FFFFFF", "3-digit colour expanded")
         XCTAssertEqual(night.comment.uppercased(), "#5C6B80")
         XCTAssertEqual(night.keyword.uppercased(), "#C792EA", "a scope array")
@@ -198,6 +198,27 @@ final class ThemeModelTests: XCTestCase {
         XCTAssertEqual(VSCodeThemeImporter.hex6("#12345678"), "#123456")  // #RRGGBBAA → trim alpha
         XCTAssertNil(VSCodeThemeImporter.hex6("red"))  // not hex
         XCTAssertNil(VSCodeThemeImporter.hex6(nil))
+    }
+
+    /// A colour with an alpha is imported as what it looks like over the editor background: a
+    /// translucent white selection on a near-black page is a dark grey, and a comment written as the
+    /// foreground at half strength is not the foreground.
+    func testColoursWithAnAlphaAreLaidOverTheBackground() throws {
+        XCTAssertEqual(VSCodeThemeImporter.hex6("#FFFFFF80", over: "#000000"), "#808080")
+        XCTAssertEqual(VSCodeThemeImporter.hex6("#fff8", over: "#000000"), "#888888")
+        XCTAssertEqual(VSCodeThemeImporter.hex6("#FF0000FF", over: "#000000"), "#FF0000", "a full alpha is the colour itself")
+        XCTAssertEqual(VSCodeThemeImporter.hex6("#123456", over: "#000000"), "#123456")
+        let json = """
+            {"name": "Glass", "type": "dark",
+             "colors": {"editor.background": "#101010", "editor.foreground": "#FFFFFF", "editor.selectionBackground": "#FFFFFF25",
+                        "terminal.ansiRed": "#FF000080"},
+             "tokenColors": [{"scope": "comment", "settings": {"foreground": "#FFFFFF80"}}]}
+            """
+        let theme = try XCTUnwrap(VSCodeThemeImporter.palette(from: Data(json.utf8), fallbackName: "x"))
+        XCTAssertEqual(theme.selection, "#333333")
+        XCTAssertEqual(theme.comment, "#888888")
+        XCTAssertEqual(theme.ansiRed, "#880808")
+        XCTAssertNotEqual(theme.comment, theme.foreground)
     }
 
     /// Regression: hex6 must reject strings whose payload isn't hex digits —
@@ -377,7 +398,7 @@ final class ThemeModelTests: XCTestCase {
             """##
         let p = try XCTUnwrap(VSCodeThemeImporter.palette(from: Data(json.utf8), fallbackName: "t"))
         XCTAssertEqual(p.ansiRed, "#AABBCC")  // #RGB shorthand expanded
-        XCTAssertEqual(p.ansiGreen, "#00FF00")  // #RRGGBBAA alpha trimmed
+        XCTAssertEqual(p.ansiGreen, "#088808")  // #RRGGBBAA: half green over the #101010 page
         XCTAssertEqual(p.ansiBrightWhite, "#FAFAFA")
 
         let ansi = p.resolvedANSI
@@ -584,18 +605,18 @@ final class ThemeModelTests: XCTestCase {
         // distinct (near-duplicates under ~12 mean CIE76 ΔE are hard to tell apart in use and are
         // not kept). Omarchy themes already covered here under their own names keep ours;
         // Ristretto is left out because the name belongs to a commercial Monokai Pro variant.
-        XCTAssertEqual(BuiltInThemes.all.count, 55)
+        XCTAssertEqual(BuiltInThemes.all.count, 63)
         let light = BuiltInThemes.all.filter { !$0.isDark }
         let dark = BuiltInThemes.all.filter { $0.isDark }
-        XCTAssertEqual(dark.count, 40)  // 26 + Beacon + eight dark Omarchy ports + VS Code Dark+ + Orchid, Sakura, Volt + Foundry
+        XCTAssertEqual(dark.count, 46)  // … + Vesper, Poimandres, Vitesse Dark, Houston, Aura, Flexoki Dark
         // The point of the light additions: daylight work needs real options.
-        XCTAssertEqual(light.count, 15)  // + Notion, + Porcelain, + Flexoki Light, + VS Code Light+, + Peony, + Lilac, + Foundry Light
+        XCTAssertEqual(light.count, 17)  // … + Vitesse Light, + Tokyo Night Light
         XCTAssertEqual(
             light.map(\.name).sorted(),
             [
                 "Catppuccin Latte", "Everforest Light", "Flexoki Light", "Foundry Light", "Frost",
                 "GitHub Light", "Gruvbox Light", "Lilac", "Notion", "Peony", "Porcelain",
-                "Rosé Pine Dawn", "Solarized Light", "VS Code Light+", "Windshield Light",
+                "Rosé Pine Dawn", "Solarized Light", "Tokyo Night Light", "VS Code Light+", "Vitesse Light", "Windshield Light",
             ])
     }
 

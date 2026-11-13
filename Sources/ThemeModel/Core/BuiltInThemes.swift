@@ -1586,6 +1586,171 @@ public enum BuiltInThemes {
         selectionText: "#EDEDED", identifier: "#D1EBF3"
     )
 
+    /// Vesper — Rauno Freiberg's near-black theme: white names, grey keywords, one peach and one mint
+    /// (MIT, raunofreiberg/vesper, `themes/Vesper-dark-color-theme.json`, read with this package's
+    /// ``VSCodeThemeImporter``). Comments are the file's `#8B8B8B94` laid over the page. The file sets no
+    /// border, inactive tab or sidebar text: the border is its hover widget's `#282828`, the quiet text
+    /// its `#A0A0A0`. Names are the foreground a third of the way to the keyword grey.
+    /// Terminal colours: the Vesper scheme in mbadolato/iTerm2-Color-Schemes (`ghostty/Vesper`); the
+    /// VS Code theme carries none.
+    public static let vesper = ThemePalette(
+        name: "Vesper", appearance: "dark",
+        background: "#101010", foreground: "#FFFFFF", cursor: "#FFFFFF", selection: "#333333",
+        comment: "#575757", string: "#99FFE4", keyword: "#A0A0A0", type: "#FFC799", number: "#FFC799",
+        function: "#FFC799", variable: "#FFFFFF", property: "#FFFFFF", accent: "#FFC799",
+        sidebarBackground: "#101010", sidebarText: "#A0A0A0", tabBarBackground: "#101010",
+        tabText: "#A0A0A0", tabActiveText: "#FFFFFF", border: "#282828",
+        gutterBackground: "#101010", gutterText: "#505050", gutterActiveText: "#FFFFFF",
+        statusBackground: "#101010", statusText: "#A0A0A0",
+        ansiBlack: "#101010", ansiRed: "#F5A191", ansiGreen: "#90B99F", ansiYellow: "#E6B99D",
+        ansiBlue: "#ACA1CF", ansiMagenta: "#E29ECA", ansiCyan: "#EA83A5", ansiWhite: "#A0A0A0",
+        ansiBrightBlack: "#7E7E7E", ansiBrightRed: "#FF8080", ansiBrightGreen: "#99FFE4", ansiBrightYellow: "#FFC799",
+        ansiBrightBlue: "#B9AEDA", ansiBrightMagenta: "#ECAAD6", ansiBrightCyan: "#F591B2", ansiBrightWhite: "#FFFFFF",
+        selectionText: "#FFFFFF", identifier: "#DFDFDF"
+    )
+
+    /// Poimandres — a cool slate theme in blues and one teal (MIT, drcmda/poimandres-theme,
+    /// `themes/poimandres-color-theme.json`, read with ``VSCodeThemeImporter``). The file paints a bare
+    /// `keyword` in the foreground; the keyword here is its `storage.type` and `keyword.operator` blue
+    /// (`const`, `function`, `class`), so code is not one colour. Comments and types are the file's
+    /// translucent colours laid over the page.
+    /// Terminal colours: the theme's own `terminal.ansi*`.
+    public static let poimandres = ThemePalette(
+        name: "Poimandres", appearance: "dark",
+        background: "#1B1E28", foreground: "#A6ACCD", cursor: "#A6ACCD", selection: "#272C3C",
+        comment: "#5A5F79", string: "#5DE4C7", keyword: "#91B4D5", type: "#8489A4", number: "#5DE4C7",
+        function: "#ADD7FF", variable: "#E4F0FB", property: "#E4F0FB", accent: "#5DE4C7",
+        sidebarBackground: "#1B1E28", sidebarText: "#767C9D", tabBarBackground: "#1B1E28",
+        tabText: "#767C9D", tabActiveText: "#E4F0FB", border: "#161820",
+        gutterBackground: "#1B1E28", gutterText: "#383B4D", gutterActiveText: "#A6ACCD",
+        statusBackground: "#1B1E28", statusText: "#A6ACCD",
+        ansiBlack: "#1B1E28", ansiRed: "#D0679D", ansiGreen: "#5DE4C7", ansiYellow: "#FFFAC2",
+        ansiBlue: "#89DDFF", ansiMagenta: "#F087BD", ansiCyan: "#89DDFF", ansiWhite: "#FFFFFF",
+        ansiBrightBlack: "#A6ACCD", ansiBrightRed: "#D0679D", ansiBrightGreen: "#5DE4C7", ansiBrightYellow: "#FFFAC2",
+        ansiBrightBlue: "#ADD7FF", ansiBrightMagenta: "#F087BD", ansiBrightCyan: "#ADD7FF", ansiBrightWhite: "#FFFFFF",
+        selectionText: "#A6ACCD", identifier: "#E4F0FB"
+    )
+
+    /// Vitesse Dark — Anthony Fu's soft, earthy dark theme (MIT, antfu/vscode-theme-vitesse,
+    /// `themes/vitesse-dark.json`, read with ``VSCodeThemeImporter``; translucent colours laid over the page).
+    /// Terminal colours: the theme's own `terminal.ansi*`.
+    public static let vitesseDark = ThemePalette(
+        name: "Vitesse Dark", appearance: "dark",
+        background: "#121212", foreground: "#CECABE", cursor: "#CECABE", selection: "#272727",
+        comment: "#687668", string: "#C98A7D", keyword: "#4D9375", type: "#5DA994", number: "#4C9A91",
+        function: "#80A665", variable: "#BD976A", property: "#B8A965", accent: "#4D9375",
+        sidebarBackground: "#121212", sidebarText: "#BFBAAA", tabBarBackground: "#121212",
+        tabText: "#959DA5", tabActiveText: "#CECABE", border: "#191919",
+        gutterBackground: "#121212", gutterText: "#52514F", gutterActiveText: "#BFBAAA",
+        statusBackground: "#121212", statusText: "#BFBAAA",
+        ansiBlack: "#393A34", ansiRed: "#CB7676", ansiGreen: "#4D9375", ansiYellow: "#E6CC77",
+        ansiBlue: "#6394BF", ansiMagenta: "#D9739F", ansiCyan: "#5EAAB5", ansiWhite: "#DBD7CA",
+        ansiBrightBlack: "#777777", ansiBrightRed: "#CB7676", ansiBrightGreen: "#4D9375", ansiBrightYellow: "#E6CC77",
+        ansiBrightBlue: "#6394BF", ansiBrightMagenta: "#D9739F", ansiBrightCyan: "#5EAAB5", ansiBrightWhite: "#FFFFFF",
+        selectionText: "#CECABE", identifier: "#BD976A"
+    )
+
+    /// Vitesse Light — the light variant, on white (MIT, antfu/vscode-theme-vitesse,
+    /// `themes/vitesse-light.json`, read with ``VSCodeThemeImporter``).
+    /// Terminal colours: the theme's own `terminal.ansi*`.
+    public static let vitesseLight = ThemePalette(
+        name: "Vitesse Light", appearance: "light",
+        background: "#FFFFFF", foreground: "#393A34", cursor: "#393A34", selection: "#EAEAEA",
+        comment: "#A0ADA0", string: "#B56959", keyword: "#1E754F", type: "#2E8F82", number: "#2F798A",
+        function: "#59873A", variable: "#B07D48", property: "#998418", accent: "#1E754F",
+        sidebarBackground: "#FFFFFF", sidebarText: "#4E4F47", tabBarBackground: "#FFFFFF",
+        tabText: "#6A737D", tabActiveText: "#393A34", border: "#F0F0F0",
+        gutterBackground: "#FFFFFF", gutterText: "#C1C1BF", gutterActiveText: "#4E4F47",
+        statusBackground: "#FFFFFF", statusText: "#4E4F47",
+        ansiBlack: "#121212", ansiRed: "#AB5959", ansiGreen: "#1E754F", ansiYellow: "#BDA437",
+        ansiBlue: "#296AA3", ansiMagenta: "#A13865", ansiCyan: "#2993A3", ansiWhite: "#DBD7CA",
+        ansiBrightBlack: "#AAAAAA", ansiBrightRed: "#AB5959", ansiBrightGreen: "#1E754F", ansiBrightYellow: "#BDA437",
+        ansiBrightBlue: "#296AA3", ansiBrightMagenta: "#A13865", ansiBrightCyan: "#2993A3", ansiBrightWhite: "#DDDDDD",
+        selectionText: "#393A34", identifier: "#B07D48"
+    )
+
+    /// Tokyo Night Light — the daylight variant of Tokyo Night (MIT, tokyo-night/tokyo-night-vscode-theme,
+    /// `themes/tokyo-night-light-color-theme.json`, read with ``VSCodeThemeImporter``). The file declares
+    /// `"type": "dark"` over a `#E6E7ED` page (its extension manifest is what marks it light), so the
+    /// appearance is set here. Its variables are one step from the foreground, so names are the
+    /// foreground a third of the way to its property blue. The accent is its button and active-border blue.
+    /// Terminal colours: the theme's own `terminal.ansi*` (normal and bright are the same in every slot).
+    public static let tokyoNightLight = ThemePalette(
+        name: "Tokyo Night Light", appearance: "light",
+        background: "#E6E7ED", foreground: "#343B59", cursor: "#363C4D", selection: "#D7D9E1",
+        comment: "#888B94", string: "#385F0D", keyword: "#65359D", type: "#33635C", number: "#965027",
+        function: "#2959AA", variable: "#343B58", property: "#0F4B6E", accent: "#2959AA",
+        sidebarBackground: "#D6D8DF", sidebarText: "#363C4D", tabBarBackground: "#D6D8DF",
+        tabText: "#363C4D", tabActiveText: "#363C4D", border: "#C1C2C7",
+        gutterBackground: "#E6E7ED", gutterText: "#9DA0AB", gutterActiveText: "#363C4D",
+        statusBackground: "#D6D8DF", statusText: "#363C4D",
+        ansiBlack: "#343B58", ansiRed: "#8C4351", ansiGreen: "#33635C", ansiYellow: "#8F5E15",
+        ansiBlue: "#2959AA", ansiMagenta: "#7B43BA", ansiCyan: "#006C86", ansiWhite: "#707280",
+        ansiBrightBlack: "#343B58", ansiBrightRed: "#8C4351", ansiBrightGreen: "#33635C", ansiBrightYellow: "#8F5E15",
+        ansiBrightBlue: "#2959AA", ansiBrightMagenta: "#7B43BA", ansiBrightCyan: "#006C86", ansiBrightWhite: "#707280",
+        selectionText: "#343B59", identifier: "#284060"
+    )
+
+    /// Houston — Astro's theme: a charcoal page, mint variables, cyan calls and a blue status bar
+    /// (MIT, withastro/houston-vscode, `themes/houston.json`, read with ``VSCodeThemeImporter``).
+    /// Comments are the file's `#EEF0F98F` laid over the page. The accent is its button mint.
+    /// Terminal colours: the theme's own `terminal.ansi*`.
+    public static let houston = ThemePalette(
+        name: "Houston", appearance: "dark",
+        background: "#17191E", foreground: "#EEF0F9", cursor: "#AEAFAD", selection: "#3F2B4C",
+        comment: "#909299", string: "#FFD493", keyword: "#54B9FF", type: "#ACAFFF", number: "#FFD493",
+        function: "#00DAEF", variable: "#4BF3C8", property: "#ACAFFF", accent: "#4BF3C8",
+        sidebarBackground: "#23262D", sidebarText: "#BFC1C9", tabBarBackground: "#23262D",
+        tabText: "#858B98", tabActiveText: "#EEF0F9", border: "#343841",
+        gutterBackground: "#17191E", gutterText: "#545864", gutterActiveText: "#858B98",
+        statusBackground: "#17548B", statusText: "#EEF0F9",
+        ansiBlack: "#17191E", ansiRed: "#DC3657", ansiGreen: "#23D18B", ansiYellow: "#FFC368",
+        ansiBlue: "#2B7ECA", ansiMagenta: "#AD5DCA", ansiCyan: "#24C0CF", ansiWhite: "#EEF0F9",
+        ansiBrightBlack: "#545864", ansiBrightRed: "#F4587E", ansiBrightGreen: "#4BF3C8", ansiBrightYellow: "#FFD493",
+        ansiBrightBlue: "#54B9FF", ansiBrightMagenta: "#CC75F4", ansiBrightCyan: "#00DAEF", ansiBrightWhite: "#FAFAFA",
+        selectionText: "#EEF0F9", identifier: "#4BF3C8"
+    )
+
+    /// Aura — Dalton Menezes's violet-and-mint dark theme (MIT, daltonmenezes/aura-theme,
+    /// `packages/vscode/themes/aura-dark-color-theme.json`, read with ``VSCodeThemeImporter``).
+    /// Terminal colours: the theme's own `terminal.ansi*`.
+    public static let aura = ThemePalette(
+        name: "Aura", appearance: "dark",
+        background: "#15141B", foreground: "#EDECEE", cursor: "#A277FF", selection: "#29253C",
+        comment: "#6D6D6D", string: "#61FFCA", keyword: "#A277FF", type: "#82E2FF", number: "#61FFCA",
+        function: "#FFCA85", variable: "#EDECEE", property: "#F694FF", accent: "#A277FF",
+        sidebarBackground: "#110F18", sidebarText: "#CDCCCE", tabBarBackground: "#15141B",
+        tabText: "#6D6D6D", tabActiveText: "#61FFCA", border: "#000000",
+        gutterBackground: "#15141B", gutterText: "#312E46", gutterActiveText: "#EDECEE",
+        statusBackground: "#121016", statusText: "#ADACAE",
+        ansiBlack: "#15141B", ansiRed: "#FF6767", ansiGreen: "#61FFCA", ansiYellow: "#FFCA85",
+        ansiBlue: "#A277FF", ansiMagenta: "#61FFCA", ansiCyan: "#A277FF", ansiWhite: "#CDCCCE",
+        ansiBrightBlack: "#2D2D2D", ansiBrightRed: "#FFCA85", ansiBrightGreen: "#A277FF", ansiBrightYellow: "#FFCA85",
+        ansiBrightBlue: "#A277FF", ansiBrightMagenta: "#61FFCA", ansiBrightCyan: "#61FFCA", ansiBrightWhite: "#EDECEE",
+        selectionText: "#EDECEE", identifier: "#F0CFF4"
+    )
+
+    /// Flexoki Dark — Steph Ango's inky scheme, the dark side of Flexoki Light above (MIT, kepano/flexoki,
+    /// `vscode/Flexoki-Dark-color-theme.json`, read with ``VSCodeThemeImporter``). The accent is its
+    /// button cyan.
+    /// Terminal colours: the project's own terminal port (`kitty/flexoki_dark.conf`): the 600 shades
+    /// as the normal colours, the 400 shades as the bright ones.
+    public static let flexokiDark = ThemePalette(
+        name: "Flexoki Dark", appearance: "dark",
+        background: "#100F0F", foreground: "#CECDC3", cursor: "#CECDC3", selection: "#363533",
+        comment: "#878580", string: "#3AA99F", keyword: "#879A39", type: "#D0A215", number: "#8B7EC8",
+        function: "#DA702C", variable: "#CECDC3", property: "#4385BE", accent: "#3AA99F",
+        sidebarBackground: "#100F0F", sidebarText: "#CECDC3", tabBarBackground: "#100F0F",
+        tabText: "#878580", tabActiveText: "#CECDC3", border: "#343331",
+        gutterBackground: "#100F0F", gutterText: "#403E3C", gutterActiveText: "#CECDC3",
+        statusBackground: "#100F0F", statusText: "#CECDC3",
+        ansiBlack: "#100F0F", ansiRed: "#AF3029", ansiGreen: "#66800B", ansiYellow: "#AD8301",
+        ansiBlue: "#205EA6", ansiMagenta: "#A02F6F", ansiCyan: "#24837B", ansiWhite: "#878580",
+        ansiBrightBlack: "#6F6E69", ansiBrightRed: "#D14D41", ansiBrightGreen: "#879A39", ansiBrightYellow: "#D0A215",
+        ansiBrightBlue: "#4385BE", ansiBrightMagenta: "#CE5D97", ansiBrightCyan: "#3AA99F", ansiBrightWhite: "#CECDC3",
+        selectionText: "#CECDC3", identifier: "#A0B5C1"
+    )
+
     /// Every built-in theme, for populating a picker.
     public static let all: [ThemePalette] = [
         // Sidewatch originals.
@@ -1608,5 +1773,8 @@ public enum BuiltInThemes {
         monokai, githubDark, solarizedDark, neon, vscodeDarkPlus, foundry,
         frost, catppuccinLatte, rosePineDawn, githubLight, everforestLight, solarizedLight, gruvboxLight,
         vscodeLightPlus, foundryLight,
+        // Published themes of the 2020s, each read from its authors' own VS Code file.
+        vesper, poimandres, vitesseDark, houston, aura, flexokiDark,
+        vitesseLight, tokyoNightLight,
     ]
 }
